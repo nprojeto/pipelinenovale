@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pipeline de Novos Negócios — NOVALE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,400..900;1,75..125,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D2B5E; --navy-deep:#06142F; --navy-mid:#123A79;
+    --eletrico:#4C86F0; --pale:#E8EEF8; --papel:#FBFCFE;
+    --tinta:#0A1830; --tinta-2:#4A5673;
+    --feito:#12915C; --pendente:#C07A12; --risco:#C2413A;
+    --fundo:var(--papel); --superficie:#FFFFFF;
+    --texto:var(--tinta); --texto-2:var(--tinta-2);
+    --borda:rgba(13,43,94,.14); --regua:rgba(13,43,94,.14);
+    --suave:rgba(13,43,94,.045);
+    --c-ganho:#0F8C8C; --c-esforco:#D2622E;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --fundo:var(--navy-deep); --superficie:#0B1E42;
+      --texto:#EDF2FB; --texto-2:#9DB0D0;
+      --borda:rgba(232,238,248,.14); --regua:rgba(232,238,248,.16);
+      --suave:rgba(232,238,248,.05);
+    }
+  }
+  :root[data-theme="dark"]{
+    --fundo:var(--navy-deep); --superficie:#0B1E42;
+    --texto:#EDF2FB; --texto-2:#9DB0D0;
+    --borda:rgba(232,238,248,.14); --regua:rgba(232,238,248,.16);
+    --suave:rgba(232,238,248,.05);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--fundo); color:var(--texto);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .env{max-width:1180px; margin:0 auto; padding:0 28px}
+  h1,h2,h3,h4{font-family:Archivo,Inter,sans-serif; margin:0; line-height:1.08}
+  a{color:var(--eletrico)}
+
+  /* TOPO */
+  .topo{background:var(--navy); color:#fff; padding:14px 0; position:sticky; top:0; z-index:40;
+        border-bottom:1px solid rgba(255,255,255,.12)}
+  .topo .env{display:flex; align-items:center; gap:16px}
+  .marca{display:flex; align-items:baseline; gap:10px}
+  .marca b{font-family:Archivo,Inter,sans-serif; font-weight:800; font-stretch:112%; font-size:21px; letter-spacing:-.02em; color:#fff}
+  .marca span{font-size:12.5px; color:#A9BDE4}
+  .topo nav{margin-left:auto; display:flex; gap:22px}
+  .topo nav a{color:#BACDEC; text-decoration:none; font-size:14px; font-weight:500; padding:4px 0; border-bottom:2px solid transparent}
+  .topo nav a:hover,.topo nav a:focus-visible{color:#fff; border-bottom-color:var(--eletrico)}
+  @media(max-width:860px){.topo nav{display:none}}
+
+  /* ABERTURA */
+  .abertura{
+    background:radial-gradient(120% 90% at 82% 8%, rgba(76,134,240,.30), transparent 58%),
+               linear-gradient(176deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff; padding:86px 0 0; overflow:hidden;
+  }
+  .abertura h1{font-weight:900; font-stretch:118%; font-size:clamp(40px,7.2vw,84px); letter-spacing:-.035em; max-width:13ch}
+  .abertura .sub{margin-top:22px; max-width:58ch; font-size:clamp(17px,2vw,20px); color:#C5D5F0; line-height:1.55}
+  .ident{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px 30px; font-size:14px; color:#9DB5DE}
+  .ident b{color:#fff; font-weight:600}
+  .numeros{margin-top:58px; display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,.18)}
+  .num{padding:26px 22px 44px; border-right:1px solid rgba(255,255,255,.12)}
+  .num:last-child{border-right:0}
+  .num b{display:block; font-family:Archivo,Inter,sans-serif; font-weight:800; font-size:clamp(38px,5vw,58px); letter-spacing:-.04em; font-variant-numeric:tabular-nums}
+  .num span{display:block; margin-top:4px; font-size:13.5px; color:#9DB5DE}
+  @media(max-width:700px){
+    .numeros{grid-template-columns:repeat(2,1fr)}
+    .num{border-bottom:1px solid rgba(255,255,255,.12)}
+    .num:nth-child(2){border-right:0}
+  }
+
+  section{padding:74px 0}
+  .titulo{font-weight:800; font-stretch:108%; font-size:clamp(27px,3.6vw,40px); letter-spacing:-.028em; margin-bottom:12px}
+  .intro{color:var(--texto-2); max-width:66ch; font-size:17.5px; margin-bottom:38px}
+
+  /* MATRIZ */
+  .matriz-wrap{display:grid; grid-template-columns:34px 1fr; grid-template-rows:1fr 34px; gap:10px}
+  .eixo-y{grid-row:1; display:flex; align-items:center; justify-content:center}
+  .eixo-y span{writing-mode:vertical-rl; transform:rotate(180deg); font-size:13px; font-weight:600; color:var(--texto-2); letter-spacing:.06em; text-transform:uppercase; white-space:nowrap}
+  .eixo-x{grid-column:2; text-align:center; font-size:13px; font-weight:600; color:var(--texto-2); letter-spacing:.06em; text-transform:uppercase; align-self:center}
+  .matriz3{grid-column:2; grid-row:1; display:grid; grid-template-columns:96px repeat(3,minmax(0,1fr)); gap:8px}
+  .m-canto{}
+  .m-col{color:var(--c-esforco) !important}
+  .m-lin{color:var(--c-ganho) !important}
+  .eixo-y span{color:var(--c-ganho) !important}
+  .eixo-x{color:var(--c-esforco) !important}
+  .m-col,.m-lin{font-size:12.5px; font-weight:600; color:var(--texto-2); text-transform:uppercase; letter-spacing:.05em}
+  .m-col{text-align:center; padding-top:4px}
+  .m-lin{display:flex; align-items:center; justify-content:flex-end; text-align:right; padding-right:6px}
+  .m-cel{min-height:118px; border-radius:14px; border:1px dashed var(--borda); background:var(--suave);
+         padding:14px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start}
+  .m-cel.cheia{border-style:solid; background:var(--superficie)}
+  .chip{display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; text-decoration:none; color:var(--texto);
+        padding:6px 12px; border-radius:100px; border:1px solid var(--borda); background:var(--fundo)}
+  .chip:hover{border-color:var(--eletrico)}
+  .dot{display:inline-block; width:9px; height:9px; border-radius:50%; flex:none}
+  .dot.h-curto{background:var(--feito)} .dot.h-medio{background:var(--eletrico)} .dot.h-longo{background:var(--pendente)}
+  .legenda-h{display:flex; flex-wrap:wrap; gap:8px 22px; margin:18px 0 0 44px; font-size:14px; color:var(--texto-2)}
+  .legenda-h span{display:inline-flex; align-items:center; gap:8px}
+  .horizontes{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:34px}
+  .hz-espera{background:var(--suave); border-style:dashed}
+  .hz-espera .qtd{color:var(--texto-2)}
+  @media(max-width:1080px){ .horizontes{grid-template-columns:repeat(2,1fr)} }
+  .hz{border-radius:16px; padding:24px; border:1px solid var(--borda); background:var(--superficie); display:flex; flex-direction:column; gap:12px}
+  .hz .cab{display:flex; justify-content:space-between; gap:12px; align-items:flex-start}
+  .hz h3{font-weight:800; font-stretch:106%; font-size:21px; letter-spacing:-.02em}
+  .hz .coord{font-size:12.5px; color:var(--texto-2); margin-top:4px}
+  .hz .qtd{font-family:Archivo,Inter,sans-serif; font-weight:800; font-size:34px; line-height:1; letter-spacing:-.04em}
+  .hz .acao{font-size:14.5px; color:var(--texto-2); margin:0}
+  .hz .acao b{color:var(--texto)}
+  .hz-lista{list-style:none; margin:4px 0 0; padding:0; display:grid; gap:0; border-top:1px solid var(--borda)}
+  .hz-lista li{padding:10px 0; border-bottom:1px solid var(--borda); display:flex; flex-direction:column}
+  .hz-lista a{font-weight:600; font-size:15px; color:var(--texto); text-decoration:none}
+  .hz-lista a:hover{color:var(--eletrico)}
+  .hz-lista span{font-size:12.5px; color:var(--texto-2)}
+  .hz-curto{background:linear-gradient(160deg, rgba(18,145,92,.12), var(--superficie) 70%)} .hz-curto .qtd{color:var(--feito)}
+  .hz-medio{background:var(--navy); border-color:var(--navy); color:#fff}
+  .hz-medio .coord,.hz-medio .acao,.hz-medio .hz-lista span{color:#B6C9E9}
+  .hz-medio .acao b,.hz-medio .hz-lista a{color:#fff}
+  .hz-medio .hz-lista,.hz-medio .hz-lista li{border-color:rgba(255,255,255,.16)}
+  .hz-longo{background:linear-gradient(160deg, rgba(192,122,18,.11), var(--superficie) 70%)} .hz-longo .qtd{color:var(--pendente)}
+  .tag.th-curto{background:rgba(18,145,92,.12); color:var(--feito)}
+  .tag.th-medio{background:rgba(76,134,240,.14); color:var(--eletrico)}
+  .tag.th-longo{background:rgba(192,122,18,.13); color:var(--pendente)}
+  @media(max-width:640px){ .horizontes{grid-template-columns:1fr} }
+  @media(max-width:760px){
+    .matriz-wrap{grid-template-columns:1fr; grid-template-rows:auto}
+    .eixo-y,.eixo-x{display:none}
+    .matriz3{grid-column:1; grid-template-columns:52px repeat(3,minmax(0,1fr)); gap:5px}
+    .m-cel{min-height:84px; padding:8px; gap:6px}
+    .m-col,.m-lin{font-size:10.5px; letter-spacing:.02em}
+    .chip{font-size:11.5px; padding:5px 8px; gap:5px; line-height:1.25; max-width:100%; border-radius:10px}
+    .m-cel{min-width:0}
+    .legenda-h{margin-left:0}
+  }
+  .legenda-mat{margin-top:18px; font-size:14px; color:var(--texto-2)}
+
+  /* FUNIL */
+  .funil{border-top:1px solid var(--borda); overflow-x:auto}
+  .f-cab,.f-lin{display:grid; grid-template-columns:minmax(190px,1.3fr) repeat(7, minmax(48px,1fr)) minmax(130px,.9fr); align-items:center; min-width:820px}
+  .f-cab{font-size:11.5px; font-weight:600; color:var(--texto-2); text-transform:uppercase; letter-spacing:.04em; padding:14px 0 10px}
+  .f-cab span{text-align:center; padding:0 4px; line-height:1.3}
+  .f-cab span:first-child,.f-cab span:last-child{text-align:left}
+  .f-lin{border-top:1px solid var(--borda); padding:12px 0}
+  .f-lin .nome{font-weight:600; font-size:15.5px; text-decoration:none; color:var(--texto)}
+  .f-lin .nome:hover{color:var(--eletrico)}
+  .seg{height:10px; margin:0 3px; border-radius:3px; background:var(--suave); border:1px solid var(--borda)}
+  .seg.ok{background:var(--feito); border-color:var(--feito)}
+  .seg.prox{background:transparent; border:2px dashed var(--pendente)}
+  .f-lin .est{font-size:13px; color:var(--texto-2); padding-left:12px}
+
+  /* FILTROS */
+  .filtros{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px}
+  .filtros button{
+    font:inherit; font-size:14px; font-weight:600; cursor:pointer;
+    padding:8px 16px; border-radius:100px; border:1px solid var(--borda);
+    background:var(--superficie); color:var(--texto-2);
+  }
+  .filtros button[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#fff}
+
+  /* CARDS */
+  .cards{display:grid; gap:18px}
+  .card{
+    background:var(--superficie); border:1px solid var(--borda); border-radius:18px;
+    padding:28px 30px; scroll-margin-top:80px;
+  }
+  .card-top{display:grid; grid-template-columns:1fr auto; gap:12px 28px; align-items:start}
+  @media(max-width:820px){ .card-top{grid-template-columns:1fr} }
+  .card h3{font-weight:800; font-stretch:106%; font-size:24px; letter-spacing:-.022em}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+  .tag{font-size:12.5px; font-weight:600; padding:3px 10px; border-radius:100px; background:var(--suave); color:var(--texto-2)}
+  .tag.estrategico{background:rgba(13,43,94,.12); color:var(--navy)}
+  .tag.rapido{background:rgba(18,145,92,.12); color:var(--feito)}
+  .tag.preench{background:rgba(76,134,240,.14); color:var(--eletrico)}
+  .tag.desperd{background:rgba(194,65,58,.12); color:var(--risco)}
+  :root[data-theme="dark"] .tag.estrategico{background:rgba(124,170,255,.16); color:#9CC0FF}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tag.estrategico{background:rgba(124,170,255,.16); color:#9CC0FF} }
+
+  .tangi{text-align:right; min-width:170px}
+  .tangi .pct{font-family:Archivo,Inter,sans-serif; font-weight:800; font-size:34px; line-height:1; letter-spacing:-.04em; font-variant-numeric:tabular-nums}
+  .tangi .niv{font-size:12.5px; color:var(--texto-2); margin-top:4px}
+  .barra{height:6px; border-radius:6px; background:var(--suave); margin-top:8px; overflow:hidden}
+  .barra i{display:block; height:100%; border-radius:6px}
+
+  .card-corpo{display:grid; grid-template-columns:1.1fr 1fr; gap:30px; margin-top:24px}
+  .rot{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--texto-2); margin:0 0 8px}
+  .situ{margin:0 0 20px; font-size:16px}
+  .prox-acao{padding:16px 18px; border-radius:12px; background:rgba(76,134,240,.09); border:1px solid rgba(76,134,240,.24)}
+  .prox-acao .rot{color:var(--eletrico)}
+  .prox-acao p{margin:0; font-size:15.5px}
+  .prox-acao .para{font-size:13px; color:var(--texto-2); margin-top:8px}
+  .sinais{list-style:none; margin:0; padding:0; display:grid; gap:9px}
+  .sinais li{display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:15px; align-items:start}
+  .sinais .ic{width:20px; height:20px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:800; margin-top:1px}
+  .ic.s1{background:var(--feito); color:#fff}
+  .ic.s05{background:transparent; border:2px solid var(--pendente); color:var(--pendente)}
+  .ic.s0{background:var(--suave); border:1px solid var(--borda); color:var(--texto-2)}
+  .passo-flag{margin-top:16px; padding:10px 14px; border-radius:10px; background:rgba(192,122,18,.10); border:1px solid rgba(192,122,18,.28); font-size:14px}
+  .passo-flag b{display:block; color:var(--pendente); font-size:12px; text-transform:uppercase; letter-spacing:.05em}
+  .passo-flag.ok{background:rgba(18,145,92,.10); border-color:rgba(18,145,92,.28)}
+  .passo-flag.ok b{color:var(--feito)}
+  .obs-etapa{margin:12px 0 0; font-size:13px; color:var(--texto-2); font-style:italic}
+  .sinais small{display:block; color:var(--texto-2); font-size:13px; line-height:1.4}
+
+  .diag{margin-top:24px; border-top:1px solid var(--borda); padding-top:22px}
+  .diag-cab{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:14px}
+  .diag-cab h4{font-size:17px; font-weight:700}
+  .hip{font-size:12px; font-weight:600; color:var(--pendente); background:rgba(192,122,18,.13); padding:3px 10px; border-radius:100px}
+  .diag-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .diag-grid p{margin:0; font-size:15px; color:var(--texto-2)}
+  .link-proj{display:inline-block; margin-top:14px; font-size:14.5px; font-weight:600}
+  @media(max-width:820px){
+    .card{padding:24px 20px}
+    .card-corpo{grid-template-columns:1fr}
+    .diag-grid{grid-template-columns:1fr}
+    .tangi{text-align:left}
+  }
+
+  /* ABAS */
+  .abas{display:flex; gap:4px; margin-left:18px; background:rgba(255,255,255,.08); padding:4px; border-radius:100px}
+  .abas button{font:inherit; font-size:14px; font-weight:600; cursor:pointer; border:0; background:transparent; color:#BACDEC; padding:6px 16px; border-radius:100px}
+  .abas button[aria-selected="true"]{background:#fff; color:var(--navy)}
+  @media(max-width:520px){ .abas{margin-left:auto} .marca span{display:none} }
+
+  /* AÇÕES */
+  .ab-acoes{padding-top:70px}
+  .acoes{display:grid; border-top:1px solid var(--borda)}
+  .acao-lin{display:grid; grid-template-columns:150px 1fr 170px 150px; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--borda)}
+  .acao-prazo b{display:block; font-family:Archivo,Inter,sans-serif; font-weight:700; font-size:16px; letter-spacing:-.01em}
+  .acao-prazo span{font-size:13px; color:var(--texto-2)}
+  .acao-op{font-size:13px; font-weight:600; text-decoration:none; color:var(--texto-2); display:inline-flex; align-items:center; gap:7px}
+  .acao-op:hover{color:var(--eletrico)}
+  .acao-txt{margin:4px 0 0; font-size:16px}
+  .acao-resp{font-size:14.5px}
+  .acao-resp b{display:block; font-weight:600}
+  .acao-resp span{display:block; color:var(--texto-2); font-size:13px}
+  .st{justify-self:end; font-size:12.5px; font-weight:600; padding:4px 12px; border-radius:100px; white-space:nowrap}
+  .st.atrasada{color:var(--risco); background:rgba(194,65,58,.12)}
+  .st.hoje{color:var(--pendente); background:rgba(192,122,18,.14)}
+  .st.semana{color:var(--eletrico); background:rgba(76,134,240,.13)}
+  .st.prazo{color:var(--feito); background:rgba(18,145,92,.12)}
+  .st.sem{color:var(--texto-2); background:var(--suave); border:1px solid var(--borda)}
+  @media(max-width:820px){
+    .acao-lin{grid-template-columns:1fr auto; gap:6px 16px}
+    .acao-prazo{grid-column:1; grid-row:1}
+    .st{grid-column:2; grid-row:1; align-self:start}
+    .acao-lin > div:nth-child(2){grid-column:1 / -1}
+    .acao-resp{grid-column:1 / -1}
+  }
+  .hist{border-left:2px solid var(--regua); margin-left:6px; padding-left:28px; display:grid; gap:0}
+  .hist-dia{position:relative; padding-bottom:26px}
+  .hist-dia::before{content:""; position:absolute; left:-36px; top:6px; width:14px; height:14px; border-radius:50%; background:var(--fundo); border:3px solid var(--feito)}
+  .hist-dia h3{font-size:17px; font-weight:700; margin-bottom:10px}
+  .hist-dia h3 small{font-family:Inter,sans-serif; font-weight:500; font-size:13px; color:var(--texto-2); margin-left:8px}
+  .hist-item{display:grid; grid-template-columns:210px 1fr; gap:16px; padding:10px 0; border-top:1px solid var(--borda); font-size:15px}
+  .hist-item .acao-op{font-size:14px; color:var(--texto)}
+  .hist-item p{margin:0; color:var(--texto-2)}
+  @media(max-width:640px){ .hist-item{grid-template-columns:1fr; gap:4px} }
+
+  /* CAIXA DE ESPERA */
+  .vazio{font-size:13.5px; color:var(--texto-2); font-style:italic}
+  .espera-lista{border-top:1px solid var(--borda)}
+  .esp{padding:24px 0; border-bottom:1px solid var(--borda); scroll-margin-top:80px}
+  .esp-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 20px; align-items:flex-start}
+  .esp h3{font-weight:700; font-stretch:104%; font-size:20px; letter-spacing:-.018em}
+  .esp-desde{font-size:12.5px; font-weight:600; color:var(--texto-2); background:var(--suave); border:1px solid var(--borda); padding:4px 12px; border-radius:100px; white-space:nowrap}
+  .esp-sit{margin:14px 0 0; color:var(--texto-2); font-size:15.5px; max-width:80ch}
+  .esp-sit b{color:var(--texto); font-weight:600}
+  .esp details{margin-top:14px}
+  .esp summary{cursor:pointer; font-size:14px; font-weight:600; color:var(--eletrico)}
+  .esp details .diag-grid{margin-top:16px}
+
+  /* APRENDIZADOS */
+  .bloco-navy{background:var(--navy); color:#fff; border-radius:20px; padding:46px 42px}
+  .bloco-navy .titulo{color:#fff}
+  .bloco-navy .intro{color:#B6C9E9}
+  .padroes{display:grid; grid-template-columns:repeat(2,1fr); gap:0}
+  .padrao{padding:24px 28px 24px 0; border-top:1px solid rgba(255,255,255,.16)}
+  .padrao:nth-child(even){padding:24px 0 24px 28px; border-left:1px solid rgba(255,255,255,.16)}
+  .padrao h4{font-size:18px; font-weight:700; margin-bottom:8px}
+  .padrao p{margin:0; color:#CBD9F2; font-size:15.5px}
+  .padrao .onde{margin-top:10px; font-size:13px; color:#8FA9D6}
+  @media(max-width:760px){
+    .bloco-navy{padding:34px 22px; border-radius:16px}
+    .padroes{grid-template-columns:1fr}
+    .padrao,.padrao:nth-child(even){padding:22px 0; border-left:0}
+  }
+
+  /* REGRAS */
+  .passos{display:grid}
+  .passo{display:grid; grid-template-columns:54px 1fr; gap:22px; align-items:start; padding:19px 0; border-bottom:1px solid var(--borda)}
+  .passo:first-child{border-top:1px solid var(--borda)}
+  .passo .n{font-family:Archivo,Inter,sans-serif; font-weight:800; font-size:20px; color:var(--eletrico)}
+  .passo .o b{display:block; font-size:16.5px}
+  .passo .o span{color:var(--texto-2); font-size:15px}
+
+  footer{border-top:1px solid var(--borda); padding:34px 0 52px; color:var(--texto-2); font-size:14px}
+  footer b{color:var(--texto)}
+  footer .nota{margin-top:8px; max-width:74ch}
+  :focus-visible{outline:2px solid var(--eletrico); outline-offset:3px; border-radius:3px}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="env">
+    <div class="marca"><b>NOVALE</b><span>T8 Soluções</span></div>
+    <div class="abas" role="tablist">
+      <button type="button" role="tab" data-aba="pipeline" aria-selected="true">Pipeline</button>
+      <button type="button" role="tab" data-aba="acoes" aria-selected="false">Ações</button>
+    </div>
+    <nav id="nav-pipeline">
+      <a href="#matriz">Matriz</a>
+      <a href="#funil">Funil</a>
+      <a href="#oportunidades">Oportunidades</a>
+      <a href="#espera">Caixa de espera</a>
+      <a href="#aprendizados">Aprendizados</a>
+      <a href="#regras">Regras de tratativa</a>
+    </nav>
+  </div>
+</header>
+
+<main id="view-pipeline">
+<div class="abertura">
+  <div class="env">
+    <h1>Pipeline de novos negócios</h1>
+    <p class="sub">Onde cada oportunidade está, quanto ela já é concreta e o que falta
+       para avançar. Organizado por esforço, ganho e horizonte de fechamento.</p>
+    <div class="ident">
+      <span>Responsável <b>Ernane Guedes</b></span>
+      <span>Atualizado em <b id="data-atual">18 set 2026</b></span>
+      <span>Base <b>Painel de status v1.0 · 11 set 2026</b></span>
+    </div>
+    <div class="numeros" id="numeros"></div>
+  </div>
+</div>
+
+<section id="matriz">
+  <div class="env">
+    <h2 class="titulo">Matriz de esforço e ganho</h2>
+    <p class="intro">Cada oportunidade posicionada pelo esforço que ainda exige e pelo ganho que
+       pode trazer. A cor indica o horizonte: o que fechar agora, as grandes apostas de médio prazo
+       e os projetos estratégicos futuros.</p>
+    <div class="matriz-wrap">
+      <div class="eixo-y"><span>Ganho esperado →</span></div>
+      <div class="matriz3" id="matriz-grid"></div>
+      <div class="eixo-x">Esforço para converter →</div>
+    </div>
+    <div class="legenda-h" id="legenda-h"></div>
+    <div class="horizontes" id="horizontes"></div>
+    <p class="legenda-mat">Classificação definida pelo responsável comercial em 18 set 2026.</p>
+  </div>
+</section>
+
+<section id="funil" style="padding-top:0">
+  <div class="env">
+    <h2 class="titulo">Funil por estágio</h2>
+    <p class="intro">Os sete marcos do fluxo de entrada, da reunião inicial ao contrato assinado.
+       Verde indica marco cumprido. O tracejado indica o próximo marco a conquistar.</p>
+    <div class="funil" id="funil-tab"></div>
+  </div>
+</section>
+
+<section id="oportunidades" style="padding-top:0">
+  <div class="env">
+    <h2 class="titulo">Oportunidade por oportunidade</h2>
+    <p class="intro">A tangibilidade acompanha a etapa do funil: cada etapa tem uma faixa de
+       percentual e três critérios para concluí-la. Conforme os critérios são cumpridos, o percentual
+       avança dentro da faixa. Quando o responsável comercial define o percentual diretamente, o card indica. Cada card traz a ação que leva ao próximo estágio. Nas oportunidades paradas, há
+       também a leitura do que travou e do que poderia ter sido diferente.</p>
+    <div class="filtros" id="filtros"></div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section id="espera" style="padding-top:0">
+  <div class="env">
+    <h2 class="titulo">Caixa de espera</h2>
+    <p class="intro">Oportunidades retiradas do pipeline ativo para seguir em outro momento.
+       Não contam nos números nem na matriz, mas continuam registradas com o histórico e o
+       aprendizado de cada uma.</p>
+    <div class="espera-lista" id="espera-lista"></div>
+  </div>
+</section>
+
+<section id="aprendizados" style="padding-top:0">
+  <div class="env">
+    <div class="bloco-navy">
+      <h2 class="titulo">O que as oportunidades paradas ensinam</h2>
+      <p class="intro">Quatro padrões explicam as tratativas que pararam. São eles que orientam as
+         regras da seção seguinte.</p>
+      <div class="padroes" id="padroes"></div>
+    </div>
+  </div>
+</section>
+
+<section id="regras" style="padding-top:0">
+  <div class="env">
+    <h2 class="titulo">Regras para as próximas tratativas</h2>
+    <p class="intro">Critérios práticos para aplicar desde o primeiro contato, com o objetivo de
+       reduzir oportunidades paradas e concentrar o esforço onde há resultado.</p>
+    <div class="passos" id="regras-lista"></div>
+  </div>
+</section>
+
+</main>
+
+<main id="view-acoes" hidden>
+  <div class="abertura ab-acoes">
+    <div class="env">
+      <h1>Ações comerciais</h1>
+      <p class="sub">A próxima ação de cada oportunidade, com responsável e prazo, e o histórico
+         do que já foi feito.</p>
+      <div class="ident">
+        <span>Responsável <b>Ernane Guedes</b></span>
+        <span>Atualizado em <b>18 set 2026</b></span>
+      </div>
+      <div class="numeros" id="numeros-acoes"></div>
+    </div>
+  </div>
+
+  <section id="proximas">
+    <div class="env">
+      <h2 class="titulo">Próximas ações</h2>
+      <p class="intro">Ordenadas por prazo. O status é calculado pela data de hoje, então a lista
+         mostra sozinha o que vence e o que atrasou.</p>
+      <div class="filtros" id="filtro-resp"></div>
+      <div class="acoes" id="lista-acoes"></div>
+    </div>
+  </section>
+
+  <section id="historico" style="padding-top:0">
+    <div class="env">
+      <h2 class="titulo">Histórico de ações</h2>
+      <p class="intro">O que já foi feito em cada oportunidade, da mais recente para a mais antiga.
+         Quando uma próxima ação é concluída, ela entra aqui.</p>
+      <div class="hist" id="lista-hist"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="env">
+    <b>NOVALE — T8 Soluções Ltda.</b> · CNPJ 43.530.033/0001-56
+    <p class="nota">Documento de uso interno para acompanhamento comercial. Os diagnósticos
+       marcados como hipótese são leituras iniciais e serão validados com o responsável por
+       cada tratativa.</p>
+  </div>
+</footer>
+
+<script>
+/* =================================================================
+   DADOS — toda atualização do pipeline acontece aqui.
+   estagio: 0 a 7 (ver ETAPAS).
+   crit: os 3 critérios da etapa atual para avançar à seguinte
+         (1 = cumprido, 0.5 = parcial, 0 = pendente).
+   A tangibilidade parte da faixa da etapa e avança dentro dela
+   conforme os critérios são cumpridos.
+   ================================================================= */
+const ETAPAS = [
+  { nome:"Prospecção",                        curto:"Prospecção", faixa:[0,10],
+    crit:["Contato certo identificado","Interesse confirmado","Reunião inicial agendada"] },
+  { nome:"Reunião inicial realizada",         curto:"Reunião",    faixa:[10,25],
+    crit:["Necessidade ou dor clara","Decisor identificado","Encaixe com a solução NOVALE"] },
+  { nome:"Sinergia técnica identificada",     curto:"Sinergia",   faixa:[25,40],
+    crit:["Interesse mútuo em aprofundar","Documento de formalização em mãos (NDA ou contrato)","Documento assinado"] },
+  { nome:"NDA assinado",                      curto:"NDA",        faixa:[40,50],
+    crit:["Reunião técnica agendada","Informações técnicas recebidas","Requisitos levantados"] },
+  { nome:"Discussão técnica em andamento",    curto:"Técnica",    faixa:[50,65],
+    crit:["Escopo definido","Modelo comercial alinhado","Proposta enviada"] },
+  { nome:"Proposta comercial apresentada",    curto:"Proposta",   faixa:[65,80],
+    crit:["Proposta discutida com o decisor","Ajustes finais acordados","Minuta de contrato enviada"] },
+  { nome:"Contrato em assinatura",            curto:"Contrato",   faixa:[80,95],
+    crit:["Revisão jurídica concluída","Contrato com o signatário","Contrato assinado"] },
+  { nome:"Contrato assinado / projeto iniciado", curto:"Assinado", faixa:[100,100], crit:[] }
+];
+const ESTAGIOS = ETAPAS.map(e => e.nome);
+
+const HORIZONTES = {
+  curto: { nome:"Curto prazo", sub:"Fechar agora", acao:"<b>Priorizar e fechar.</b> O esforço maior já passou ou é pequeno. Dar velocidade até a assinatura." },
+  medio: { nome:"Médio prazo", sub:"Grandes apostas", acao:"<b>Planejar e executar.</b> Grande esforço com alto ganho: dividir em etapas, com responsável e data para cada uma." },
+  longo: { nome:"Longo prazo", sub:"Projetos estratégicos futuros", acao:"<b>Manter vivo sem sobrecarregar o time.</b> Muito esforço para ganho médio: cadência leve de relacionamento até o momento certo." }
+};
+const NIV_ESF = { baixo:"Baixo", medio:"Médio", alto:"Alto" };
+const NIV_GAN = { alto:"Alto", medioalto:"Médio/alto", medio:"Médio", baixo:"Baixo" };
+
+const OPORTUNIDADES = [
+  {
+    id:"century", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:6,
+    situacao:"Proposta aprovada e detalhes técnicos discutidos. O contrato está com a Débora, diretora financeira, para assinatura, com expectativa de assinatura na segunda-feira (21 set). Anne e Thiago estão envolvidos com outras demandas, mas a Anne se comprometeu a cobrar a Débora no primeiro horário de segunda. Follow-up com os dois feito hoje (18 set).",
+    crit:[1,1,0],
+    critNotas:["Contrato já liberado para assinatura","Com a Débora, diretora financeira","Previsto para segunda, 21 set"],
+    passo:{ok:true, txt:"Follow-up com Anne e Thiago na segunda, 21 set, no primeiro horário"},
+    proxima:"Na segunda (21 set), no primeiro horário, fazer follow-up com a Anne e o Thiago para confirmar que a Débora assinou. Com o contrato assinado, agendar o alinhamento do cronograma de etapas e o início dos trabalhos. Se a assinatura não sair na segunda, combinar com a Anne uma nova data firme.",
+    link:"https://claude.ai/artifact/7EzPgSfkaFpiSiphN1ndAL"
+  },
+  {
+    id:"totvs", tangManual:15, nome:"TOTVS", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
+    situacao:"Reunião e visita agendadas para 23/9 na TOTVS.",
+    crit:[1,0,0],
+    critNotas:["Visita marcada pelas duas partes","NDA ainda não enviado",""],
+    passo:{ok:true, txt:"Reunião e visita na TOTVS em 23 set"},
+    proxima:"Levar para a visita uma proposta de modelo de parceria (quem vende, quem entrega, como a receita se divide) e a minuta de NDA. Sair com responsável definido do lado da TOTVS e próxima reunião marcada."
+  },
+  {
+    id:"iuh", nome:"IUH (Expansão)", tipo:"Expansão de conta · contato Evandro Prieto", obsEtapa:"Etapa de NDA considerada cumprida pela relação contratual já existente com a IUH (a confirmar).", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
+    situacao:"A NOVALE cobrou os próximos passos por e-mail e o Evandro Prieto respondeu. A IUH quer chegar a uma base comercial para o serviço de manutenção, cobrindo o atendimento de chamados N1, N2 e N3 em campo. Ele pergunta se faz sentido segregar por estado ou região e, se sim, como seria o modelo. O Diego está elaborando a resposta.",
+    crit:[0.5,0.5,0],
+    critNotas:["Manutenção com chamados N1, N2 e N3 em campo; segmentação por região em aberto","IUH pediu uma base comercial; resposta do Diego em elaboração",""],
+    passo:{ok:false, txt:"Resposta do Diego ao Evandro Prieto, ainda sem data"},
+    proxima:"Enviar a resposta ao Evandro Prieto já com uma recomendação, e não só perguntas: se segregamos por região e qual o modelo de cobrança (por chamado e por nível, ou mensalidade por região com franquia de chamados). Pedir o volume histórico de chamados por estado e o SLA esperado, e propor uma data para apresentar a base comercial."
+  },
+  {
+    id:"proscore", nome:"Pro Score", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
+    situacao:"Reunião realizada e tipo de parceria entendido. O contrato do modelo de negócio deles está conosco para análise.",
+    crit:[1,1,0],
+    critNotas:["Tipo de parceria entendido","Contrato do modelo de negócio deles em análise",""],
+    passo:{ok:false, txt:"Devolver o contrato com comentários, ainda sem data"},
+    proxima:"Concluir a análise do contrato e devolver com comentários e contrapartidas em até uma semana, propondo uma reunião para fechar os pontos em aberto."
+  },
+  {
+    id:"marcopolo", tangManual:8, nome:"Marco Polo Nova Telecom", tipo:"Mari · Andreia · desenvolvimento de CRM", esf:"alto", gan:"medio", prazo:"longo", estagio:0,
+    situacao:"Primeiro contato feito. Tentando agendar reunião para um possível desenvolvimento de CRM.",
+    crit:[1,0.5,0],
+    critNotas:["Mari e Andreia","Possível desenvolvimento de CRM, ainda não detalhado","Tentando agendar"],
+    passo:{ok:false, txt:"Reunião inicial em agendamento"},
+    proxima:"Oferecer duas datas fechadas para a reunião inicial e chegar com três perguntas de qualificação: qual processo o CRM resolve, quem decide e qual o orçamento previsto."
+  },
+  {
+    id:"lenna", tangManual:28, nome:"NOVALE América do Sul", tipo:"Lenna / Alejandro · Bolívia · setor de energia", esf:"alto", gan:"alto", prazo:"medio", estagio:2,
+    situacao:"Projeto de expansão da NOVALE para a América do Sul, com entrada pela Bolívia. Após o nosso follow-up no grupo (18 set), o Alejandro, nosso parceiro na Bolívia, respondeu que estavam ocupados com uma implementação em nível nacional. A reunião ficou agendada para terça, 22 set, pela manhã.",
+    crit:[0.5,0,0],
+    critNotas:["Alejandro respondeu, mas estão ocupados com implementação nacional","",""],
+    passo:{ok:true, txt:"Reunião com o Alejandro na terça, 22 set, pela manhã"},
+    proxima:"Realizar a reunião com o Alejandro na terça (22 set) pela manhã. Nela, combinar um prazo para o retorno da empresa de energia e pedir uma conversa conjunta com ela, para termos acesso direto ao decisor. Em paralelo, seguir planejando a expansão: proposta em espanhol, modelo de operação no país e parceiro local.",
+    diag:{
+      porque:"O avanço depende inteiramente de um intermediário, sem acesso direto ao decisor da empresa de energia.",
+      erro:"Aceitamos a dependência de um terceiro sem prazo combinado e sem contato próprio com o cliente final.",
+      poderia:"Pedir uma reunião conjunta com a empresa local já na primeira conversa com o representante, com data definida."
+    }
+  },
+  {
+    id:"comolatti", tangManual:40, nome:"Grupo Comolatti / Questar", tipo:"Cliente", esf:"alto", gan:"alto", prazo:"medio", estagio:1,
+    situacao:"Relatório de visita enviado ao Alfredo, sem retorno.",
+    crit:[0.5,0.5,0],
+    critNotas:["Visita realizada e relatório enviado, sem retorno","Alfredo é o contato; decisor não confirmado",""],
+    passo:{ok:false, txt:"Follow-up com o Alfredo, sem data"},
+    proxima:"Enviar ao Alfredo um follow-up curto, com uma pergunta objetiva e uma proposta de data. Como é uma oportunidade de alto ganho, se ele não responder, buscar um segundo contato no grupo em vez de esperar.",
+    diag:{
+      porque:"O relatório foi enviado sem um próximo passo combinado, e a conversa ficou dependendo de uma resposta espontânea.",
+      erro:"Saímos da visita sem data de retorno marcada e com um único contato na conta.",
+      poderia:"Fechar ainda na visita a data de apresentação do relatório e envolver uma segunda pessoa da empresa."
+    }
+  },
+  {
+    id:"glauco", nome:"Parceria Glauco", tipo:"Parceria", quad:"preench", estagio:1, espera:true, desde:"18 set 2026",
+    situacao:"Reunião inicial realizada, sem andamento desde então.",
+    sinais:[0.5,0,0,0,0],
+    notasSinais:["Contato existe, sem atividade","","","",""],
+    proxima:"Uma conversa de 30 minutos para responder a uma pergunta: existe um cliente ou projeto concreto que a parceria viabiliza agora? Se não, encerrar e manter apenas o relacionamento.",
+    diag:{
+      porque:"A parceria não tem um objetivo comercial concreto, como um cliente ou projeto em comum.",
+      erro:"Tratamos a parceria como oportunidade sem definir o que cada lado entrega e ganha.",
+      poderia:"Sair da primeira reunião com uma oportunidade específica para trabalhar juntos e uma meta simples."
+    }
+  },
+  {
+    id:"snvitor", nome:"Parceria SN Vitor", tipo:"Parceria", quad:"preench", estagio:0, espera:true, desde:"18 set 2026",
+    situacao:"Sem andamento. Reunião inicial não realizada.",
+    sinais:[0,0,0,0,0],
+    notasSinais:["","","","",""],
+    proxima:"Mesmo tratamento da Parceria Glauco: confirmar em uma conversa curta se há um caso concreto. Sem caso, encerrar.",
+    diag:{
+      porque:"A conversa nunca chegou à reunião inicial.",
+      erro:"A oportunidade entrou no pipeline antes de qualquer qualificação.",
+      poderia:"Registrar parcerias no pipeline só depois da primeira reunião com objetivo definido."
+    }
+  },
+  {
+    id:"edify", nome:"Edify (ONG)", tipo:"Terceiro setor", quad:"desperd", estagio:2, espera:true, desde:"18 set 2026",
+    situacao:"Nosso contato foi promovido e está em adaptação à nova função. Tratativa paralisada.",
+    sinais:[0,1,0,0,0],
+    notasSinais:["Contato único, hoje indisponível","","","",""],
+    proxima:"Retirar do pipeline ativo e retomar em 60 dias. Antes disso, pedir ao contato a indicação de quem assumiu a pauta na ONG.",
+    diag:{
+      porque:"Toda a tratativa estava concentrada em uma única pessoa, que mudou de função.",
+      erro:"Não mapeamos outros envolvidos nem o decisor. Com a mudança do contato, a conversa parou.",
+      poderia:"Envolver desde o início ao menos mais uma pessoa da ONG e confirmar quem decide e com qual orçamento."
+    }
+  },
+  {
+    id:"elsys", tangManual:15, nome:"Elsys", tipo:"Cliente · contato Alex Fernandes", esf:"alto", gan:"medio", prazo:"longo", estagio:1,
+    situacao:"Alex Fernandes já nos visitou e virá à NOVALE apresentar as propostas e oportunidades da Elsys na segunda semana de outubro. A data depende da agenda dele com outros parceiros e será definida no fim da próxima semana.",
+    crit:[0,0.5,0],
+    critNotas:["Oportunidades serão apresentadas pela Elsys","Alex Fernandes é o contato; decisor a confirmar",""],
+    passo:{ok:false, txt:"Follow-up com o Alex até 25 set para marcar a apresentação (5 a 9 out)"},
+    proxima:"Fazer follow-up com o Alex Fernandes no fim da próxima semana (até 25 set) para fechar a data da apresentação na NOVALE, entre 5 e 9 de outubro. Na reunião, entender quais oportunidades a Elsys traz, quem decide e em que prazo. Depois dela, revisamos o esforço, o ganho e o horizonte da Elsys."
+  }
+];
+
+const PADROES = [
+  { t:"Reunião sem próximo passo marcado", d:"A conversa termina bem, mas sem data para o passo seguinte. A retomada passa a depender de resposta espontânea do cliente.", onde:"Comolatti · Glauco · NOVALE América do Sul" },
+  { t:"Um único contato na conta", d:"Quando a pessoa muda de função, some ou demora, a tratativa inteira para junto com ela.", onde:"Edify · Comolatti" },
+  { t:"Parceria sem objetivo comercial", d:"Parcerias entram no pipeline sem um cliente ou projeto concreto em comum. Sem isso, não há o que avançar.", onde:"Glauco · SN Vitor" },
+  { t:"Dependência de intermediário", d:"O acesso ao decisor passa por um terceiro, sem prazo combinado e sem contato direto.", onde:"NOVALE América do Sul" }
+];
+
+const REGRAS = [
+  { t:"Toda reunião termina com o próximo passo na agenda", d:"Data, responsável e objetivo definidos antes de encerrar a conversa." },
+  { t:"Pelo menos dois contatos por oportunidade", d:"Um interlocutor do dia a dia e o decisor, ou quem tem acesso direto a ele." },
+  { t:"Qualificar antes de entrar no pipeline", d:"Só registrar depois de uma reunião com necessidade identificada. Antes disso, é prospecção." },
+  { t:"Parceria entra com um caso concreto", d:"Um cliente ou projeto em comum e o que cada lado entrega e ganha." },
+  { t:"Prazo para oportunidades sem resposta", d:"Duas tentativas sem retorno ou 30 dias parada: a oportunidade sai do pipeline ativo e vai para depuração." }
+];
+
+/* ================================================================= */
+const tang = o => {
+  if (typeof o.tangManual === "number") return o.tangManual;
+  const e = ETAPAS[o.estagio];
+  if (!e.crit.length) return 100;
+  const feito = (o.crit || []).reduce((a,b)=>a+b,0) / e.crit.length;
+  return Math.round(e.faixa[0] + (e.faixa[1] - e.faixa[0]) * feito);
+};
+const nivel = p => p >= 70 ? ["Alta", "var(--feito)"] : p >= 40 ? ["Média", "var(--pendente)"] : ["Baixa", "var(--risco)"];
+const ordemH = ["curto","medio","longo"];
+
+/* números */
+const ATIVAS = OPORTUNIDADES.filter(o => !o.espera);
+const ESPERA = OPORTUNIDADES.filter(o => o.espera);
+const total = ATIVAS.length;
+const comPasso = ATIVAS.filter(o => o.passo && o.passo.ok).length;
+const media = Math.round(ATIVAS.reduce((a,o)=>a+tang(o),0)/total);
+document.getElementById("numeros").innerHTML = [
+  [total, "oportunidades no pipeline ativo"],
+  [comPasso, "com próximo passo agendado"],
+  [ESPERA.length, "na caixa de espera"],
+  [media + "%", "tangibilidade média das ativas"]
+].map(([n,l]) => `<div class="num"><b>${n}</b><span>${l}</span></div>`).join("");
+
+/* matriz 3x3 */
+const chip = o => `<a class="chip" href="#op-${o.id}"><i class="dot h-${o.prazo}"></i>${o.nome}</a>`;
+let mt = "";
+Object.keys(NIV_GAN).forEach(g => {
+  mt += `<div class="m-lin">${NIV_GAN[g].replace("/","/<wbr>")}</div>`;
+  Object.keys(NIV_ESF).forEach(e => {
+    const itens = ATIVAS.filter(o => o.esf === e && o.gan === g);
+    mt += `<div class="m-cel${itens.length ? " cheia" : ""}">${itens.map(chip).join("")}</div>`;
+  });
+});
+mt += `<div class="m-canto"></div>` + Object.keys(NIV_ESF).map(e => `<div class="m-col">${NIV_ESF[e]}</div>`).join("");
+document.getElementById("matriz-grid").innerHTML = mt;
+document.getElementById("legenda-h").innerHTML = ordemH.map(h => `<span><i class="dot h-${h}"></i>${HORIZONTES[h].nome}</span>`).join("");
+
+/* horizontes */
+document.getElementById("horizontes").innerHTML = ordemH.map(h => {
+  const itens = ATIVAS.filter(o => o.prazo === h);
+  const H = HORIZONTES[h];
+  return `<div class="hz hz-${h}">
+    <div class="cab"><div><h3>${H.nome}</h3><div class="coord">${H.sub}</div></div><span class="qtd">${itens.length}</span></div>
+    <p class="acao">${H.acao}</p>
+    <ul class="hz-lista">${itens.map(o => `<li><a href="#op-${o.id}">${o.nome}</a><span>Esforço ${NIV_ESF[o.esf].toLowerCase()} · ganho ${NIV_GAN[o.gan].toLowerCase()}</span></li>`).join("")}</ul>
+  </div>`;
+}).join("") + `<div class="hz hz-espera">
+    <div class="cab"><div><h3>Em espera</h3><div class="coord">Retomar em outro momento</div></div><span class="qtd">${ESPERA.length}</span></div>
+    <p class="acao"><b>Pausadas.</b> Fora do pipeline ativo e sem esforço do time agora. O histórico fica registrado para a retomada.</p>
+    <ul class="hz-lista">${ESPERA.map(o => `<li><a href="#op-${o.id}">${o.nome}</a><span>Parou no estágio ${o.estagio} · em espera desde ${o.desde}</span></li>`).join("")}</ul>
+  </div>`;
+
+/* funil */
+const porEstagio = [...ATIVAS].sort((a,b) => b.estagio - a.estagio || tang(b) - tang(a));
+document.getElementById("funil-tab").innerHTML =
+  `<div class="f-cab"><span>Oportunidade</span>${ETAPAS.slice(1).map((e,i)=>`<span>${i+1}. ${e.curto}</span>`).join("")}<span>Estágio atual</span></div>` +
+  porEstagio.map(o => `<div class="f-lin">
+    <a class="nome" href="#op-${o.id}">${o.nome}</a>
+    ${[1,2,3,4,5,6,7].map(n => `<span class="seg ${n <= o.estagio ? "ok" : n === o.estagio + 1 ? "prox" : ""}" title="${ESTAGIOS[n]}"></span>`).join("")}
+    <span class="est">${o.estagio ? o.estagio + ". " : ""}${ESTAGIOS[o.estagio]}</span>
+  </div>`).join("");
+
+/* filtros e cards */
+const filtros = [["todas","Todas"], ...ordemH.map(k => [k, HORIZONTES[k].nome])];
+let ativo = "todas";
+function desenhaFiltros(){
+  document.getElementById("filtros").innerHTML = filtros.map(([k,l]) =>
+    `<button type="button" data-f="${k}" aria-pressed="${k===ativo}">${l}</button>`).join("");
+  document.querySelectorAll("#filtros button").forEach(b => b.onclick = () => { ativo = b.dataset.f; desenhaFiltros(); desenhaCards(); });
+}
+const ic = v => v === 1 ? ["s1","✓"] : v === 0.5 ? ["s05","½"] : ["s0",""];
+function desenhaCards(){
+  const lista = [...ATIVAS]
+    .filter(o => ativo === "todas" || o.prazo === ativo)
+    .sort((a,b) => ordemH.indexOf(a.prazo) - ordemH.indexOf(b.prazo) || tang(b) - tang(a));
+  document.getElementById("cards").innerHTML = lista.map(o => {
+    const p = tang(o); const [nv, cor] = nivel(p);
+    const proxEst = o.estagio < 7 ? ESTAGIOS[o.estagio + 1] : "Projeto em execução";
+    return `<article class="card" id="op-${o.id}">
+      <div class="card-top">
+        <div>
+          <h3>${o.nome}</h3>
+          <div class="tags">
+            <span class="tag th-${o.prazo}">${HORIZONTES[o.prazo].nome}</span>
+            <span class="tag">Esforço ${NIV_ESF[o.esf].toLowerCase()} · ganho ${NIV_GAN[o.gan].toLowerCase()}</span>
+            <span class="tag">${o.tipo}</span>
+            <span class="tag">Estágio ${o.estagio} · ${ESTAGIOS[o.estagio]}</span>
+          </div>
+        </div>
+        <div class="tangi">
+          <div class="pct" style="color:${cor}">${p}%</div>
+          <div class="niv">Tangibilidade ${nv.toLowerCase()} · ${typeof o.tangManual === "number" ? "definida pelo responsável comercial" : `faixa da etapa ${ETAPAS[o.estagio].faixa[0]}–${ETAPAS[o.estagio].faixa[1]}%`}</div>
+          <div class="barra"><i style="width:${p}%;background:${cor}"></i></div>
+        </div>
+      </div>
+      <div class="card-corpo">
+        <div>
+          <p class="rot">Situação</p>
+          <p class="situ">${o.situacao}</p>
+          <div class="prox-acao">
+            <p class="rot">Ação para avançar</p>
+            <p>${o.proxima}</p>
+            <p class="para">Leva a: ${proxEst}</p>
+          </div>
+          ${o.link ? `<a class="link-proj" href="${o.link}" target="_blank" rel="noopener">Ver o cronograma completo do projeto →</a>` : ""}
+        </div>
+        <div>
+          <p class="rot">Para concluir a etapa ${o.estagio} · ${ETAPAS[o.estagio].curto}</p>
+          <ul class="sinais">${ETAPAS[o.estagio].crit.map((s,i) => { const [c,t] = ic((o.crit||[])[i] || 0);
+            const n = (o.critNotas||[])[i];
+            return `<li><span class="ic ${c}">${t}</span><span>${s}${n ? `<small>${n}</small>` : ""}</span></li>`; }).join("")}</ul>
+          ${o.passo ? `<div class="passo-flag ${o.passo.ok ? "ok" : ""}"><b>${o.passo.ok ? "Próximo passo agendado" : "Próximo passo sem data"}</b><span>${o.passo.txt}</span></div>` : ""}
+          ${o.obsEtapa ? `<p class="obs-etapa">${o.obsEtapa}</p>` : ""}
+        </div>
+      </div>
+      ${o.diag ? `<div class="diag">
+        <div class="diag-cab"><h4>Por que não avançou</h4><span class="hip">Hipótese inicial · a validar</span></div>
+        <div class="diag-grid">
+          <div><p class="rot">O que travou</p><p>${o.diag.porque}</p></div>
+          <div><p class="rot">Onde erramos na estratégia</p><p>${o.diag.erro}</p></div>
+          <div><p class="rot">O que poderíamos ter feito</p><p>${o.diag.poderia}</p></div>
+        </div>
+      </div>` : ""}
+    </article>`;
+  }).join("");
+}
+desenhaFiltros(); desenhaCards();
+
+/* =================================================================
+   AÇÕES — próximas ações e histórico.
+   prazo no formato AAAA-MM-DD, ou null quando não há prazo.
+   ================================================================= */
+const ACOES = [
+  { op:"iuh",       acao:"Enviar a proposta de resposta ao e-mail do Evandro Prieto sobre a base comercial da manutenção", resp:"Diego", prazo:"2026-09-18" },
+  { op:"century",   acao:"Follow-up com a Anne e o Thiago para confirmar a assinatura do contrato pela Débora", resp:"Ernane", prazo:"2026-09-21" },
+  { op:"proscore",  acao:"Devolver ao Jeff a resposta sobre a Pro Score e as ações já tomadas", resp:"Ernane", obs:"responsável a confirmar", prazo:"2026-09-22" },
+  { op:"marcopolo", acao:"Retornar à Mari até onde conseguimos avançar, para ela tentar conseguir a reunião", resp:"Ernane", part:"Jeff", obs:"responsável a confirmar", prazo:"2026-09-22" },
+  { op:"lenna",     acao:"Reunião com o Alejandro na terça de manhã: chamar o Alejandro no horário combinado", resp:"Ernane", prazo:"2026-09-22" },
+  { op:"totvs",     acao:"Visita à TOTVS", resp:"Ernane", part:"Evandro e Guilherme", prazo:"2026-09-23" },
+  { op:"edify",     acao:"Follow-up por mensagem com o André, da Edify", resp:"Ernane", prazo:"2026-09-23" },
+  { op:"elsys",     acao:"Follow-up com o Alex Fernandes para marcar a apresentação da Elsys na NOVALE (5 a 9 out)", resp:"Ernane", prazo:"2026-09-25" },
+  { op:"comolatti", acao:"Desenvolver a plataforma para o Grupo Comolatti / Questar", resp:"Ernane", prazo:"2026-09-30" },
+  { op:"glauco",    acao:"Follow-up com o parceiro Glauco", resp:"Diego", prazo:null },
+  { op:"snvitor",   acao:"Follow-up com o parceiro SN Vitor", resp:"Diego", prazo:null }
+];
+
+const HISTORICO = [
+  { data:"2026-09-18", op:"lenna",     txt:"Reunião com o Alejandro agendada para terça, 22 set, pela manhã." },
+  { data:"2026-09-18", op:"century",   txt:"Follow-up com a Anne e o Thiago. O contrato está com a Débora, diretora financeira, com assinatura prevista para 21 set." },
+  { data:"2026-09-18", op:"lenna",     txt:"Follow-up no grupo pedindo reunião. O Alejandro respondeu que retornam assim que possível, após a implementação nacional em andamento." },
+  { data:"2026-09-18", op:"iuh",       txt:"E-mail de cobrança dos próximos passos. O Evandro Prieto respondeu pedindo uma base comercial para manutenção com chamados N1, N2 e N3 em campo." },
+  { data:"2026-09-18", op:"elsys",     txt:"Conversa com o Alex Fernandes. A apresentação da Elsys na NOVALE ficou prevista para a segunda semana de outubro." },
+  { data:"2026-09-18", op:"glauco",    txt:"Movida para a caixa de espera." },
+  { data:"2026-09-18", op:"snvitor",   txt:"Movida para a caixa de espera." },
+  { data:"2026-09-18", op:"edify",     txt:"Movida para a caixa de espera." },
+  { data:"2026-09-11", op:"century",   txt:"Reunião de alinhamento técnico agendada.", fonte:true },
+  { data:"2026-09-11", op:"iuh",       txt:"Reunião realizada. Negociação segue com contato direto com a IUH.", fonte:true },
+  { data:"2026-09-11", op:"proscore",  txt:"Reunião realizada. Contrato do modelo de negócio da Pro Score recebido para análise.", fonte:true },
+  { data:"2026-09-11", op:"totvs",     txt:"Reunião e visita agendadas para 23 set.", fonte:true },
+  { data:"2026-09-11", op:"comolatti", txt:"Relatório de visita enviado ao Alfredo.", fonte:true },
+  { data:"2026-09-11", op:"lenna",     txt:"Aguardando o representante na Bolívia falar com a empresa de energia local.", fonte:true },
+  { data:"2026-09-11", op:"marcopolo", txt:"Primeiro contato. Tentativa de agendar reunião sobre desenvolvimento de CRM.", fonte:true },
+  { data:"2026-09-11", op:"edify",     txt:"Contato promovido e em adaptação à nova função. Tratativa paralisada.", fonte:true }
+];
+
+const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const DIAS = ["dom","seg","ter","qua","qui","sex","sáb"];
+const paraData = iso => { const [a,m,d] = iso.split("-").map(Number); return new Date(a, m-1, d); };
+const fmt = iso => { const d = paraData(iso); return `${d.getDate()} ${MESES[d.getMonth()]}`; };
+const fmtDia = iso => DIAS[paraData(iso).getDay()];
+const hoje = (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })();
+const opPor = id => OPORTUNIDADES.find(o => o.id === id);
+function status(a){
+  if (!a.prazo) return ["sem","Sem prazo"];
+  const dias = Math.round((paraData(a.prazo) - hoje) / 86400000);
+  if (dias < 0) return ["atrasada", `Atrasada ${-dias} dia${dias === -1 ? "" : "s"}`];
+  if (dias === 0) return ["hoje","Vence hoje"];
+  if (dias <= 7) return ["semana", `Em ${dias} dia${dias === 1 ? "" : "s"}`];
+  return ["prazo","No prazo"];
+}
+const opLink = o => `<a class="acao-op" href="#op-${o.id}" data-ir-op="${o.id}">${o.espera ? `<i class="dot" style="background:var(--texto-2)"></i>` : `<i class="dot h-${o.prazo}"></i>`}${o.nome}${o.espera ? " · em espera" : ""}</a>`;
+
+const ordenadas = [...ACOES].sort((a,b) => (a.prazo ? paraData(a.prazo) : 8.64e15) - (b.prazo ? paraData(b.prazo) : 8.64e15));
+const contaSt = k => ACOES.filter(a => status(a)[0] === k).length;
+document.getElementById("numeros-acoes").innerHTML = [
+  [ACOES.length, "próximas ações registradas"],
+  [contaSt("atrasada") + contaSt("hoje"), "atrasadas ou vencendo hoje"],
+  [contaSt("semana"), "vencem nos próximos 7 dias"],
+  [contaSt("sem"), "sem prazo definido"]
+].map(([n,l]) => `<div class="num"><b>${n}</b><span>${l}</span></div>`).join("");
+
+const responsaveis = ["Todos", ...new Set(ACOES.map(a => a.resp))];
+let respAtivo = "Todos";
+function desenhaAcoes(){
+  document.getElementById("filtro-resp").innerHTML = responsaveis.map(r =>
+    `<button type="button" data-r="${r}" aria-pressed="${r===respAtivo}">${r}</button>`).join("");
+  document.querySelectorAll("#filtro-resp button").forEach(b => b.onclick = () => { respAtivo = b.dataset.r; desenhaAcoes(); });
+  document.getElementById("lista-acoes").innerHTML = ordenadas
+    .filter(a => respAtivo === "Todos" || a.resp === respAtivo)
+    .map(a => { const o = opPor(a.op); const [c,t] = status(a);
+      return `<div class="acao-lin">
+        <div class="acao-prazo">${a.prazo ? `<b>${fmt(a.prazo)}</b><span>${fmtDia(a.prazo)}</span>` : `<b>—</b><span>sem data</span>`}</div>
+        <div>${opLink(o)}<p class="acao-txt">${a.acao}</p></div>
+        <div class="acao-resp"><b>${a.resp}</b>${a.part ? `<span>Com ${a.part}</span>` : ""}${a.obs ? `<span>${a.obs}</span>` : ""}</div>
+        <span class="st ${c}">${t}</span>
+      </div>`; }).join("");
+}
+desenhaAcoes();
+
+const dias = [...new Set(HISTORICO.map(h => h.data))].sort().reverse();
+document.getElementById("lista-hist").innerHTML = dias.map(d => {
+  const itens = HISTORICO.filter(h => h.data === d);
+  return `<div class="hist-dia"><h3>${fmt(d)} 2026${itens.some(h => h.fonte) ? `<small>registrado no painel de status</small>` : ""}</h3>
+    ${itens.map(h => `<div class="hist-item">${opLink(opPor(h.op))}<p>${h.txt}</p></div>`).join("")}</div>`;
+}).join("");
+
+/* abas */
+function mostraAba(aba, alvo){
+  const acoes = aba === "acoes";
+  document.getElementById("view-pipeline").hidden = acoes;
+  document.getElementById("view-acoes").hidden = !acoes;
+  document.getElementById("nav-pipeline").style.visibility = acoes ? "hidden" : "";
+  document.querySelectorAll(".abas button").forEach(b => b.setAttribute("aria-selected", b.dataset.aba === aba));
+  if (alvo) { const el = document.getElementById(alvo); if (el) el.scrollIntoView(); }
+  else window.scrollTo(0,0);
+}
+document.querySelectorAll(".abas button").forEach(b => b.onclick = () => {
+  mostraAba(b.dataset.aba);
+  try { history.replaceState(null, "", b.dataset.aba === "acoes" ? "#acoes" : "#"); } catch(e) {}
+});
+document.addEventListener("click", e => {
+  const l = e.target.closest("[data-ir-op]");
+  if (!l) return;
+  e.preventDefault();
+  mostraAba("pipeline", "op-" + l.dataset.irOp);
+});
+document.querySelectorAll("#nav-pipeline a").forEach(a => a.addEventListener("click", () => mostraAba("pipeline", a.getAttribute("href").slice(1))));
+if (location.hash === "#acoes") mostraAba("acoes");
+
+/* caixa de espera */
+document.getElementById("espera-lista").innerHTML = ESPERA.map(o => `
+  <div class="esp" id="op-${o.id}">
+    <div class="esp-top">
+      <div><h3>${o.nome}</h3><div class="tags"><span class="tag">${o.tipo}</span><span class="tag">Parou no estágio ${o.estagio} · ${ESTAGIOS[o.estagio]}</span></div></div>
+      <span class="esp-desde">Em espera desde ${o.desde}</span>
+    </div>
+    <p class="esp-sit">${o.situacao} <b>Retomada:</b> em outro momento, sem data definida.</p>
+    ${o.diag ? `<details><summary>Por que não avançou · hipótese a validar</summary>
+      <div class="diag-grid">
+        <div><p class="rot">O que travou</p><p>${o.diag.porque}</p></div>
+        <div><p class="rot">Onde erramos na estratégia</p><p>${o.diag.erro}</p></div>
+        <div><p class="rot">O que poderíamos ter feito</p><p>${o.diag.poderia}</p></div>
+      </div></details>` : ""}
+  </div>`).join("");
+
+/* aprendizados e regras */
+document.getElementById("padroes").innerHTML = PADROES.map(p =>
+  `<div class="padrao"><h4>${p.t}</h4><p>${p.d}</p><div class="onde">Aparece em: ${p.onde}</div></div>`).join("");
+document.getElementById("regras-lista").innerHTML = REGRAS.map((r,i) =>
+  `<div class="passo"><span class="n">${i+1}</span><div class="o"><b>${r.t}</b><span>${r.d}</span></div></div>`).join("");
+</script>
+</body>
+</html>
