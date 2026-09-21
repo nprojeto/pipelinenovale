@@ -423,7 +423,7 @@
        para avançar. Organizado por esforço, ganho e horizonte de fechamento.</p>
     <div class="ident">
       <span>Responsável <b>Ernane Guedes</b></span>
-      <span>Atualizado em <b id="data-atual">18 set 2026</b></span>
+      <span>Atualizado em <b id="data-atual">21 set 2026</b></span>
       <span>Base <b>Painel de status v1.0 · 11 set 2026</b></span>
     </div>
     <div class="numeros" id="numeros"></div>
@@ -516,7 +516,7 @@
          do que já foi feito.</p>
       <div class="ident">
         <span>Responsável <b>Ernane Guedes</b></span>
-        <span>Atualizado em <b>18 set 2026</b></span>
+        <span>Atualizado em <b>21 set 2026</b></span>
       </div>
       <div class="numeros" id="numeros-acoes"></div>
     </div>
@@ -594,11 +594,11 @@ const NIV_GAN = { alto:"Alto", medioalto:"Médio/alto", medio:"Médio", baixo:"B
 const OPORTUNIDADES = [
   {
     id:"century", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:6,
-    situacao:"Proposta aprovada e detalhes técnicos discutidos. O contrato está com a Débora, diretora financeira, para assinatura, com expectativa de assinatura na segunda-feira (21 set). Anne e Thiago estão envolvidos com outras demandas, mas a Anne se comprometeu a cobrar a Débora no primeiro horário de segunda. Follow-up com os dois feito hoje (18 set).",
+    situacao:"Proposta aprovada e detalhes técnicos discutidos. Em 21 set houve duas trocas de e-mail: o Thiago pediu 11 ajustes contratuais e a NOVALE absorveu os 11, sem impacto para a Century nem para a NOVALE. O contrato foi reenviado para assinatura, com expectativa de ser assinado ainda na noite de 21 set.",
     crit:[1,1,0],
-    critNotas:["Contrato já liberado para assinatura","Com a Débora, diretora financeira","Previsto para segunda, 21 set"],
-    passo:{ok:true, txt:"Follow-up com Anne e Thiago na segunda, 21 set, no primeiro horário"},
-    proxima:"Na segunda (21 set), no primeiro horário, fazer follow-up com a Anne e o Thiago para confirmar que a Débora assinou. Com o contrato assinado, agendar o alinhamento do cronograma de etapas e o início dos trabalhos. Se a assinatura não sair na segunda, combinar com a Anne uma nova data firme.",
+    critNotas:["11 ajustes pedidos pelo Thiago, todos absorvidos sem impacto","Contrato reenviado para assinatura em 21 set","Expectativa: noite de 21 set"],
+    passo:{ok:true, txt:"Terça, 22 set: confirmar a assinatura e, se não tiver saído, nova cobrança ao time da Century"},
+    proxima:"Na terça (22 set), confirmar se o contrato foi assinado. Se ainda não tiver saído, fazer nova cobrança ao time da Century. Com o contrato assinado, agendar o alinhamento do cronograma de etapas e dar início aos trabalhos.",
     link:"https://claude.ai/artifact/7EzPgSfkaFpiSiphN1ndAL"
   },
   {
@@ -611,19 +611,19 @@ const OPORTUNIDADES = [
   },
   {
     id:"iuh", nome:"IUH (Expansão)", tipo:"Expansão de conta · contato Evandro Prieto", obsEtapa:"Etapa de NDA considerada cumprida pela relação contratual já existente com a IUH (a confirmar).", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
-    situacao:"A NOVALE cobrou os próximos passos por e-mail e o Evandro Prieto respondeu. A IUH quer chegar a uma base comercial para o serviço de manutenção, cobrindo o atendimento de chamados N1, N2 e N3 em campo. Ele pergunta se faz sentido segregar por estado ou região e, se sim, como seria o modelo. O Diego está elaborando a resposta.",
+    situacao:"O Evandro Prieto pediu uma base comercial para o serviço de manutenção, cobrindo o atendimento de chamados N1, N2 e N3 em campo, e perguntou sobre segregar por estado ou região. Em 21 set a NOVALE respondeu o e-mail com questionamentos e detalhes técnicos necessários para elaborar a proposta. Aguardando o retorno da IUH.",
     crit:[0.5,0.5,0],
-    critNotas:["Manutenção com chamados N1, N2 e N3 em campo; segmentação por região em aberto","IUH pediu uma base comercial; resposta do Diego em elaboração",""],
-    passo:{ok:false, txt:"Resposta do Diego ao Evandro Prieto, ainda sem data"},
-    proxima:"Enviar a resposta ao Evandro Prieto já com uma recomendação, e não só perguntas: se segregamos por região e qual o modelo de cobrança (por chamado e por nível, ou mensalidade por região com franquia de chamados). Pedir o volume histórico de chamados por estado e o SLA esperado, e propor uma data para apresentar a base comercial."
+    critNotas:["Manutenção N1, N2 e N3 em campo; questionamentos técnicos enviados em 21 set","Base comercial depende das respostas da IUH",""],
+    passo:{ok:false, txt:"Aguardando o retorno da IUH ao e-mail de 21 set"},
+    proxima:"Acompanhar o retorno do Evandro Prieto aos questionamentos enviados em 21 set. Com as respostas, elaborar a base comercial e enviar a proposta. Se o retorno demorar, fazer uma cobrança curta retomando os pontos em aberto."
   },
   {
     id:"proscore", nome:"Pro Score", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
-    situacao:"Reunião realizada e tipo de parceria entendido. O contrato do modelo de negócio deles está conosco para análise.",
+    situacao:"Um parceiro intermediário sugeriu assinarmos o NDA com a Pro Score e mantermos o relacionamento, com ganho nas duas vias. A NOVALE inclui os produtos da Pro Score nos seus negócios e ganha com a venda deles até o comercial próprio estar 100% desenvolvido, ou até entrar um parceiro com esse interesse. Já a Pro Score coloca a NOVALE como desenvolvedora quando um parceiro deles precisar de desenvolvimento.",
     crit:[1,1,0],
-    critNotas:["Tipo de parceria entendido","Contrato do modelo de negócio deles em análise",""],
-    passo:{ok:false, txt:"Devolver o contrato com comentários, ainda sem data"},
-    proxima:"Concluir a análise do contrato e devolver com comentários e contrapartidas em até uma semana, propondo uma reunião para fechar os pontos em aberto."
+    critNotas:["Parceria em duas vias: revenda dos produtos deles e desenvolvimento para os parceiros deles","NDA com a Pro Score em mãos","Devolver assinado até sexta, 25 set"],
+    passo:{ok:false, txt:"Devolver o NDA assinado à Pro Score até sexta, 25 set"},
+    proxima:"Assinar e devolver o NDA à Pro Score até sexta (25 set). Em seguida, definir as regras da parceria nas duas vias: a margem ou comissão da NOVALE na venda dos produtos da Pro Score e como a NOVALE entra como desenvolvedora nos projetos dos parceiros deles."
   },
   {
     id:"marcopolo", tangManual:8, nome:"Marco Polo Nova Telecom", tipo:"Mari · Andreia · desenvolvimento de CRM", esf:"alto", gan:"medio", prazo:"longo", estagio:0,
@@ -834,7 +834,7 @@ function desenhaCards(){
           <ul class="sinais">${ETAPAS[o.estagio].crit.map((s,i) => { const [c,t] = ic((o.crit||[])[i] || 0);
             const n = (o.critNotas||[])[i];
             return `<li><span class="ic ${c}">${t}</span><span>${s}${n ? `<small>${n}</small>` : ""}</span></li>`; }).join("")}</ul>
-          ${o.passo ? `<div class="passo-flag ${o.passo.ok ? "ok" : ""}"><b>${o.passo.ok ? "Próximo passo agendado" : "Próximo passo sem data"}</b><span>${o.passo.txt}</span></div>` : ""}
+          ${o.passo ? `<div class="passo-flag ${o.passo.ok ? "ok" : ""}"><b>${o.passo.ok ? "Próximo passo agendado" : "Próximo passo em aberto"}</b><span>${o.passo.txt}</span></div>` : ""}
           ${o.obsEtapa ? `<p class="obs-etapa">${o.obsEtapa}</p>` : ""}
         </div>
       </div>
@@ -856,20 +856,23 @@ desenhaFiltros(); desenhaCards();
    prazo no formato AAAA-MM-DD, ou null quando não há prazo.
    ================================================================= */
 const ACOES = [
-  { op:"iuh",       acao:"Enviar a proposta de resposta ao e-mail do Evandro Prieto sobre a base comercial da manutenção", resp:"Diego", prazo:"2026-09-18" },
-  { op:"century",   acao:"Follow-up com a Anne e o Thiago para confirmar a assinatura do contrato pela Débora", resp:"Ernane", prazo:"2026-09-21" },
-  { op:"proscore",  acao:"Devolver ao Jeff a resposta sobre a Pro Score e as ações já tomadas", resp:"Ernane", obs:"responsável a confirmar", prazo:"2026-09-22" },
+  { op:"iuh",       acao:"Aguardar o retorno da IUH aos questionamentos técnicos enviados em 21 set e, com as respostas, elaborar a proposta", resp:"Ernane", obs:"responsável a confirmar", prazo:null },
+  { op:"century",   acao:"Confirmar a assinatura do contrato. Se não tiver sido assinado, fazer nova cobrança ao time da Century", resp:"Ernane", prazo:"2026-09-22" },
   { op:"marcopolo", acao:"Retornar à Mari até onde conseguimos avançar, para ela tentar conseguir a reunião", resp:"Ernane", part:"Jeff", obs:"responsável a confirmar", prazo:"2026-09-22" },
   { op:"lenna",     acao:"Reunião com o Alejandro na terça de manhã: chamar o Alejandro no horário combinado", resp:"Ernane", prazo:"2026-09-22" },
   { op:"totvs",     acao:"Visita à TOTVS", resp:"Ernane", part:"Evandro e Guilherme", prazo:"2026-09-23" },
   { op:"edify",     acao:"Follow-up por mensagem com o André, da Edify", resp:"Ernane", prazo:"2026-09-23" },
   { op:"elsys",     acao:"Follow-up com o Alex Fernandes para marcar a apresentação da Elsys na NOVALE (5 a 9 out)", resp:"Ernane", prazo:"2026-09-25" },
+  { op:"proscore",  acao:"Devolver à Pro Score o NDA assinado, para seguir com os próximos passos da parceria", resp:"Ernane", prazo:"2026-09-25" },
   { op:"comolatti", acao:"Desenvolver a plataforma para o Grupo Comolatti / Questar", resp:"Ernane", prazo:"2026-09-30" },
   { op:"glauco",    acao:"Follow-up com o parceiro Glauco", resp:"Diego", prazo:null },
   { op:"snvitor",   acao:"Follow-up com o parceiro SN Vitor", resp:"Diego", prazo:null }
 ];
 
 const HISTORICO = [
+  { data:"2026-09-21", op:"iuh",       txt:"Resposta enviada ao Evandro Prieto, com questionamentos e detalhes técnicos para a elaboração da proposta. Aguardando retorno da IUH." },
+  { data:"2026-09-21", op:"century",   txt:"Duas trocas de e-mail. O Thiago pediu 11 ajustes contratuais, todos absorvidos sem impacto para a Century e para a NOVALE. Contrato reenviado para assinatura, com expectativa de assinatura ainda à noite." },
+  { data:"2026-09-21", op:"proscore",  txt:"Contato com o parceiro intermediário. Ele sugeriu assinar o NDA com a Pro Score e manter o relacionamento: a NOVALE revende os produtos da Pro Score, e a Pro Score indica a NOVALE como desenvolvedora aos seus parceiros." },
   { data:"2026-09-18", op:"lenna",     txt:"Reunião com o Alejandro agendada para terça, 22 set, pela manhã." },
   { data:"2026-09-18", op:"century",   txt:"Follow-up com a Anne e o Thiago. O contrato está com a Débora, diretora financeira, com assinatura prevista para 21 set." },
   { data:"2026-09-18", op:"lenna",     txt:"Follow-up no grupo pedindo reunião. O Alejandro respondeu que retornam assim que possível, após a implementação nacional em andamento." },
