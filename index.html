@@ -423,7 +423,7 @@
        para avançar. Organizado por esforço, ganho e horizonte de fechamento.</p>
     <div class="ident">
       <span>Responsável <b>Ernane Guedes</b></span>
-      <span>Atualizado em <b id="data-atual">22 set 2026</b></span>
+      <span>Atualizado em <b id="data-atual">23 set 2026</b></span>
       <span>Base <b>Painel de status v1.0 · 11 set 2026</b></span>
     </div>
     <div class="numeros" id="numeros"></div>
@@ -516,7 +516,7 @@
          do que já foi feito.</p>
       <div class="ident">
         <span>Responsável <b>Ernane Guedes</b></span>
-        <span>Atualizado em <b>22 set 2026</b></span>
+        <span>Atualizado em <b>23 set 2026</b></span>
       </div>
       <div class="numeros" id="numeros-acoes"></div>
     </div>
@@ -594,20 +594,20 @@ const NIV_GAN = { alto:"Alto", medioalto:"Médio/alto", medio:"Médio", baixo:"B
 const OPORTUNIDADES = [
   {
     id:"century", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:6,
-    situacao:"Proposta aprovada e parte técnica aprovada pela equipe da Century. Em 21 set, o Thiago pediu 11 ajustes contratuais, todos absorvidos sem impacto para as duas partes, e o contrato foi reenviado. Em 22 set, nova cobrança feita pela manhã. Aguardando as definições da Débora, diretora financeira, e a assinatura do contrato, com expectativa para o fim do dia.",
-    crit:[1,1,0],
-    critNotas:["11 ajustes pedidos pelo Thiago, todos absorvidos; parte técnica aprovada","Aguardando definições da Débora, diretora financeira","Expectativa: fim do dia 22 set"],
-    passo:{ok:true, txt:"Hoje, 22 set, até o fim do dia: nova cobrança à equipe da Century"},
-    proxima:"Até o fim do dia (22 set), cobrar mais uma resposta da equipe da Century sobre a assinatura. Com o contrato assinado, agendar o alinhamento do cronograma de etapas e dar início aos trabalhos.",
+    situacao:"Parte técnica aprovada pela equipe da Century e os 11 ajustes contratuais pedidos pelo Thiago absorvidos sem impacto. O contrato está em análise no jurídico da Century, aguardando assinatura. Mesmo assim, o kickoff foi antecipado: reunião marcada para 24 set, às 9h, para tratar das demandas do contrato e iniciar o projeto.",
+    crit:[0.5,1,0],
+    critNotas:["Em análise no jurídico da Century","Contrato reenviado para assinatura em 21 set","Aguardando o retorno do jurídico"],
+    passo:{ok:true, txt:"Kickoff com a Century em 24 set, às 9h"},
+    proxima:"Conduzir o kickoff de 24 set, às 9h, alinhando as demandas do contrato e o cronograma de etapas para iniciar o projeto. Em paralelo, acompanhar a análise do jurídico da Century até a assinatura.",
     link:"https://claude.ai/artifact/7EzPgSfkaFpiSiphN1ndAL"
   },
   {
     id:"totvs", tangManual:15, nome:"TOTVS", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
-    situacao:"Reunião e visita agendadas para 23/9 na TOTVS.",
+    situacao:"Visita realizada na TOTVS, onde conhecemos alguns responsáveis comerciais. Ficou combinada uma segunda conversa, para eles apresentarem os caminhos possíveis de parceria com a TOTVS. Ainda sem data.",
     crit:[1,0,0],
-    critNotas:["Visita marcada pelas duas partes","NDA ainda não enviado",""],
-    passo:{ok:true, txt:"Reunião e visita na TOTVS em 23 set"},
-    proxima:"Levar para a visita uma proposta de modelo de parceria (quem vende, quem entrega, como a receita se divide) e a minuta de NDA. Sair com responsável definido do lado da TOTVS e próxima reunião marcada."
+    critNotas:["Visita realizada; responsáveis comerciais conhecidos","NDA ainda não enviado",""],
+    passo:{ok:false, txt:"Follow-up com a Bruna em 30 set para agendar a segunda conversa"},
+    proxima:"Fazer follow-up com a Bruna, da TOTVS, na quarta (30 set), para marcar a segunda conversa. Chegar nela com uma proposta de modelo de parceria (quem vende, quem entrega, como a receita se divide) e com a minuta de NDA."
   },
   {
     id:"iuh", nome:"IUH (Expansão)", tipo:"Expansão de conta · contato Evandro Prieto", obsEtapa:"Etapa de NDA considerada cumprida pela relação contratual já existente com a IUH (a confirmar).", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
@@ -680,7 +680,7 @@ const OPORTUNIDADES = [
   },
   {
     id:"edify", nome:"Edify (ONG)", tipo:"Terceiro setor", quad:"desperd", estagio:2, espera:true, desde:"18 set 2026",
-    situacao:"Nosso contato foi promovido e está em adaptação à nova função. Tratativa paralisada.",
+    situacao:"Nosso contato foi promovido e está em adaptação à nova função, o que paralisou a tratativa. Em 23 set enviamos uma mensagem de follow-up ao André e estamos aguardando o retorno.",
     sinais:[0,1,0,0,0],
     notasSinais:["Contato único, hoje indisponível","","","",""],
     proxima:"Retirar do pipeline ativo e retomar em 60 dias. Antes disso, pedir ao contato a indicação de quem assumiu a pauta na ONG.",
@@ -852,11 +852,12 @@ desenhaFiltros(); desenhaCards();
    ================================================================= */
 const ACOES = [
   { op:"iuh",       acao:"Aguardar o retorno da IUH aos questionamentos técnicos enviados em 21 set e, com as respostas, elaborar a proposta", resp:"Ernane", obs:"responsável a confirmar", prazo:null },
-  { op:"century",   acao:"Até o fim do dia, cobrar mais uma resposta da equipe da Century sobre a assinatura do contrato", resp:"Ernane", prazo:"2026-09-22" },
-  { op:"marcopolo", acao:"Retornar à Mari até onde conseguimos avançar, para ela tentar conseguir a reunião", resp:"Ernane", prazo:"2026-09-22" },
+  { op:"century",   acao:"Kickoff com a Century às 9h: alinhar as demandas do contrato e o cronograma de início do projeto", resp:"Ernane", prazo:"2026-09-24" },
+  { op:"century",   acao:"Acompanhar a análise do jurídico da Century até a assinatura do contrato", resp:"Ernane", prazo:null },
+  { op:"marcopolo", acao:"Follow-up com a Mari: passar até onde conseguimos avançar, para ela tentar conseguir a reunião", resp:"Ernane", prazo:"2026-09-25" },
   { op:"lenna",     acao:"Receber o documento com as demandas do Alejandro e cruzar com as soluções apresentadas", resp:"Ernane", prazo:null },
-  { op:"totvs",     acao:"Visita à TOTVS", resp:"Ernane", part:"Evandro e Guilherme", prazo:"2026-09-23" },
-  { op:"edify",     acao:"Follow-up por mensagem com o André, da Edify", resp:"Ernane", prazo:"2026-09-23" },
+  { op:"totvs",     acao:"Follow-up com a Bruna, da TOTVS, para agendar a segunda conversa sobre os caminhos de parceria", resp:"Ernane", prazo:"2026-09-30" },
+  { op:"edify",     acao:"Novo follow-up com o André, da Edify, se não houver retorno da mensagem de 23 set", resp:"Ernane", prazo:"2026-09-30" },
   { op:"elsys",     acao:"Follow-up com o Alex Fernandes para marcar a apresentação da Elsys na NOVALE (5 a 9 out)", resp:"Ernane", prazo:"2026-09-25" },
   { op:"proscore",  acao:"Devolver à Pro Score o NDA assinado, para seguir com os próximos passos da parceria", resp:"Ernane", prazo:"2026-09-25" },
   { op:"comolatti", acao:"Desenvolver a plataforma para o Grupo Comolatti / Questar", resp:"Ernane", prazo:"2026-09-30" },
@@ -865,6 +866,9 @@ const ACOES = [
 ];
 
 const HISTORICO = [
+  { data:"2026-09-23", op:"edify",     txt:"Follow-up por mensagem com o André. Aguardando o retorno." },
+  { data:"2026-09-23", op:"totvs",     txt:"Visita realizada na TOTVS. Conhecemos alguns responsáveis comerciais e ficou combinada uma segunda conversa, para eles apresentarem os caminhos de parceria. Ainda sem data." },
+  { data:"2026-09-23", op:"century",   txt:"Kickoff marcado para 24 set, às 9h, para tratar das demandas do contrato. O contrato segue em análise no jurídico da Century." },
   { data:"2026-09-22", op:"century",   txt:"Cobrança feita pela manhã. Parte técnica aprovada pela equipe da Century. Aguardando as definições da Débora, diretora financeira, e a assinatura do contrato." },
   { data:"2026-09-22", op:"lenna",     txt:"Reunião com o Alejandro. Apresentadas quatro soluções: aplicativo de controle financeiro, aplicativo de caça, plataforma de relacionamento com o técnico (Century) e e-commerce da Keystar. Maior interesse na plataforma de relacionamento. Resumo de três soluções enviado; o Alejandro vai mandar as demandas dele por escrito." },
   { data:"2026-09-21", op:"iuh",       txt:"Resposta enviada ao Evandro Prieto, com questionamentos e detalhes técnicos para a elaboração da proposta. Aguardando retorno da IUH." },
