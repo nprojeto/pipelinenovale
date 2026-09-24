@@ -423,7 +423,7 @@
        para avançar. Organizado por esforço, ganho e horizonte de fechamento.</p>
     <div class="ident">
       <span>Responsável <b>Ernane Guedes</b></span>
-      <span>Atualizado em <b id="data-atual">23 set 2026</b></span>
+      <span>Atualizado em <b id="data-atual">24 set 2026</b></span>
       <span>Base <b>Painel de status v1.0 · 11 set 2026</b></span>
     </div>
     <div class="numeros" id="numeros"></div>
@@ -516,7 +516,7 @@
          do que já foi feito.</p>
       <div class="ident">
         <span>Responsável <b>Ernane Guedes</b></span>
-        <span>Atualizado em <b>23 set 2026</b></span>
+        <span>Atualizado em <b>24 set 2026</b></span>
       </div>
       <div class="numeros" id="numeros-acoes"></div>
     </div>
@@ -594,11 +594,11 @@ const NIV_GAN = { alto:"Alto", medioalto:"Médio/alto", medio:"Médio", baixo:"B
 const OPORTUNIDADES = [
   {
     id:"century", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:6,
-    situacao:"Parte técnica aprovada pela equipe da Century e os 11 ajustes contratuais pedidos pelo Thiago absorvidos sem impacto. O contrato está em análise no jurídico da Century, aguardando assinatura. Mesmo assim, o kickoff foi antecipado: reunião marcada para 24 set, às 9h, para tratar das demandas do contrato e iniciar o projeto.",
+    situacao:"Kickoff realizado em 24 set. O desenvolvimento já começou mesmo sem a assinatura, com a garantia dada pela Century de que o contrato será assinado. O contrato segue em análise no jurídico deles. As reuniões de acompanhamento passam a ser semanais, toda quinta-feira, para revisar ponto a ponto os marcos de entrega. O Thiago vai enviar a ata da reunião e todo o processo será tratado no Redmine.",
     crit:[0.5,1,0],
-    critNotas:["Em análise no jurídico da Century","Contrato reenviado para assinatura em 21 set","Aguardando o retorno do jurídico"],
-    passo:{ok:true, txt:"Kickoff com a Century em 24 set, às 9h"},
-    proxima:"Conduzir o kickoff de 24 set, às 9h, alinhando as demandas do contrato e o cronograma de etapas para iniciar o projeto. Em paralelo, acompanhar a análise do jurídico da Century até a assinatura.",
+    critNotas:["Em análise no jurídico da Century","Contrato reenviado para assinatura em 21 set; garantia verbal de assinatura","Aguardando o retorno do jurídico"],
+    passo:{ok:true, txt:"Reunião semanal de acompanhamento toda quinta; a próxima em 1 out"},
+    proxima:"Seguir com o desenvolvimento e acompanhar os marcos de entrega nas reuniões de quinta-feira, com tudo registrado no Redmine. Receber do Thiago a ata do kickoff e continuar acompanhando o jurídico da Century até a assinatura do contrato.",
     link:"https://claude.ai/artifact/7EzPgSfkaFpiSiphN1ndAL"
   },
   {
@@ -852,7 +852,8 @@ desenhaFiltros(); desenhaCards();
    ================================================================= */
 const ACOES = [
   { op:"iuh",       acao:"Aguardar o retorno da IUH aos questionamentos técnicos enviados em 21 set e, com as respostas, elaborar a proposta", resp:"Ernane", obs:"responsável a confirmar", prazo:null },
-  { op:"century",   acao:"Kickoff com a Century às 9h: alinhar as demandas do contrato e o cronograma de início do projeto", resp:"Ernane", prazo:"2026-09-24" },
+  { op:"century",   acao:"Reunião semanal de acompanhamento dos marcos de entrega, com registro no Redmine", resp:"Ernane", obs:"toda quinta-feira", prazo:"2026-10-01" },
+  { op:"century",   acao:"Receber do Thiago a ata da reunião de kickoff", resp:"Thiago", obs:"Century", prazo:null },
   { op:"century",   acao:"Acompanhar a análise do jurídico da Century até a assinatura do contrato", resp:"Ernane", prazo:null },
   { op:"marcopolo", acao:"Follow-up com a Mari: passar até onde conseguimos avançar, para ela tentar conseguir a reunião", resp:"Ernane", prazo:"2026-09-25" },
   { op:"lenna",     acao:"Receber o documento com as demandas do Alejandro e cruzar com as soluções apresentadas", resp:"Ernane", prazo:null },
@@ -866,6 +867,7 @@ const ACOES = [
 ];
 
 const HISTORICO = [
+  { data:"2026-09-24", op:"century",   txt:"Kickoff realizado. O desenvolvimento começa mesmo sem a assinatura, com garantia da Century de que o contrato será assinado. Reuniões de acompanhamento passam a ser semanais, às quintas. O Thiago envia a ata e o processo será tratado no Redmine." },
   { data:"2026-09-23", op:"edify",     txt:"Follow-up por mensagem com o André. Aguardando o retorno." },
   { data:"2026-09-23", op:"totvs",     txt:"Visita realizada na TOTVS. Conhecemos alguns responsáveis comerciais e ficou combinada uma segunda conversa, para eles apresentarem os caminhos de parceria. Ainda sem data." },
   { data:"2026-09-23", op:"century",   txt:"Kickoff marcado para 24 set, às 9h, para tratar das demandas do contrato. O contrato segue em análise no jurídico da Century." },
