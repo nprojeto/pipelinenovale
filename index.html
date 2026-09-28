@@ -423,7 +423,7 @@
        para avançar. Organizado por esforço, ganho e horizonte de fechamento.</p>
     <div class="ident">
       <span>Responsável <b>Ernane Guedes</b></span>
-      <span>Atualizado em <b id="data-atual">24 set 2026</b></span>
+      <span>Atualizado em <b id="data-atual">28 set 2026</b></span>
       <span>Base <b>Painel de status v1.0 · 11 set 2026</b></span>
     </div>
     <div class="numeros" id="numeros"></div>
@@ -516,7 +516,7 @@
          do que já foi feito.</p>
       <div class="ident">
         <span>Responsável <b>Ernane Guedes</b></span>
-        <span>Atualizado em <b>24 set 2026</b></span>
+        <span>Atualizado em <b>28 set 2026</b></span>
       </div>
       <div class="numeros" id="numeros-acoes"></div>
     </div>
@@ -594,11 +594,11 @@ const NIV_GAN = { alto:"Alto", medioalto:"Médio/alto", medio:"Médio", baixo:"B
 const OPORTUNIDADES = [
   {
     id:"century", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:6,
-    situacao:"Kickoff realizado em 24 set, com a ata já recebida. O desenvolvimento começou mesmo sem a assinatura, com a garantia dada pela Century de que o contrato será assinado, e o projeto já foi criado no Redmine, onde o andamento é acompanhado. A reunião de entrega dos marcos está agendada como recorrente, toda quinta-feira. O contrato segue no jurídico da Century, aguardando assinatura.",
+    situacao:"Kickoff realizado em 24 set, com a ata já recebida. O desenvolvimento começou mesmo sem a assinatura, com a garantia dada pela Century de que o contrato será assinado, e o projeto já foi criado no Redmine, onde o andamento é acompanhado. A reunião de entrega dos marcos já está agendada como recorrente, toda quinta-feira. O contrato segue no jurídico da Century: nova cobrança feita em 28 set, aguardando o retorno.",
     crit:[0.5,1,0],
     critNotas:["Em análise no jurídico da Century","Contrato reenviado para assinatura em 21 set; garantia verbal de assinatura","Aguardando o retorno do jurídico"],
-    passo:{ok:true, txt:"Follow-up sobre a assinatura em 25 set; reunião de marcos toda quinta, a próxima em 1 out"},
-    proxima:"Fazer follow-up com a Century na sexta (25 set) para verificar se a assinatura sai ainda amanhã. Em paralelo, seguir com o desenvolvimento e acompanhar os marcos nas reuniões de quinta, com tudo registrado no Redmine.",
+    passo:{ok:false, txt:"Cobrança feita em 28 set; aguardando o retorno da Century sobre a assinatura"},
+    proxima:"Aguardar o retorno da Century sobre a assinatura, já cobrada em 28 set. Em paralelo, seguir com o desenvolvimento e acompanhar os marcos nas reuniões de quinta, com tudo registrado no Redmine.",
     link:"https://claude.ai/artifact/7EzPgSfkaFpiSiphN1ndAL"
   },
   {
@@ -606,40 +606,40 @@ const OPORTUNIDADES = [
     situacao:"Visita realizada na TOTVS, onde conhecemos alguns responsáveis comerciais. Ficou combinada uma segunda conversa, para eles apresentarem os caminhos possíveis de parceria com a TOTVS. Ainda sem data.",
     crit:[1,0,0],
     critNotas:["Visita realizada; responsáveis comerciais conhecidos","NDA ainda não enviado",""],
-    passo:{ok:false, txt:"Follow-up com a Bruna em 30 set para agendar a segunda conversa"},
-    proxima:"Fazer follow-up com a Bruna, da TOTVS, na quarta (30 set), para marcar a segunda conversa. Chegar nela com uma proposta de modelo de parceria (quem vende, quem entrega, como a receita se divide) e com a minuta de NDA."
+    passo:{ok:false, txt:"Follow-up com a Bruna na terça, 6 out, para agendar a segunda conversa"},
+    proxima:"Fazer follow-up com a Bruna, da TOTVS, na terça (6 out), para marcar a segunda conversa. Chegar nela com uma proposta de modelo de parceria (quem vende, quem entrega, como a receita se divide) e com a minuta de NDA."
   },
   {
-    id:"iuh", nome:"IUH (Expansão)", tipo:"Expansão de conta · contato Evandro Prieto", obsEtapa:"Etapa de NDA considerada cumprida pela relação contratual já existente com a IUH (a confirmar).", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
-    situacao:"O Evandro Prieto pediu uma base comercial para o serviço de manutenção, cobrindo o atendimento de chamados N1, N2 e N3 em campo, e perguntou sobre segregar por estado ou região. Em 21 set a NOVALE respondeu o e-mail com questionamentos e detalhes técnicos necessários para elaborar a proposta. Aguardando o retorno da IUH.",
+    id:"iuh", nome:"IUH (Expansão)", tipo:"Expansão de conta · contato Felipe (antes Evandro Prieto)", obsEtapa:"Etapa de NDA considerada cumprida pela relação contratual já existente com a IUH (a confirmar).", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
+    situacao:"A IUH pediu uma base comercial para o serviço de manutenção, com chamados N1, N2 e N3 em campo, e perguntou sobre segregar por estado ou região. O Felipe assumiu a frente no lugar do Evandro Prieto. Em 25 set enviamos um e-mail a ele com novos questionamentos sobre a solução de uma das frentes de monitoramento que eles possuem. Aguardando o retorno.",
     crit:[0.5,0.5,0],
-    critNotas:["Manutenção N1, N2 e N3 em campo; questionamentos técnicos enviados em 21 set","Base comercial depende das respostas da IUH",""],
-    passo:{ok:false, txt:"Aguardando o retorno da IUH ao e-mail de 21 set"},
-    proxima:"Acompanhar o retorno do Evandro Prieto aos questionamentos enviados em 21 set. Com as respostas, elaborar a base comercial e enviar a proposta. Se o retorno demorar, fazer uma cobrança curta retomando os pontos em aberto."
+    critNotas:["Manutenção N1, N2 e N3 em campo; questionamentos sobre a frente de monitoramento enviados em 25 set","Base comercial depende das respostas da IUH",""],
+    passo:{ok:false, txt:"Aguardando o retorno do Felipe ao e-mail de 25 set"},
+    proxima:"Acompanhar o retorno do Felipe aos questionamentos sobre a frente de monitoramento. Com as respostas, fechar o escopo, montar a base comercial e enviar a proposta."
   },
   {
     id:"proscore", nome:"Pro Score", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
     situacao:"Um parceiro intermediário sugeriu assinarmos o NDA com a Pro Score e mantermos o relacionamento, com ganho nas duas vias. A NOVALE inclui os produtos da Pro Score nos seus negócios e ganha com a venda deles até o comercial próprio estar 100% desenvolvido, ou até entrar um parceiro com esse interesse. Já a Pro Score coloca a NOVALE como desenvolvedora quando um parceiro deles precisar de desenvolvimento.",
     crit:[1,1,0],
-    critNotas:["Parceria em duas vias: revenda dos produtos deles e desenvolvimento para os parceiros deles","NDA com a Pro Score em mãos","Devolver assinado até sexta, 25 set"],
-    passo:{ok:false, txt:"Devolver o NDA assinado à Pro Score até sexta, 25 set"},
-    proxima:"Assinar e devolver o NDA à Pro Score até sexta (25 set). Em seguida, definir as regras da parceria nas duas vias: a margem ou comissão da NOVALE na venda dos produtos da Pro Score e como a NOVALE entra como desenvolvedora nos projetos dos parceiros deles."
+    critNotas:["Parceria em duas vias: revenda dos produtos deles e desenvolvimento para os parceiros deles","NDA com a Pro Score em mãos","Assinar e devolver na terça, 6 out"],
+    passo:{ok:false, txt:"Assinar e devolver o NDA à Pro Score na terça, 6 out"},
+    proxima:"Assinar e devolver o NDA à Pro Score na terça (6 out). Em seguida, definir as regras da parceria nas duas vias: a margem ou comissão da NOVALE na venda dos produtos da Pro Score e como a NOVALE entra como desenvolvedora nos projetos dos parceiros deles."
   },
   {
     id:"marcopolo", tangManual:8, nome:"Marco Polo Nova Telecom", tipo:"Mari · Andreia · desenvolvimento de CRM", esf:"alto", gan:"medio", prazo:"longo", estagio:0,
-    situacao:"Primeiro contato feito. Tentando agendar reunião para um possível desenvolvimento de CRM.",
+    situacao:"Primeiro contato feito, ainda sem reunião. Em 25 set devolvemos a demanda para a Mari, pedindo que ela interceda por nós junto ao André e ao Marco Polo para conseguirmos agendar a reunião, e que avalie também o nosso material de apresentação. Aguardando o retorno dela.",
     crit:[1,0.5,0],
-    critNotas:["Mari e Andreia","Possível desenvolvimento de CRM, ainda não detalhado","Tentando agendar"],
-    passo:{ok:false, txt:"Reunião inicial em agendamento"},
-    proxima:"Oferecer duas datas fechadas para a reunião inicial e chegar com três perguntas de qualificação: qual processo o CRM resolve, quem decide e qual o orçamento previsto."
+    critNotas:["Mari e Andreia; André e Marco Polo pelo lado da empresa","Possível desenvolvimento de CRM, ainda não detalhado","Mari vai interceder para marcar a reunião"],
+    passo:{ok:false, txt:"Aguardando o retorno da Mari sobre o agendamento e a avaliação do material"},
+    proxima:"Aguardar o retorno da Mari sobre a avaliação do material e o agendamento da reunião com o André e o Marco Polo. Chegar na reunião com três perguntas de qualificação: qual processo o CRM resolve, quem decide e qual o orçamento previsto."
   },
   {
     id:"lenna", tangManual:28, nome:"NOVALE América do Sul", tipo:"Lenna / Alejandro · Bolívia · setor de energia", esf:"alto", gan:"alto", prazo:"medio", estagio:2,
-    situacao:"Projeto de expansão da NOVALE para a América do Sul, com entrada pela Bolívia. Em 22 set fizemos uma reunião muito boa com o Alejandro, com a participação do Ernane. Apresentamos quatro soluções: o aplicativo de controle financeiro, o aplicativo de caça, a plataforma de relacionamento com o técnico desenvolvida para a Century e o e-commerce da Keystar, que capta os dados dos veículos de frota e dispara os pedidos de compra de materiais de manutenção. O maior interesse foi na plataforma de relacionamento com o técnico. Enviamos um resumo de três delas (finanças, caça e plataforma de relacionamento), e o Alejandro vai mandar por escrito as demandas dele.",
+    situacao:"Projeto de expansão da NOVALE para a América do Sul, com entrada pela Bolívia. Em 22 set fizemos uma reunião muito boa com o Alejandro, com a participação do Ernane. Apresentamos quatro soluções: o aplicativo de controle financeiro, o aplicativo de caça, a plataforma de relacionamento com o técnico desenvolvida para a Century e o e-commerce da Keystar, que capta os dados dos veículos de frota e dispara os pedidos de compra de materiais de manutenção. O maior interesse foi na plataforma de relacionamento com o técnico. Enviamos um resumo de três delas (finanças, caça e plataforma de relacionamento), e o Alejandro vai mandar por escrito as demandas dele. Ficou também a demanda de apresentar uma proposta comercial de call center.",
     crit:[1,0,0],
     critNotas:["Reunião de 22 set; maior interesse na plataforma de relacionamento com o técnico","Alejandro vai enviar as demandas por escrito",""],
-    passo:{ok:false, txt:"Aguardando o documento com as demandas do Alejandro"},
-    proxima:"Receber o documento com as demandas do Alejandro e cruzar com as soluções apresentadas, priorizando a plataforma de relacionamento com o técnico. A partir daí, montar uma proposta de trabalho conjunto em espanhol e combinar a formalização da parceria (NDA ou acordo)."
+    passo:{ok:true, txt:"Apresentar ao Alejandro a proposta comercial de call center até sexta, 2 out"},
+    proxima:"Apresentar ao Alejandro, até sexta (2 out), a proposta comercial de call center. Em paralelo, receber o documento com as demandas dele e cruzar com as soluções apresentadas, priorizando a plataforma de relacionamento com o técnico, para montar uma proposta de trabalho conjunto em espanhol."
   },
   {
     id:"comolatti", tangManual:40, nome:"Grupo Comolatti / Questar", tipo:"Cliente", esf:"alto", gan:"alto", prazo:"medio", estagio:1,
@@ -680,10 +680,10 @@ const OPORTUNIDADES = [
   },
   {
     id:"edify", nome:"Edify (ONG)", tipo:"Terceiro setor", quad:"desperd", estagio:2, espera:true, desde:"18 set 2026",
-    situacao:"Nosso contato foi promovido e está em adaptação à nova função, o que paralisou a tratativa. Em 23 set enviamos uma mensagem de follow-up ao André e estamos aguardando o retorno.",
+    situacao:"Nosso contato foi promovido e está em adaptação à nova função, o que paralisou a tratativa. O follow-up enviado ao André em 23 set segue sem retorno. Nova estratégia em avaliação: abordar o CEO da Edify pelo LinkedIn, aproveitando o contato feito na Bolívia.",
     sinais:[0,1,0,0,0],
     notasSinais:["Contato único, hoje indisponível","","","",""],
-    proxima:"Retirar do pipeline ativo e retomar em 60 dias. Antes disso, pedir ao contato a indicação de quem assumiu a pauta na ONG.",
+    proxima:"Abordar o CEO da Edify pelo LinkedIn, retomando o encontro na Bolívia e propondo uma conversa curta. Em paralelo, seguir aguardando o retorno do André.",
     diag:{
       porque:"Toda a tratativa estava concentrada em uma única pessoa, que mudou de função.",
       erro:"Não mapeamos outros envolvidos nem o decisor. Com a mudança do contato, a conversa parou.",
@@ -692,11 +692,11 @@ const OPORTUNIDADES = [
   },
   {
     id:"elsys", tangManual:15, nome:"Elsys", tipo:"Cliente · contato Alex Fernandes", esf:"alto", gan:"medio", prazo:"longo", estagio:1,
-    situacao:"Alex Fernandes já nos visitou e virá à NOVALE apresentar as propostas e oportunidades da Elsys na segunda semana de outubro. A data depende da agenda dele com outros parceiros e será definida no fim da próxima semana.",
+    situacao:"O Alex Fernandes já nos visitou e virá à NOVALE apresentar as propostas e oportunidades da Elsys. Em 28 set fizemos um novo follow-up para descobrir quando a agenda dele permite essa vinda. Aguardando o retorno.",
     crit:[0,0.5,0],
-    critNotas:["Oportunidades serão apresentadas pela Elsys","Alex Fernandes é o contato; decisor a confirmar",""],
-    passo:{ok:false, txt:"Follow-up com o Alex até 25 set para marcar a apresentação (5 a 9 out)"},
-    proxima:"Fazer follow-up com o Alex Fernandes no fim da próxima semana (até 25 set) para fechar a data da apresentação na NOVALE, entre 5 e 9 de outubro. Na reunião, entender quais oportunidades a Elsys traz, quem decide e em que prazo. Depois dela, revisamos o esforço, o ganho e o horizonte da Elsys."
+    critNotas:["Oportunidades serão apresentadas pela Elsys","Alex Fernandes é o contato; decisor a confirmar","Follow-up feito em 28 set; aguardando a data da vinda dele"],
+    passo:{ok:false, txt:"Aguardando o retorno do Alex com a data da apresentação na NOVALE"},
+    proxima:"Aguardar o retorno do Alex Fernandes com a data em que ele consegue vir apresentar as propostas da Elsys na NOVALE. Na reunião, entender quais oportunidades ele traz, quem decide e em que prazo. Depois dela, revisamos o esforço, o ganho e o horizonte da Elsys."
   }
 ];
 
@@ -851,21 +851,28 @@ desenhaFiltros(); desenhaCards();
    prazo no formato AAAA-MM-DD, ou null quando não há prazo.
    ================================================================= */
 const ACOES = [
-  { op:"iuh",       acao:"Aguardar o retorno da IUH aos questionamentos técnicos enviados em 21 set e, com as respostas, elaborar a proposta", resp:"Ernane", obs:"responsável a confirmar", prazo:null },
-  { op:"century",   acao:"Reunião de acompanhamento dos marcos de entrega, com registro no Redmine", resp:"Ernane", obs:"recorrente, toda quinta-feira", prazo:"2026-10-01" },
-  { op:"century",   acao:"Follow-up com a Century para verificar se a assinatura do contrato sai ainda amanhã", resp:"Ernane", prazo:"2026-09-25" },
-  { op:"marcopolo", acao:"Follow-up com a Mari: passar até onde conseguimos avançar, para ela tentar conseguir a reunião", resp:"Ernane", prazo:"2026-09-25" },
+  { op:"iuh",       acao:"Aguardar o retorno do Felipe aos questionamentos sobre a frente de monitoramento e, com as respostas, elaborar a proposta", resp:"Ernane", prazo:null },
+  { op:"century",   acao:"Acompanhar a assinatura do contrato. Cobrança feita em 28 set, aguardando o retorno da Century", resp:"Ernane", prazo:null },
+  { op:"marcopolo", acao:"Aguardar o retorno da Mari sobre a avaliação do material e o agendamento da reunião com o André e o Marco Polo", resp:"Ernane", prazo:null },
+  { op:"lenna",     acao:"Apresentar ao Alejandro a proposta comercial de call center", resp:"Ernane", prazo:"2026-10-02" },
   { op:"lenna",     acao:"Receber o documento com as demandas do Alejandro e cruzar com as soluções apresentadas", resp:"Ernane", prazo:null },
-  { op:"totvs",     acao:"Follow-up com a Bruna, da TOTVS, para agendar a segunda conversa sobre os caminhos de parceria", resp:"Ernane", prazo:"2026-09-30" },
-  { op:"edify",     acao:"Novo follow-up com o André, da Edify, se não houver retorno da mensagem de 23 set", resp:"Ernane", prazo:"2026-09-30" },
-  { op:"elsys",     acao:"Follow-up com o Alex Fernandes para marcar a apresentação da Elsys na NOVALE (5 a 9 out)", resp:"Ernane", prazo:"2026-09-25" },
-  { op:"proscore",  acao:"Devolver à Pro Score o NDA assinado, para seguir com os próximos passos da parceria", resp:"Ernane", prazo:"2026-09-25" },
-  { op:"comolatti", acao:"Desenvolver a plataforma para o Grupo Comolatti / Questar", resp:"Ernane", prazo:"2026-09-30" },
+  { op:"totvs",     acao:"Follow-up com a Bruna, da TOTVS, para agendar a segunda conversa sobre os caminhos de parceria", resp:"Ernane", obs:"adiado: equipe no Rio de Janeiro esta semana", prazo:"2026-10-06" },
+  { op:"edify",     acao:"Nova estratégia na Edify: abordar o CEO pelo LinkedIn, aproveitando o contato feito na Bolívia", resp:"Ernane", prazo:null },
+  { op:"elsys",     acao:"Aguardar o retorno do Alex Fernandes com a data em que ele vem apresentar as propostas da Elsys na NOVALE", resp:"Ernane", prazo:null },
+  { op:"proscore",  acao:"Devolver à Pro Score o NDA assinado, para seguir com os próximos passos da parceria", resp:"Ernane", obs:"adiado: equipe no Rio de Janeiro esta semana", prazo:"2026-10-06" },
+  { op:"comolatti", acao:"Desenvolver a plataforma para o Grupo Comolatti / Questar", resp:"Ernane", prazo:"2026-10-15" },
   { op:"glauco",    acao:"Follow-up com o parceiro Glauco", resp:"Diego", prazo:null },
   { op:"snvitor",   acao:"Follow-up com o parceiro SN Vitor", resp:"Diego", prazo:null }
 ];
 
 const HISTORICO = [
+  { data:"2026-09-25", op:"iuh",       txt:"E-mail enviado ao Felipe, que assumiu a frente no lugar do Evandro Prieto, com questionamentos sobre a solução de uma das frentes de monitoramento da IUH. Aguardando o retorno." },
+  { data:"2026-09-28", op:"comolatti", txt:"Prazo do desenvolvimento da plataforma ajustado para 15 out." },
+  { data:"2026-09-28", op:"edify",     txt:"Sem retorno do André. Definida uma nova estratégia: abordar o CEO da Edify pelo LinkedIn, aproveitando o contato feito na Bolívia." },
+  { data:"2026-09-28", op:"century",   txt:"Nova cobrança à Century sobre a assinatura do contrato. A reunião recorrente de marcos já está agendada e o acompanhamento segue pelo Redmine." },
+  { data:"2026-09-28", op:"proscore",  txt:"Assinatura do NDA e o follow-up com a TOTVS remarcados para 6 out: a equipe estará no Rio de Janeiro nos próximos três dias." },
+  { data:"2026-09-28", op:"elsys",     txt:"Novo follow-up com o Alex Fernandes, para saber quando a agenda dele permite vir apresentar as propostas da Elsys. Aguardando o retorno." },
+  { data:"2026-09-25", op:"marcopolo", txt:"Demanda devolvida à Mari, pedindo que ela interceda junto ao André e ao Marco Polo para marcarmos a reunião e que avalie o nosso material de apresentação." },
   { data:"2026-09-24", op:"century",   txt:"Ata do kickoff recebida e reunião de entrega dos marcos agendada como recorrente, toda quinta-feira. Projeto criado no Redmine, com o andamento acompanhado pela plataforma." },
   { data:"2026-09-24", op:"century",   txt:"Kickoff realizado. O desenvolvimento começa mesmo sem a assinatura, com garantia da Century de que o contrato será assinado. Reuniões de acompanhamento passam a ser semanais, às quintas. O Thiago envia a ata e o processo será tratado no Redmine." },
   { data:"2026-09-23", op:"edify",     txt:"Follow-up por mensagem com o André. Aguardando o retorno." },
