@@ -423,7 +423,7 @@
        para avançar. Organizado por esforço, ganho e horizonte de fechamento.</p>
     <div class="ident">
       <span>Responsável <b>Ernane Guedes</b></span>
-      <span>Atualizado em <b id="data-atual">28 set 2026</b></span>
+      <span>Atualizado em <b id="data-atual">16 out 2026</b></span>
       <span>Base <b>Painel de status v1.0 · 11 set 2026</b></span>
     </div>
     <div class="numeros" id="numeros"></div>
@@ -516,7 +516,7 @@
          do que já foi feito.</p>
       <div class="ident">
         <span>Responsável <b>Ernane Guedes</b></span>
-        <span>Atualizado em <b>28 set 2026</b></span>
+        <span>Atualizado em <b>16 out 2026</b></span>
       </div>
       <div class="numeros" id="numeros-acoes"></div>
     </div>
@@ -593,12 +593,72 @@ const NIV_GAN = { alto:"Alto", medioalto:"Médio/alto", medio:"Médio", baixo:"B
 
 const OPORTUNIDADES = [
   {
+    id:"detronics", nome:"Detronics", tipo:"Parceria · medidor de pasto com sensor de luminosidade", esf:"alto", gan:"medioalto", prazo:"medio", estagio:2,
+    situacao:"Nova demanda: um medidor de pasto com sensor de luminosidade, desenvolvido em parceria. A Detronics fica com o hardware e a NOVALE com o software. Um veterinário participa como ponte com os produtores rurais, para a disseminação do produto. A POC do aplicativo já está montada na versão de IA e ainda não passou para o time de desenvolvimento da NOVALE. A proposta está em construção e depende da precificação da Detronics.",
+    crit:[1,0,0],
+    critNotas:["Divisão clara: hardware com a Detronics, software com a NOVALE","Proposta de parceria ainda em construção","Depende da precificação da Detronics"],
+    passo:{ok:true, txt:"Contato com a Detronics na semana de 26 out para checar a precificação"},
+    proxima:"Retomar o contato com a Detronics na semana de 26 a 30 out para saber se chegaram a uma precificação do hardware. Com o número em mãos, montar a proposta de parceria, definindo a divisão de receita e o papel do veterinário na distribuição. Em paralelo, passar a POC do aplicativo ao time de desenvolvimento da NOVALE."
+  },
+  {
+    id:"telespazio", nome:"Telespazio", tipo:"Cliente · RFP em análise", esf:"alto", gan:"alto", prazo:"curto", estagio:3,
+    situacao:"Reunião inicial realizada em 15 out, com a demanda entendida. A Telespazio enviou uma RFP e, em 16 out, devolvemos o NDA assinado dentro do prazo. A RFP está em análise pelo grupo estratégico da NOVALE: Evandro, Ernane e Diego.",
+    crit:[0,1,1],
+    critNotas:["Reunião técnica ainda não marcada","RFP recebida","Requisitos descritos na RFP"],
+    passo:{ok:false, txt:"RFP em análise pelo grupo estratégico; resposta sem data definida"},
+    proxima:"Concluir a análise da RFP com o grupo estratégico, confirmar o prazo de resposta exigido pela Telespazio e devolver a proposta. Em seguida, marcar a reunião técnica para detalhar o escopo."
+  },
+  {
+    id:"subway", nome:"CRM da Subway", tipo:"Desenvolvimento · contato Anna Rafaela", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
+    obsEtapa:"Projeto de desenvolvimento: o estágio reflete a frente comercial, enquanto a POC já está em teste com o cliente.",
+    situacao:"POC concluída e entregue à Anna Rafaela para os testes iniciais. Ela já subiu alguns testes na ferramenta. A conversa de acompanhamento precisou ser adiada por causa da viagem de 19 e 20 out.",
+    crit:[1,0,0],
+    critNotas:["POC entregue e em teste pela Anna Rafaela","Modelo comercial ainda não discutido",""],
+    passo:{ok:true, txt:"Conversa com a Anna Rafaela sobre os testes da POC, em 28 out"},
+    proxima:"Conversar com a Anna Rafaela sobre o resultado dos testes da POC, recolher os ajustes necessários e, a partir daí, propor o escopo e o modelo comercial da ferramenta completa."
+  },
+  {
+    id:"rh", nome:"Plataforma de RH", tipo:"Daniela (Gegers) · CRM de RH", esf:"medio", gan:"medio", prazo:"medio", estagio:2,
+    obsEtapa:"Projeto de desenvolvimento conjunto; o estágio reflete a formalização da parceria, que ainda não aconteceu.",
+    situacao:"Nova demanda: desenvolvimento de um CRM de RH em conjunto com a Dani (Daniela), da Gegers, servindo também à estruturação da NOVALE. Na primeira fase, a NOVALE desenvolve a ferramenta e a Daniela passa a ideia e o conceito, além de usar a plataforma alimentando-a com dados, o que funciona como teste.",
+    crit:[1,0,0],
+    critNotas:["Desenvolvimento conjunto em andamento","Responsabilidades ainda não formalizadas",""],
+    passo:{ok:false, txt:"Conversa inicial com a Daniela sobre responsabilidades, sem data"},
+    proxima:"Ter a conversa inicial com a Daniela para dividir as responsabilidades: o que cabe à NOVALE no desenvolvimento, o que cabe a ela no conceito e no uso da plataforma como teste. Registrar o combinado por escrito antes de avançar na segunda fase."
+  },
+  {
+    id:"keystar", nome:"Plataforma K-Star", tipo:"Produto próprio · e-commerce de manutenção de frota", esf:"medio", gan:"medioalto", prazo:"medio", estagio:2,
+    obsEtapa:"Produto próprio: o estágio reflete a frente comercial, que começa depois da POC.",
+    situacao:"A evolução da plataforma continua parada, sem avanço até agora. Ficou definida uma nova meta: entregar uma POC inicial até 30 out.",
+    crit:[1,0,0],
+    critNotas:["Produto no portfólio da NOVALE","POC inicial ainda não entregue",""],
+    passo:{ok:true, txt:"POC inicial da K-Star até 30 out"},
+    proxima:"Entregar a POC inicial até 30 out, destravando o projeto. Com a POC pronta, definir os primeiros alvos comerciais e o modelo de cobrança."
+  },
+  {
+    id:"javastreak", nome:"Aplicativo JavaStreak", tipo:"Produto próprio · negociação com influenciadores", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
+    obsEtapa:"Produto próprio: o estágio reflete a negociação comercial, enquanto o desenvolvimento segue com o time interno.",
+    situacao:"Desenvolvimento em andamento com o time da NOVALE, e o aplicativo já faz parte do portfólio. Há negociação em curso com influenciadores e pessoas do ramo, com uma boa conversa encaminhada com um deles. O avanço depende de o aplicativo chegar a um estágio mais evoluído.",
+    crit:[1,0.5,0],
+    critNotas:["Boa negociação em curso com um influenciador","Acordo ainda não formalizado","Depende da evolução do aplicativo"],
+    passo:{ok:false, txt:"Retomar a negociação quando o aplicativo evoluir"},
+    proxima:"Levar o aplicativo ao estágio acordado com o time de desenvolvimento e, assim que isso acontecer, retomar a negociação com o influenciador e fechar o modelo de parceria."
+  },
+  {
+    id:"leandro", nome:"Leandro Gauser", tipo:"Frente a classificar · documento compartilhado", esf:"baixo", gan:"medio", prazo:"longo", estagio:0,
+    situacao:"O Leandro Gauser compartilhou por e-mail o link de um documento com o trabalho que está desenvolvendo. A análise ainda não foi feita e deve acontecer na semana de 19 a 23 out, durante a viagem.",
+    crit:[1,0.5,0],
+    critNotas:["Leandro Gauser","Interesse ainda não avaliado","Depende da análise do documento"],
+    passo:{ok:true, txt:"Analisar o documento do Leandro até 23 out"},
+    proxima:"Analisar o documento compartilhado pelo Leandro e decidir se há uma oportunidade concreta para a NOVALE. Se houver, marcar uma conversa com ele e classificar a frente na matriz."
+  },
+  {
     id:"century", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:6,
-    situacao:"Kickoff realizado em 24 set, com a ata já recebida. O desenvolvimento começou mesmo sem a assinatura, com a garantia dada pela Century de que o contrato será assinado, e o projeto já foi criado no Redmine, onde o andamento é acompanhado. A reunião de entrega dos marcos já está agendada como recorrente, toda quinta-feira. O contrato segue no jurídico da Century: nova cobrança feita em 28 set, aguardando o retorno.",
+    situacao:"Desenvolvimento em andamento desde o kickoff de 24 set, com acompanhamento pelo Redmine e reuniões semanais às quintas. Em 16 out a Century reenviou o contrato com novas considerações e alterações. A NOVALE montou uma planilha comparando as mudanças e encaminhou ao jurídico, que está analisando os ajustes propostos.",
     crit:[0.5,1,0],
-    critNotas:["Em análise no jurídico da Century","Contrato reenviado para assinatura em 21 set; garantia verbal de assinatura","Aguardando o retorno do jurídico"],
-    passo:{ok:false, txt:"Cobrança feita em 28 set; aguardando o retorno da Century sobre a assinatura"},
-    proxima:"Aguardar o retorno da Century sobre a assinatura, já cobrada em 28 set. Em paralelo, seguir com o desenvolvimento e acompanhar os marcos nas reuniões de quinta, com tudo registrado no Redmine.",
+    critNotas:["Nova versão do contrato em análise no jurídico da NOVALE","Planilha comparativa das mudanças enviada ao jurídico","Aguardando o parecer do jurídico"],
+    passo:{ok:false, txt:"Nova versão do contrato em análise no jurídico da NOVALE"},
+    proxima:"Receber o parecer do jurídico da NOVALE sobre as mudanças propostas pela Century, fechar os pontos divergentes e seguir para a assinatura. Em paralelo, manter o desenvolvimento e os marcos no Redmine.",
     link:"https://claude.ai/artifact/7EzPgSfkaFpiSiphN1ndAL"
   },
   {
@@ -611,11 +671,11 @@ const OPORTUNIDADES = [
   },
   {
     id:"iuh", nome:"IUH (Expansão)", tipo:"Expansão de conta · contato Felipe (antes Evandro Prieto)", obsEtapa:"Etapa de NDA considerada cumprida pela relação contratual já existente com a IUH (a confirmar).", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
-    situacao:"A IUH pediu uma base comercial para o serviço de manutenção, com chamados N1, N2 e N3 em campo, e perguntou sobre segregar por estado ou região. O Felipe assumiu a frente no lugar do Evandro Prieto. Em 25 set enviamos um e-mail a ele com novos questionamentos sobre a solução de uma das frentes de monitoramento que eles possuem. Aguardando o retorno.",
+    situacao:"A IUH pediu uma base comercial para o serviço de manutenção, com chamados N1, N2 e N3 em campo. O Felipe assumiu a frente no lugar do Evandro Prieto. A proposta será atualizada em Uberlândia na segunda (19 out), para chegar à reunião de terça (20 out) com a documentação e as opções de proposta prontas.",
     crit:[0.5,0.5,0],
     critNotas:["Manutenção N1, N2 e N3 em campo; questionamentos sobre a frente de monitoramento enviados em 25 set","Base comercial depende das respostas da IUH",""],
-    passo:{ok:false, txt:"Aguardando o retorno do Felipe ao e-mail de 25 set"},
-    proxima:"Acompanhar o retorno do Felipe aos questionamentos sobre a frente de monitoramento. Com as respostas, fechar o escopo, montar a base comercial e enviar a proposta."
+    passo:{ok:true, txt:"Reunião com a IUH em 20 out, em Uberlândia, com as opções de proposta"},
+    proxima:"Trabalhar a proposta na segunda (19 out) e levar à reunião de terça (20 out) as opções comerciais prontas, para conduzir uma boa negociação e sair com o escopo e o modelo definidos."
   },
   {
     id:"proscore", nome:"Pro Score", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
@@ -635,11 +695,11 @@ const OPORTUNIDADES = [
   },
   {
     id:"lenna", tangManual:28, nome:"NOVALE América do Sul", tipo:"Lenna / Alejandro · Bolívia · setor de energia", esf:"alto", gan:"alto", prazo:"medio", estagio:2,
-    situacao:"Projeto de expansão da NOVALE para a América do Sul, com entrada pela Bolívia. Em 22 set fizemos uma reunião muito boa com o Alejandro, com a participação do Ernane. Apresentamos quatro soluções: o aplicativo de controle financeiro, o aplicativo de caça, a plataforma de relacionamento com o técnico desenvolvida para a Century e o e-commerce da Keystar, que capta os dados dos veículos de frota e dispara os pedidos de compra de materiais de manutenção. O maior interesse foi na plataforma de relacionamento com o técnico. Enviamos um resumo de três delas (finanças, caça e plataforma de relacionamento), e o Alejandro vai mandar por escrito as demandas dele. Ficou também a demanda de apresentar uma proposta comercial de call center.",
+    situacao:"Frente paralisada no momento. A proposta de trabalho de campo que seria apresentada ao Alejandro não evoluiu e a oportunidade não está quente, então ficou em segundo plano. A reunião de 22 set segue como a última movimentação, com maior interesse dele na plataforma de relacionamento com o técnico.",
     crit:[1,0,0],
     critNotas:["Reunião de 22 set; maior interesse na plataforma de relacionamento com o técnico","Alejandro vai enviar as demandas por escrito",""],
-    passo:{ok:true, txt:"Apresentar ao Alejandro a proposta comercial de call center até sexta, 2 out"},
-    proxima:"Apresentar ao Alejandro, até sexta (2 out), a proposta comercial de call center. Em paralelo, receber o documento com as demandas dele e cruzar com as soluções apresentadas, priorizando a plataforma de relacionamento com o técnico, para montar uma proposta de trabalho conjunto em espanhol."
+    passo:{ok:false, txt:"Sem ação definida; frente em segundo plano"},
+    proxima:"Retomar quando houver espaço na agenda: preparar a proposta de trabalho de campo para o Alejandro e cobrar o documento com as demandas dele. Enquanto isso, a frente fica em segundo plano, sem consumir esforço do time."
   },
   {
     id:"comolatti", tangManual:40, nome:"Grupo Comolatti / Questar", tipo:"Cliente", esf:"alto", gan:"alto", prazo:"medio", estagio:1,
@@ -851,11 +911,19 @@ desenhaFiltros(); desenhaCards();
    prazo no formato AAAA-MM-DD, ou null quando não há prazo.
    ================================================================= */
 const ACOES = [
-  { op:"iuh",       acao:"Aguardar o retorno do Felipe aos questionamentos sobre a frente de monitoramento e, com as respostas, elaborar a proposta", resp:"Ernane", prazo:null },
-  { op:"century",   acao:"Acompanhar a assinatura do contrato. Cobrança feita em 28 set, aguardando o retorno da Century", resp:"Ernane", prazo:null },
+  { op:"detronics", acao:"Contato com a Detronics para verificar a precificação do hardware e avançar para a proposta de parceria", resp:"Ernane", obs:"semana de 26 a 30 out", prazo:"2026-10-26" },
+  { op:"detronics", acao:"Passar a POC do medidor de pasto ao time de desenvolvimento da NOVALE", resp:"Ernane", prazo:null },
+  { op:"iuh",       acao:"Atualizar a proposta em Uberlândia, com as opções comerciais para a reunião", resp:"Ernane", prazo:"2026-10-19" },
+  { op:"leandro",   acao:"Analisar o documento compartilhado pelo Leandro Gauser e avaliar se há oportunidade", resp:"Ernane", obs:"durante a viagem", prazo:"2026-10-23" },
+  { op:"subway",    acao:"Conversa com a Anna Rafaela sobre o resultado dos testes da POC", resp:"Ernane", obs:"data a confirmar: 21 ou 28 out", prazo:"2026-10-28" },
+  { op:"keystar",   acao:"Entregar a POC inicial da plataforma K-Star", resp:"Ernane", prazo:"2026-10-30" },
+  { op:"telespazio",acao:"Concluir a análise da RFP com o grupo estratégico e devolver a resposta à Telespazio", resp:"Ernane", obs:"com Evandro e Diego", prazo:null },
+  { op:"rh",        acao:"Conversa inicial com a Daniela (Gegers) para dividir as responsabilidades do projeto", resp:"Ernane", prazo:null },
+  { op:"javastreak",acao:"Retomar a negociação com o influenciador quando o aplicativo evoluir", resp:"Ernane", prazo:null },
+  { op:"iuh",       acao:"Reunião com a IUH para apresentar as opções de proposta e negociar", resp:"Ernane", prazo:"2026-10-20" },
+  { op:"century",   acao:"Receber o parecer do jurídico da NOVALE sobre as mudanças do novo contrato e fechar os pontos divergentes", resp:"Ernane", obs:"jurídico NOVALE", prazo:null },
   { op:"marcopolo", acao:"Aguardar o retorno da Mari sobre a avaliação do material e o agendamento da reunião com o André e o Marco Polo", resp:"Ernane", prazo:null },
-  { op:"lenna",     acao:"Apresentar ao Alejandro a proposta comercial de call center", resp:"Ernane", prazo:"2026-10-02" },
-  { op:"lenna",     acao:"Receber o documento com as demandas do Alejandro e cruzar com as soluções apresentadas", resp:"Ernane", prazo:null },
+  { op:"lenna",     acao:"Retomar quando houver espaço: preparar a proposta de trabalho de campo e cobrar o documento com as demandas do Alejandro", resp:"Ernane", obs:"frente em segundo plano", prazo:null },
   { op:"totvs",     acao:"Follow-up com a Bruna, da TOTVS, para agendar a segunda conversa sobre os caminhos de parceria", resp:"Ernane", obs:"adiado: equipe no Rio de Janeiro esta semana", prazo:"2026-10-06" },
   { op:"edify",     acao:"Nova estratégia na Edify: abordar o CEO pelo LinkedIn, aproveitando o contato feito na Bolívia", resp:"Ernane", prazo:null },
   { op:"elsys",     acao:"Aguardar o retorno do Alex Fernandes com a data em que ele vem apresentar as propostas da Elsys na NOVALE", resp:"Ernane", prazo:null },
@@ -866,6 +934,16 @@ const ACOES = [
 ];
 
 const HISTORICO = [
+  { data:"2026-10-16", op:"detronics", txt:"Nova demanda registrada: medidor de pasto com sensor de luminosidade, com a Detronics no hardware e a NOVALE no software, e um veterinário como ponte com os produtores rurais. POC do aplicativo já montada na versão de IA. Proposta aguarda a precificação da Detronics." },
+  { data:"2026-10-16", op:"telespazio", txt:"Reunião inicial feita em 15 out e RFP recebida. NDA assinado devolvido em 16 out, dentro do prazo. RFP em análise pelo grupo estratégico da NOVALE: Evandro, Ernane e Diego." },
+  { data:"2026-10-16", op:"century",   txt:"A Century reenviou o contrato com novas considerações. A NOVALE montou uma planilha comparando as mudanças e encaminhou ao jurídico, que está analisando os ajustes." },
+  { data:"2026-10-16", op:"subway",    txt:"POC do CRM entregue à Anna Rafaela, que já subiu alguns testes. A conversa de acompanhamento foi adiada para 28 out por causa da viagem." },
+  { data:"2026-10-16", op:"rh",        txt:"Nova demanda registrada: desenvolvimento de um CRM de RH em conjunto com a Dani, da Gegers, com a NOVALE no desenvolvimento e ela no conceito e nos testes." },
+  { data:"2026-10-16", op:"keystar",   txt:"Plataforma segue parada. Definida a meta de entregar uma POC inicial até 30 out." },
+  { data:"2026-10-16", op:"javastreak",txt:"Aplicativo em desenvolvimento com o time interno e já no portfólio. Negociação encaminhada com um influenciador, que avança quando o app evoluir." },
+  { data:"2026-10-16", op:"leandro",   txt:"Leandro Gauser compartilhou por e-mail o link de um documento com o trabalho dele. Análise prevista para a semana de 19 a 23 out." },
+  { data:"2026-10-16", op:"lenna",     txt:"Frente paralisada: a proposta de trabalho de campo não evoluiu e a oportunidade não está quente, ficando em segundo plano." },
+  { data:"2026-10-16", op:"iuh",       txt:"Proposta será atualizada em Uberlândia na segunda (19 out), para a reunião com a IUH na terça (20 out) com as opções comerciais prontas." },
   { data:"2026-09-25", op:"iuh",       txt:"E-mail enviado ao Felipe, que assumiu a frente no lugar do Evandro Prieto, com questionamentos sobre a solução de uma das frentes de monitoramento da IUH. Aguardando o retorno." },
   { data:"2026-09-28", op:"comolatti", txt:"Prazo do desenvolvimento da plataforma ajustado para 15 out." },
   { data:"2026-09-28", op:"edify",     txt:"Sem retorno do André. Definida uma nova estratégia: abordar o CEO da Edify pelo LinkedIn, aproveitando o contato feito na Bolívia." },
