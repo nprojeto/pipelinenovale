@@ -10,348 +10,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0D2B5E; --navy-deep:#06142F; --navy-mid:#123A79;
-    --eletrico:#4C86F0; --pale:#E8EEF8; --papel:#FBFCFE;
-    --tinta:#0A1830; --tinta-2:#4A5673;
-    --feito:#12915C; --pendente:#C07A12; --risco:#C2413A;
-    --fundo:var(--papel); --superficie:#FFFFFF;
-    --texto:var(--tinta); --texto-2:var(--tinta-2);
-    --borda:rgba(13,43,94,.14); --regua:rgba(13,43,94,.14);
-    --suave:rgba(13,43,94,.045);
-    --c-ganho:#0F8C8C; --c-esforco:#D2622E;
+    --navy:#061749; --navy-deep:#00093a; --eletrico:#1843D4; --ciano:#38B6FF; --ceu:#87D1FF;
+    --feito:#16a34a; --pendente:#d97706; --risco:#e11d48; --cinza:#8a96b0;
+    --fundo:#F6F8FA; --superficie:#FFFFFF; --texto:#061749; --texto-2:#4a5878;
+    --borda:#dfe6f3; --suave:rgba(24,67,212,.045);
+    --c-ganho:#0e7c86; --c-esforco:#d4560f;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --fundo:var(--navy-deep); --superficie:#0B1E42;
-      --texto:#EDF2FB; --texto-2:#9DB0D0;
-      --borda:rgba(232,238,248,.14); --regua:rgba(232,238,248,.16);
-      --suave:rgba(232,238,248,.05);
-    }
-  }
-  :root[data-theme="dark"]{
-    --fundo:var(--navy-deep); --superficie:#0B1E42;
-    --texto:#EDF2FB; --texto-2:#9DB0D0;
-    --borda:rgba(232,238,248,.14); --regua:rgba(232,238,248,.16);
-    --suave:rgba(232,238,248,.05);
-  }
-
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth; background:#00093a}
   body{
-    margin:0; background:var(--fundo); color:var(--texto);
+    margin:0; color:var(--texto);
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    background:radial-gradient(1200px 700px at 70% 0%, #0c2a86 0%, #00093a 55%, #000622 100%) fixed;
   }
   .env{max-width:1180px; margin:0 auto; padding:0 28px}
-  h1,h2,h3,h4{font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif; margin:0; line-height:1.08}
+  h1,h2,h3,h4{margin:0; line-height:1.08}
   a{color:var(--eletrico)}
+  #rede{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
+  .topo,main,footer{position:relative; z-index:1}
 
   /* TOPO */
-  .topo{background:var(--navy); color:#fff; padding:14px 0; position:sticky; top:0; z-index:40;
-        border-bottom:1px solid rgba(255,255,255,.12)}
+  .topo{position:sticky; top:0; z-index:40; padding:14px 0;
+        background:linear-gradient(180deg,rgba(0,9,58,.94),rgba(0,9,58,.72));
+        backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+        border-bottom:1px solid rgba(135,209,255,.14)}
   .topo .env{display:flex; align-items:center; gap:16px}
-  .marca{display:flex; align-items:baseline; gap:10px}
-  .marca b{font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif; font-weight:800; font-stretch:112%; font-size:21px; letter-spacing:-.02em; color:#fff}
-  .marca span{font-size:12.5px; color:#A9BDE4}
-  .topo nav{margin-left:auto; display:flex; gap:22px}
-  .topo nav a{color:#BACDEC; text-decoration:none; font-size:14px; font-weight:500; padding:4px 0; border-bottom:2px solid transparent}
-  .topo nav a:hover,.topo nav a:focus-visible{color:#fff; border-bottom-color:var(--eletrico)}
-  @media(max-width:860px){.topo nav{display:none}}
+  .logo-novale{height:30px; width:auto; display:block}
 
   /* ABERTURA */
-  .abertura{
-    background:radial-gradient(120% 90% at 82% 8%, rgba(76,134,240,.30), transparent 58%),
-               linear-gradient(176deg, var(--navy) 0%, var(--navy-deep) 100%);
-    color:#fff; padding:86px 0 0; overflow:hidden;
-  }
-  .abertura h1{font-weight:900; font-stretch:118%; font-size:clamp(40px,7.2vw,84px); letter-spacing:-.035em; max-width:13ch}
-  .abertura .sub{margin-top:22px; max-width:58ch; font-size:clamp(17px,2vw,20px); color:#C5D5F0; line-height:1.55}
-  .ident{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px 30px; font-size:14px; color:#9DB5DE}
+  .abertura{color:#fff; padding:86px 0 0; overflow:hidden}
+  .abertura h1{font-weight:900; text-transform:uppercase; letter-spacing:-.02em; line-height:.98;
+               font-size:clamp(38px,6.4vw,82px); max-width:18ch}
+  .abertura h1 .hl{color:var(--ciano); display:block}
+  .abertura .sub{margin-top:22px; max-width:58ch; font-size:clamp(17px,2vw,20px); color:#c5d6ff; line-height:1.55}
+  .ident{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px 30px; font-size:14px; color:#87a7e6}
   .ident b{color:#fff; font-weight:600}
-  .numeros{margin-top:58px; display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,.18)}
-  .num{padding:26px 22px 44px; border-right:1px solid rgba(255,255,255,.12)}
+  .numeros{margin-top:58px; display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(135,209,255,.2)}
+  .num{padding:26px 22px 44px; border-right:1px solid rgba(135,209,255,.14)}
   .num:last-child{border-right:0}
-  .num b{display:block; font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif; font-weight:800; font-size:clamp(38px,5vw,58px); letter-spacing:-.04em; font-variant-numeric:tabular-nums}
-  .num span{display:block; margin-top:4px; font-size:13.5px; color:#9DB5DE}
+  .num b{display:block; font-weight:900; font-size:clamp(38px,5vw,58px); letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+  .num span{display:block; margin-top:4px; font-size:13.5px; color:#9fbaf0}
   @media(max-width:700px){
     .numeros{grid-template-columns:repeat(2,1fr)}
-    .num{border-bottom:1px solid rgba(255,255,255,.12)}
+    .num{border-bottom:1px solid rgba(135,209,255,.14)}
     .num:nth-child(2){border-right:0}
   }
 
-  section{padding:74px 0}
-  .titulo{font-weight:800; font-stretch:108%; font-size:clamp(27px,3.6vw,40px); letter-spacing:-.028em; margin-bottom:12px}
-  .intro{color:var(--texto-2); max-width:66ch; font-size:17.5px; margin-bottom:38px}
-
-  /* MATRIZ */
-  .matriz-wrap{display:grid; grid-template-columns:34px 1fr; grid-template-rows:1fr 34px; gap:10px}
-  .eixo-y{grid-row:1; display:flex; align-items:center; justify-content:center}
-  .eixo-y span{writing-mode:vertical-rl; transform:rotate(180deg); font-size:13px; font-weight:600; color:var(--texto-2); letter-spacing:.06em; text-transform:uppercase; white-space:nowrap}
-  .eixo-x{grid-column:2; text-align:center; font-size:13px; font-weight:600; color:var(--texto-2); letter-spacing:.06em; text-transform:uppercase; align-self:center}
-  .matriz3{grid-column:2; grid-row:1; display:grid; grid-template-columns:96px repeat(3,minmax(0,1fr)); gap:8px}
-  .m-canto{}
-  .m-col{color:var(--c-esforco) !important}
-  .m-lin{color:var(--c-ganho) !important}
-  .eixo-y span{color:var(--c-ganho) !important}
-  .eixo-x{color:var(--c-esforco) !important}
-  .m-col,.m-lin{font-size:12.5px; font-weight:600; color:var(--texto-2); text-transform:uppercase; letter-spacing:.05em}
-  .m-col{text-align:center; padding-top:4px}
-  .m-lin{display:flex; align-items:center; justify-content:flex-end; text-align:right; padding-right:6px}
-  .m-cel{min-height:118px; border-radius:14px; border:1px dashed var(--borda); background:var(--suave);
-         padding:14px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start}
-  .m-cel{background:hsla(var(--h),68%,46%,.22); border:1px solid hsla(var(--h),62%,42%,.30)}
-  .m-cel.cheia{background:hsla(var(--h),70%,45%,.42); border:1.5px solid hsla(var(--h),65%,38%,.75);
-               box-shadow:0 6px 18px -10px hsla(var(--h),62%,30%,.5)}
-  .m-cel .chip{background:var(--superficie); border-color:hsla(var(--h),50%,40%,.35); box-shadow:0 1px 2px rgba(6,20,47,.08)}
-  .leg-cor{margin-left:auto}
-  .leg-cor .grad{display:inline-block; width:64px; height:10px; border-radius:6px;
-                 background:linear-gradient(90deg, hsl(150,62%,44%), hsl(80,62%,46%), hsl(38,70%,48%), hsl(8,62%,48%))}
-  @media(max-width:760px){ .leg-cor{margin-left:0} }
-  .chip{display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; text-decoration:none; color:var(--texto);
-        padding:6px 12px; border-radius:100px; border:1px solid var(--borda); background:var(--fundo)}
-  .chip:hover{border-color:var(--eletrico)}
-  .dot{display:inline-block; width:9px; height:9px; border-radius:50%; flex:none}
-  .dot.h-curto{background:var(--feito)} .dot.h-medio{background:var(--eletrico)} .dot.h-longo{background:var(--pendente)}
-  .legenda-h{display:flex; flex-wrap:wrap; gap:8px 22px; margin:18px 0 0 44px; font-size:14px; color:var(--texto-2)}
-  .legenda-h span{display:inline-flex; align-items:center; gap:8px}
-  .horizontes{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:34px}
-  .hz-espera{background:var(--suave); border-style:dashed}
-  .hz-espera .qtd{color:var(--texto-2)}
-  @media(max-width:1080px){ .horizontes{grid-template-columns:repeat(2,1fr)} }
-  .hz{border-radius:16px; padding:24px; border:1px solid var(--borda); background:var(--superficie); display:flex; flex-direction:column; gap:12px}
-  .hz .cab{display:flex; justify-content:space-between; gap:12px; align-items:flex-start}
-  .hz h3{font-weight:800; font-stretch:106%; font-size:21px; letter-spacing:-.02em}
-  .hz .coord{font-size:12.5px; color:var(--texto-2); margin-top:4px}
-  .hz .qtd{font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif; font-weight:800; font-size:34px; line-height:1; letter-spacing:-.04em}
-  .hz .acao{font-size:14.5px; color:var(--texto-2); margin:0}
-  .hz .acao b{color:var(--texto)}
-  .hz-lista{list-style:none; margin:4px 0 0; padding:0; display:grid; gap:0; border-top:1px solid var(--borda)}
-  .hz-lista li{padding:10px 0; border-bottom:1px solid var(--borda); display:flex; flex-direction:column}
-  .hz-lista a{font-weight:600; font-size:15px; color:var(--texto); text-decoration:none}
-  .hz-lista a:hover{color:var(--eletrico)}
-  .hz-lista span{font-size:12.5px; color:var(--texto-2)}
-  .hz-curto{background:linear-gradient(160deg, rgba(18,145,92,.12), var(--superficie) 70%)} .hz-curto .qtd{color:var(--feito)}
-  .hz-medio{background:var(--navy); border-color:var(--navy); color:#fff}
-  .hz-medio .coord,.hz-medio .acao,.hz-medio .hz-lista span{color:#B6C9E9}
-  .hz-medio .acao b,.hz-medio .hz-lista a{color:#fff}
-  .hz-medio .hz-lista,.hz-medio .hz-lista li{border-color:rgba(255,255,255,.16)}
-  .hz-longo{background:linear-gradient(160deg, rgba(192,122,18,.11), var(--superficie) 70%)} .hz-longo .qtd{color:var(--pendente)}
-  .tag.th-curto{background:rgba(18,145,92,.12); color:var(--feito)}
-  .tag.th-medio{background:rgba(76,134,240,.14); color:var(--eletrico)}
-  .tag.th-longo{background:rgba(192,122,18,.13); color:var(--pendente)}
-  @media(max-width:640px){ .horizontes{grid-template-columns:1fr} }
-  @media(max-width:760px){
-    .matriz-wrap{grid-template-columns:1fr; grid-template-rows:auto}
-    .eixo-y,.eixo-x{display:none}
-    .matriz3{grid-column:1; grid-template-columns:52px repeat(3,minmax(0,1fr)); gap:5px}
-    .m-cel{min-height:84px; padding:8px; gap:6px}
-    .m-col,.m-lin{font-size:10.5px; letter-spacing:.02em}
-    .chip{font-size:11.5px; padding:5px 8px; gap:5px; line-height:1.25; max-width:100%; border-radius:10px}
-    .m-cel{min-width:0}
-    .legenda-h{margin-left:0}
-  }
-  .legenda-mat{margin-top:18px; font-size:14px; color:var(--texto-2)}
-
-  /* FUNIL */
-  .funil{border-top:1px solid var(--borda); overflow-x:auto}
-  .f-cab,.f-lin{display:grid; grid-template-columns:minmax(190px,1.3fr) repeat(7, minmax(48px,1fr)) minmax(130px,.9fr); align-items:center; min-width:820px}
-  .f-cab{font-size:11.5px; font-weight:600; color:var(--texto-2); text-transform:uppercase; letter-spacing:.04em; padding:14px 0 10px}
-  .f-cab span{text-align:center; padding:0 4px; line-height:1.3}
-  .f-cab span:first-child,.f-cab span:last-child{text-align:left}
-  .f-lin{border-top:1px solid var(--borda); padding:12px 0}
-  .f-lin .nome{font-weight:600; font-size:15.5px; text-decoration:none; color:var(--texto)}
-  .f-lin .nome:hover{color:var(--eletrico)}
-  .seg{height:10px; margin:0 3px; border-radius:3px; background:var(--suave); border:1px solid var(--borda)}
-  .seg.ok{background:var(--feito); border-color:var(--feito)}
-  .seg.prox{background:transparent; border:2px dashed var(--pendente)}
-  .f-lin .est{font-size:13px; color:var(--texto-2); padding-left:12px}
-
-  /* FILTROS */
-  .filtros{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px}
-  .filtros button{
-    font:inherit; font-size:14px; font-weight:600; cursor:pointer;
-    padding:8px 16px; border-radius:100px; border:1px solid var(--borda);
-    background:var(--superficie); color:var(--texto-2);
-  }
-  .filtros button[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#fff}
-
-  /* CARDS */
-  .cards{display:grid; gap:18px}
-  .card{
-    background:var(--superficie); border:1px solid var(--borda); border-radius:18px;
-    padding:28px 30px; scroll-margin-top:80px;
-  }
-  .card-top{display:grid; grid-template-columns:1fr auto; gap:12px 28px; align-items:start}
-  @media(max-width:820px){ .card-top{grid-template-columns:1fr} }
-  .card h3{font-weight:800; font-stretch:106%; font-size:24px; letter-spacing:-.022em}
-  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-  .tag{font-size:12.5px; font-weight:600; padding:3px 10px; border-radius:100px; background:var(--suave); color:var(--texto-2)}
-  .tag.estrategico{background:rgba(13,43,94,.12); color:var(--navy)}
-  .tag.rapido{background:rgba(18,145,92,.12); color:var(--feito)}
-  .tag.preench{background:rgba(76,134,240,.14); color:var(--eletrico)}
-  .tag.desperd{background:rgba(194,65,58,.12); color:var(--risco)}
-  :root[data-theme="dark"] .tag.estrategico{background:rgba(124,170,255,.16); color:#9CC0FF}
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tag.estrategico{background:rgba(124,170,255,.16); color:#9CC0FF} }
-
-  .tangi{text-align:right; min-width:170px}
-  .tangi .pct{font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif; font-weight:800; font-size:34px; line-height:1; letter-spacing:-.04em; font-variant-numeric:tabular-nums}
-  .tangi .niv{font-size:12.5px; color:var(--texto-2); margin-top:4px}
-  .barra{height:6px; border-radius:6px; background:var(--suave); margin-top:8px; overflow:hidden}
-  .barra i{display:block; height:100%; border-radius:6px}
-
-  .card-corpo{display:grid; grid-template-columns:1.1fr 1fr; gap:30px; margin-top:24px}
-  .rot{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--texto-2); margin:0 0 8px}
-  .situ{margin:0 0 20px; font-size:16px}
-  .prox-acao{padding:16px 18px; border-radius:12px; background:rgba(76,134,240,.09); border:1px solid rgba(76,134,240,.24)}
-  .prox-acao .rot{color:var(--eletrico)}
-  .prox-acao p{margin:0; font-size:15.5px}
-  .prox-acao .para{font-size:13px; color:var(--texto-2); margin-top:8px}
-  .sinais{list-style:none; margin:0; padding:0; display:grid; gap:9px}
-  .sinais li{display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:15px; align-items:start}
-  .sinais .ic{width:20px; height:20px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:800; margin-top:1px}
-  .ic.s1{background:var(--feito); color:#fff}
-  .ic.s05{background:transparent; border:2px solid var(--pendente); color:var(--pendente)}
-  .ic.s0{background:var(--suave); border:1px solid var(--borda); color:var(--texto-2)}
-  .passo-flag{margin-top:16px; padding:10px 14px; border-radius:10px; background:rgba(192,122,18,.10); border:1px solid rgba(192,122,18,.28); font-size:14px}
-  .passo-flag b{display:block; color:var(--pendente); font-size:12px; text-transform:uppercase; letter-spacing:.05em}
-  .passo-flag.ok{background:rgba(18,145,92,.10); border-color:rgba(18,145,92,.28)}
-  .passo-flag.ok b{color:var(--feito)}
-  .obs-etapa{margin:12px 0 0; font-size:13px; color:var(--texto-2); font-style:italic}
-  .sinais small{display:block; color:var(--texto-2); font-size:13px; line-height:1.4}
-
-  .diag{margin-top:24px; border-top:1px solid var(--borda); padding-top:22px}
-  .diag-cab{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:14px}
-  .diag-cab h4{font-size:17px; font-weight:700}
-  .hip{font-size:12px; font-weight:600; color:var(--pendente); background:rgba(192,122,18,.13); padding:3px 10px; border-radius:100px}
-  .diag-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-  .diag-grid p{margin:0; font-size:15px; color:var(--texto-2)}
-  .link-proj{display:inline-block; margin-top:14px; font-size:14.5px; font-weight:600}
-  @media(max-width:820px){
-    .card{padding:24px 20px}
-    .card-corpo{grid-template-columns:1fr}
-    .diag-grid{grid-template-columns:1fr}
-    .tangi{text-align:left}
-  }
-
-  /* ABAS */
-  .abas{display:flex; gap:4px; margin-left:18px; background:rgba(255,255,255,.08); padding:4px; border-radius:100px}
-  .abas button{font:inherit; font-size:14px; font-weight:600; cursor:pointer; border:0; background:transparent; color:#BACDEC; padding:6px 16px; border-radius:100px}
-  .abas button[aria-selected="true"]{background:#fff; color:var(--navy)}
-  @media(max-width:520px){ .abas{margin-left:auto} .marca span{display:none} }
-
-  /* AÇÕES */
-  .ab-acoes{padding-top:70px}
-  .acoes{display:grid; border-top:1px solid var(--borda)}
-  .acao-lin{display:grid; grid-template-columns:150px 1fr 170px 150px; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--borda)}
-  .acao-prazo b{display:block; font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif; font-weight:700; font-size:16px; letter-spacing:-.01em}
-  .acao-prazo span{font-size:13px; color:var(--texto-2)}
-  .acao-op{font-size:13px; font-weight:600; text-decoration:none; color:var(--texto-2); display:inline-flex; align-items:center; gap:7px}
-  .acao-op:hover{color:var(--eletrico)}
-  .acao-txt{margin:4px 0 0; font-size:16px}
-  .acao-resp{font-size:14.5px}
-  .acao-resp b{display:block; font-weight:600}
-  .acao-resp span{display:block; color:var(--texto-2); font-size:13px}
-  .st{justify-self:end; font-size:12.5px; font-weight:600; padding:4px 12px; border-radius:100px; white-space:nowrap}
-  .st.atrasada{color:var(--risco); background:rgba(194,65,58,.12)}
-  .st.hoje{color:var(--pendente); background:rgba(192,122,18,.14)}
-  .st.semana{color:var(--eletrico); background:rgba(76,134,240,.13)}
-  .st.prazo{color:var(--feito); background:rgba(18,145,92,.12)}
-  .st.sem{color:var(--texto-2); background:var(--suave); border:1px solid var(--borda)}
-  @media(max-width:820px){
-    .acao-lin{grid-template-columns:1fr auto; gap:6px 16px}
-    .acao-prazo{grid-column:1; grid-row:1}
-    .st{grid-column:2; grid-row:1; align-self:start}
-    .acao-lin > div:nth-child(2){grid-column:1 / -1}
-    .acao-resp{grid-column:1 / -1}
-  }
-  .hist{border-left:2px solid var(--regua); margin-left:6px; padding-left:28px; display:grid; gap:0}
-  .hist-dia{position:relative; padding-bottom:26px}
-  .hist-dia::before{content:""; position:absolute; left:-36px; top:6px; width:14px; height:14px; border-radius:50%; background:var(--fundo); border:3px solid var(--feito)}
-  .hist-dia h3{font-size:17px; font-weight:700; margin-bottom:10px}
-  .hist-dia h3 small{font-family:Inter,sans-serif; font-weight:500; font-size:13px; color:var(--texto-2); margin-left:8px}
-  .hist-item{display:grid; grid-template-columns:210px 1fr; gap:16px; padding:10px 0; border-top:1px solid var(--borda); font-size:15px}
-  .hist-item .acao-op{font-size:14px; color:var(--texto)}
-  .hist-item p{margin:0; color:var(--texto-2)}
-  @media(max-width:640px){ .hist-item{grid-template-columns:1fr; gap:4px} }
-
-  /* CAIXA DE ESPERA */
-  .vazio{font-size:13.5px; color:var(--texto-2); font-style:italic}
-  .espera-lista{border-top:1px solid var(--borda)}
-  .esp{padding:24px 0; border-bottom:1px solid var(--borda); scroll-margin-top:80px}
-  .esp-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 20px; align-items:flex-start}
-  .esp h3{font-weight:700; font-stretch:104%; font-size:20px; letter-spacing:-.018em}
-  .esp-desde{font-size:12.5px; font-weight:600; color:var(--texto-2); background:var(--suave); border:1px solid var(--borda); padding:4px 12px; border-radius:100px; white-space:nowrap}
-  .esp-sit{margin:14px 0 0; color:var(--texto-2); font-size:15.5px; max-width:80ch}
-  .esp-sit b{color:var(--texto); font-weight:600}
-  .esp details{margin-top:14px}
-  .esp summary{cursor:pointer; font-size:14px; font-weight:600; color:var(--eletrico)}
-  .esp details .diag-grid{margin-top:16px}
-
-  /* APRENDIZADOS */
-  .bloco-navy{background:var(--navy); color:#fff; border-radius:20px; padding:46px 42px}
-  .bloco-navy .titulo{color:#fff}
-  .bloco-navy .intro{color:#B6C9E9}
-  .padroes{display:grid; grid-template-columns:repeat(2,1fr); gap:0}
-  .padrao{padding:24px 28px 24px 0; border-top:1px solid rgba(255,255,255,.16)}
-  .padrao:nth-child(even){padding:24px 0 24px 28px; border-left:1px solid rgba(255,255,255,.16)}
-  .padrao h4{font-size:18px; font-weight:700; margin-bottom:8px}
-  .padrao p{margin:0; color:#CBD9F2; font-size:15.5px}
-  .padrao .onde{margin-top:10px; font-size:13px; color:#8FA9D6}
-  @media(max-width:760px){
-    .bloco-navy{padding:34px 22px; border-radius:16px}
-    .padroes{grid-template-columns:1fr}
-    .padrao,.padrao:nth-child(even){padding:22px 0; border-left:0}
-  }
-
-  /* REGRAS */
-  .passos{display:grid}
-  .passo{display:grid; grid-template-columns:54px 1fr; gap:22px; align-items:start; padding:19px 0; border-bottom:1px solid var(--borda)}
-  .passo:first-child{border-top:1px solid var(--borda)}
-  .passo .n{font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif; font-weight:800; font-size:20px; color:var(--eletrico)}
-  .passo .o b{display:block; font-size:16.5px}
-  .passo .o span{color:var(--texto-2); font-size:15px}
-
-  footer{border-top:1px solid var(--borda); padding:34px 0 52px; color:var(--texto-2); font-size:14px}
-  footer b{color:var(--texto)}
-  footer .nota{margin-top:8px; max-width:74ch}
-  :focus-visible{outline:2px solid var(--eletrico); outline-offset:3px; border-radius:3px}
-
-  /* ===== IDENTIDADE NOVALE (portfólio) ===== */
-  :root, :root:not([data-theme="light"]), :root[data-theme="dark"]{
-    --navy:#061749; --navy-deep:#00093a; --navy-mid:#001054;
-    --eletrico:#1843D4; --azul2:#1335C5; --ciano:#38B6FF; --ceu:#87D1FF;
-    --pale:#EEF3FB; --papel:#F6F8FA; --tinta:#061749; --tinta-2:#4a5878;
-    --feito:#16a34a; --pendente:#d97706; --risco:#e11d48;
-    --fundo:#F6F8FA; --superficie:#FFFFFF; --texto:#061749; --texto-2:#4a5878;
-    --borda:#dfe6f3; --regua:#dfe6f3; --suave:rgba(24,67,212,.045);
-    --c-ganho:#0e7c86; --c-esforco:#d4560f;
-  }
-  body{font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;
-       background:radial-gradient(1200px 700px at 70% 0%, #0c2a86 0%, #00093a 55%, #000622 100%) fixed; color:var(--texto)}
-  html{background:#00093a}
-  #rede{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
-  .topo,main,footer{position:relative; z-index:1}
-  .topo{z-index:40; background:linear-gradient(180deg,rgba(0,9,58,.94),rgba(0,9,58,.72)); backdrop-filter:blur(10px);
-        -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(135,209,255,.14); position:sticky}
-  .logo-novale{height:30px; width:auto; display:block}
-  .abas{background:rgba(255,255,255,.06); border:1px solid rgba(135,209,255,.18); padding:5px}
-  .abas button{color:#bcd4ff; font-weight:700; padding:8px 20px}
-  .abas button[aria-selected="true"]{background:linear-gradient(90deg,#1843D4,#2f6bff); color:#fff;
-       box-shadow:0 6px 24px rgba(24,67,212,.6), inset 0 0 0 1px rgba(255,255,255,.25)}
-  .topo nav a{color:#bcd4ff; font-weight:600}
-  .topo nav a:hover,.topo nav a:focus-visible{color:#fff; border-bottom-color:var(--ciano)}
-
-  .abertura{background:transparent}
-  .abertura h1{font-family:Inter,sans-serif; font-weight:900; text-transform:uppercase; letter-spacing:-.02em; line-height:.98;
-               font-size:clamp(38px,6.4vw,82px); max-width:18ch}
-  .abertura h1 .hl{color:var(--ciano); display:block}
-  .abertura .sub{color:#c5d6ff}
-  .ident{color:#87a7e6}
-  .numeros{border-top:1px solid rgba(135,209,255,.2)}
-  .num{border-right-color:rgba(135,209,255,.14)}
-  .num b{font-weight:900; letter-spacing:-.03em}
-  .num span{color:#9fbaf0}
-
+  /* FOLHA */
   .sheet{position:relative; max-width:1240px; margin:0 auto 48px; border-radius:22px; overflow:hidden;
          background:linear-gradient(160deg,rgba(255,255,255,.98),rgba(238,243,251,.97));
          box-shadow:0 40px 120px rgba(0,0,0,.45), 0 0 0 1px rgba(135,209,255,.14)}
@@ -359,63 +65,131 @@
          background-image:radial-gradient(rgba(24,67,212,.09) 1px, transparent 1px); background-size:26px 26px;
          -webkit-mask-image:linear-gradient(120deg,transparent 30%,#000 70%,transparent 100%);
                  mask-image:linear-gradient(120deg,transparent 30%,#000 70%,transparent 100%)}
-  .sheet > section{position:relative}
-  .sheet > section:first-child{padding-top:64px}
+  section{position:relative; padding:64px 0 56px}
   @media(max-width:760px){ .sheet{margin:0 8px 32px; border-radius:16px} }
-
   .kicker{margin:0 0 10px; font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--eletrico);
           display:flex; align-items:center; gap:10px}
   .kicker::after{content:""; height:2px; width:60px; background:linear-gradient(90deg,currentColor,transparent)}
-  .titulo{font-family:Inter,sans-serif; font-weight:900; text-transform:uppercase; letter-spacing:-.015em; line-height:1;
+  .titulo{font-weight:900; text-transform:uppercase; letter-spacing:-.015em; line-height:1;
           font-size:clamp(28px,3.8vw,46px); color:var(--navy); margin-bottom:16px}
   .titulo .hl{color:var(--eletrico)}
-  .intro{color:var(--texto-2)}
+  .intro{color:var(--texto-2); max-width:66ch; font-size:17.5px; margin-bottom:38px}
 
-  .card,.quad,.hz,.acao-lin{font-family:inherit}
-  .card{border:0; border-radius:20px; box-shadow:0 14px 40px rgba(6,23,73,.10), 0 0 0 1px rgba(6,23,73,.05);
-        transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s}
-  .card:hover{transform:translateY(-4px); box-shadow:0 26px 60px rgba(24,67,212,.18), 0 0 0 1px rgba(24,67,212,.22)}
-  .card h3,.hz h3,.esp h3{font-weight:800; text-transform:uppercase; letter-spacing:.005em}
-  .hz{border:0; border-radius:20px; box-shadow:0 14px 40px rgba(6,23,73,.10), 0 0 0 1px rgba(6,23,73,.05)}
-  .hz-medio{background:radial-gradient(500px 300px at 80% 10%,rgba(24,67,212,.55),transparent 60%),linear-gradient(160deg,#061749,#001054)}
-  .hz-medio .hz-lista a{color:#fff} .hz-medio .coord,.hz-medio .acao,.hz-medio .hz-lista span{color:#c5d6ff}
-  .hz-espera{background:rgba(255,255,255,.7); border:1px dashed #c6d3ec; box-shadow:none}
-  .filtros button{border-color:var(--borda); font-weight:700}
-  .filtros button[aria-pressed="true"]{background:linear-gradient(90deg,#1843D4,#3d7bff); border-color:transparent; color:#fff;
-          box-shadow:0 8px 20px rgba(24,67,212,.3)}
-  .chip{font-weight:700; border-radius:12px}
-  .prox-acao{background:rgba(24,67,212,.06); border-color:rgba(24,67,212,.2); border-radius:14px}
+  /* MATRIZ */
+  .matriz-wrap{display:grid; grid-template-columns:34px 1fr; grid-template-rows:1fr 34px; gap:10px}
+  .eixo-y{grid-row:1; display:flex; align-items:center; justify-content:center}
+  .eixo-y span{writing-mode:vertical-rl; transform:rotate(180deg); font-size:13px; font-weight:600; color:var(--c-ganho);
+               letter-spacing:.06em; text-transform:uppercase; white-space:nowrap}
+  .eixo-x{grid-column:2; text-align:center; font-size:13px; font-weight:600; color:var(--c-esforco);
+          letter-spacing:.06em; text-transform:uppercase; align-self:center}
+  .matriz3{grid-column:2; grid-row:1; display:grid; grid-template-columns:96px repeat(3,minmax(0,1fr)); gap:8px}
+  .m-col,.m-lin{font-size:12.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em}
+  .m-col{text-align:center; padding-top:4px; color:var(--c-esforco)}
+  .m-lin{display:flex; align-items:center; justify-content:flex-end; text-align:right; padding-right:6px; color:var(--c-ganho)}
+  .m-lin.lin-espera{color:var(--texto-2)}
+  .m-cel{min-height:118px; border-radius:14px; padding:14px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; min-width:0;
+         background:hsla(var(--h),68%,46%,.22); border:1px solid hsla(var(--h),62%,42%,.30)}
+  .m-cel.cheia{background:hsla(var(--h),70%,45%,.42); border:1.5px solid hsla(var(--h),65%,38%,.75);
+               box-shadow:0 6px 18px -10px hsla(var(--h),62%,30%,.5)}
+  .m-cel.espera{grid-column:span 3; min-height:0; margin-top:10px; background:rgba(255,255,255,.75);
+                border:1.5px dashed #b9c6e0; box-shadow:none; align-items:center}
+  .m-cel.espera .vazio{font-size:13.5px; color:var(--texto-2); font-style:italic}
+  .chip{display:inline-flex; align-items:center; gap:8px; font:inherit; font-size:13.5px; font-weight:700; cursor:pointer;
+        color:var(--texto); padding:6px 12px; border-radius:12px; text-align:left;
+        background:var(--superficie); border:1px solid hsla(var(--h,220),50%,40%,.35); box-shadow:0 1px 2px rgba(6,20,47,.08);
+        transition:transform .15s, border-color .15s}
+  .chip:hover{border-color:var(--eletrico); transform:translateY(-1px)}
+  .chip .pc{font-size:11.5px; font-weight:700; color:var(--texto-2); font-variant-numeric:tabular-nums}
+  .chip.em-espera{color:var(--texto-2); border-style:dashed}
+  .dot{display:inline-block; width:9px; height:9px; border-radius:50%; flex:none}
+  .dot.h-curto{background:var(--feito)} .dot.h-medio{background:var(--eletrico)} .dot.h-longo{background:var(--pendente)}
+  .dot.h-espera{background:var(--cinza)}
+  .legenda-h{display:flex; flex-wrap:wrap; gap:8px 22px; margin:18px 0 0 44px; font-size:14px; color:var(--texto-2)}
+  .legenda-h span{display:inline-flex; align-items:center; gap:8px}
+  .leg-cor{margin-left:auto}
+  .leg-cor .grad{display:inline-block; width:64px; height:10px; border-radius:6px;
+                 background:linear-gradient(90deg, hsl(150,62%,44%), hsl(80,62%,46%), hsl(38,70%,48%), hsl(8,62%,48%))}
+  .legenda-mat{margin-top:18px; font-size:14px; color:var(--texto-2)}
+  @media(max-width:760px){
+    .matriz-wrap{grid-template-columns:1fr; grid-template-rows:auto}
+    .eixo-y,.eixo-x{display:none}
+    .matriz3{grid-column:1; grid-template-columns:52px repeat(3,minmax(0,1fr)); gap:5px}
+    .m-cel{min-height:84px; padding:8px; gap:6px}
+    .m-col,.m-lin{font-size:10.5px; letter-spacing:.02em}
+    .chip{font-size:11.5px; padding:5px 8px; gap:5px; line-height:1.25; max-width:100%; border-radius:10px; overflow-wrap:anywhere; hyphens:auto}
+    .chip .pc{display:none}
+    .legenda-h{margin-left:0} .leg-cor{margin-left:0}
+  }
+
+  /* CARD (janela) */
+  dialog.janela{border:0; padding:0; width:min(960px, calc(100vw - 24px)); max-height:calc(100vh - 40px);
+                border-radius:20px; background:var(--superficie); color:var(--texto);
+                box-shadow:0 40px 120px rgba(0,0,0,.5)}
+  dialog.janela::backdrop{background:rgba(0,9,58,.62); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px)}
+  .card{padding:30px 32px 32px; position:relative}
+  .fechar{position:absolute; top:14px; right:14px; width:38px; height:38px; border-radius:50%; cursor:pointer;
+          border:1px solid var(--borda); background:var(--superficie); color:var(--texto-2); font-size:20px; line-height:1}
+  .fechar:hover{color:var(--eletrico); border-color:var(--eletrico)}
+  .card-top{display:grid; grid-template-columns:1fr auto; gap:12px 28px; align-items:start; padding-right:44px}
+  .card h3{font-weight:800; text-transform:uppercase; font-size:24px; letter-spacing:.005em}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+  .tag{font-size:12.5px; font-weight:600; padding:3px 10px; border-radius:100px; background:var(--suave); color:var(--texto-2)}
+  .tag.th-curto{background:rgba(22,163,74,.12); color:var(--feito)}
+  .tag.th-medio{background:rgba(24,67,212,.12); color:var(--eletrico)}
+  .tag.th-longo{background:rgba(217,119,6,.13); color:var(--pendente)}
+  .tag.th-espera{background:rgba(138,150,176,.18); color:#56627d}
+  .tangi{text-align:right; min-width:170px}
+  .tangi .pct{font-weight:800; font-size:34px; line-height:1; letter-spacing:-.04em; font-variant-numeric:tabular-nums}
+  .tangi .niv{font-size:12.5px; color:var(--texto-2); margin-top:4px}
+  .barra{height:6px; border-radius:6px; background:var(--suave); margin-top:8px; overflow:hidden}
+  .barra i{display:block; height:100%; border-radius:6px}
+  .card-corpo{display:grid; grid-template-columns:1.1fr 1fr; gap:30px; margin-top:24px}
+  .rot{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--texto-2); margin:0 0 8px}
+  .situ{margin:0 0 20px; font-size:16px}
+  .prox-acao{padding:16px 18px; border-radius:14px; background:rgba(24,67,212,.06); border:1px solid rgba(24,67,212,.2)}
   .prox-acao .rot{color:var(--eletrico)}
-  .bloco-navy{background:radial-gradient(900px 600px at 80% 20%,rgba(24,67,212,.45),transparent 60%),linear-gradient(160deg,#001054,#00093a)}
-  .bloco-navy .titulo{color:#fff} .bloco-navy .titulo .hl{color:var(--ciano)} .bloco-navy .kicker{color:var(--ceu)}
-  .passo .n{color:var(--eletrico); font-weight:900}
-  .hist-dia::before{background:#fff; border-color:var(--eletrico)}
-  footer{border-top:0; color:#9fbaf0} footer b{color:#fff}
-  @media (prefers-reduced-motion: reduce){ #rede{display:none} }
+  .prox-acao p{margin:0; font-size:15.5px}
+  .prox-acao .para{font-size:13px; color:var(--texto-2); margin-top:8px}
+  .sinais{list-style:none; margin:0; padding:0; display:grid; gap:9px}
+  .sinais li{display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:15px; align-items:start}
+  .sinais small{display:block; color:var(--texto-2); font-size:13px; line-height:1.4}
+  .ic{width:20px; height:20px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:800; margin-top:1px}
+  .ic.s1{background:var(--feito); color:#fff}
+  .ic.s05{border:2px solid var(--pendente); color:var(--pendente)}
+  .ic.s0{background:var(--suave); border:1px solid var(--borda)}
+  .passo-flag{margin-top:16px; padding:10px 14px; border-radius:10px; background:rgba(217,119,6,.10); border:1px solid rgba(217,119,6,.28); font-size:14px}
+  .passo-flag b{display:block; color:var(--pendente); font-size:12px; text-transform:uppercase; letter-spacing:.05em}
+  .passo-flag.ok{background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.28)}
+  .passo-flag.ok b{color:var(--feito)}
+  .obs-etapa{margin:12px 0 0; font-size:13px; color:var(--texto-2); font-style:italic}
+  .link-proj{display:inline-block; margin-top:14px; font-size:14.5px; font-weight:600}
+  .diag{margin-top:24px; border-top:1px solid var(--borda); padding-top:22px}
+  .diag-cab{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:14px}
+  .diag-cab h4{font-size:17px; font-weight:700}
+  .hip{font-size:12px; font-weight:600; color:var(--pendente); background:rgba(217,119,6,.13); padding:3px 10px; border-radius:100px}
+  .diag-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .diag-grid p{margin:0; font-size:15px; color:var(--texto-2)}
+  @media(max-width:820px){
+    .card{padding:24px 20px}
+    .card-top,.card-corpo,.diag-grid{grid-template-columns:1fr}
+    .tangi{text-align:left}
+  }
+
+  footer{padding:34px 0 52px; color:#9fbaf0; font-size:14px}
+  footer b{color:#fff}
+  footer .nota{margin-top:8px; max-width:74ch}
+  :focus-visible{outline:2px solid var(--eletrico); outline-offset:3px; border-radius:3px}
+  @media (prefers-reduced-motion: reduce){ #rede{display:none} html{scroll-behavior:auto} }
 </style>
 </head>
 <body>
 
 <canvas id="rede" aria-hidden="true"></canvas>
 <header class="topo">
-  <div class="env">
-    <div class="marca"><img class="logo-novale" alt="NOVALE" src="data:image/webp;base64,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"></div>
-    <div class="abas" role="tablist">
-      <button type="button" role="tab" data-aba="pipeline" aria-selected="true">Pipeline</button>
-      <button type="button" role="tab" data-aba="acoes" aria-selected="false">Ações</button>
-    </div>
-    <nav id="nav-pipeline">
-      <a href="#matriz">Matriz</a>
-      <a href="#funil">Funil</a>
-      <a href="#oportunidades">Oportunidades</a>
-      <a href="#espera">Caixa de espera</a>
-      <a href="#aprendizados">Aprendizados</a>
-      <a href="#regras">Regras de tratativa</a>
-    </nav>
-  </div>
+  <div class="env"><img class="logo-novale" alt="NOVALE" src="data:image/webp;base64,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"></div>
 </header>
 
-<main id="view-pipeline">
+<main>
 <div class="abertura">
   <div class="env">
     <h1>Pipeline de <span class="hl">novos negócios</span></h1>
@@ -423,8 +197,8 @@
        para avançar. Organizado por esforço, ganho e horizonte de fechamento.</p>
     <div class="ident">
       <span>Responsável <b>Ernane Guedes</b></span>
-      <span>Atualizado em <b id="data-atual">16 out 2026</b></span>
-      <span>Base <b>Painel de status v1.0 · 11 set 2026</b></span>
+      <span>Atualizado em <b id="data-atual"></b></span>
+      <span>Revisão <b id="revisao"></b></span>
     </div>
     <div class="numeros" id="numeros"></div>
   </div>
@@ -436,115 +210,21 @@
     <p class="kicker">Matriz</p>
     <h2 class="titulo">Matriz de esforço <span class="hl">e ganho</span></h2>
     <p class="intro">Cada oportunidade posicionada pelo esforço que ainda exige e pelo ganho que
-       pode trazer. A cor indica o horizonte: o que fechar agora, as grandes apostas de médio prazo
-       e os projetos estratégicos futuros.</p>
+       pode trazer. A cor do ponto indica o horizonte. Clique em uma oportunidade para ver a
+       situação, a tangibilidade e a ação para avançar.</p>
     <div class="matriz-wrap">
       <div class="eixo-y"><span>Ganho esperado →</span></div>
       <div class="matriz3" id="matriz-grid"></div>
       <div class="eixo-x">Esforço para converter →</div>
     </div>
     <div class="legenda-h" id="legenda-h"></div>
-    <div class="horizontes" id="horizontes"></div>
-    <p class="legenda-mat">Classificação definida pelo responsável comercial em 18 set 2026.</p>
+    <p class="legenda-mat">Classificação definida pelo responsável comercial.</p>
   </div>
 </section>
-
-<section id="funil" style="padding-top:0">
-  <div class="env">
-    <p class="kicker">Funil</p>
-    <h2 class="titulo">Funil <span class="hl">por estágio</span></h2>
-    <p class="intro">Os sete marcos do fluxo de entrada, da reunião inicial ao contrato assinado.
-       Verde indica marco cumprido. O tracejado indica o próximo marco a conquistar.</p>
-    <div class="funil" id="funil-tab"></div>
-  </div>
-</section>
-
-<section id="oportunidades" style="padding-top:0">
-  <div class="env">
-    <p class="kicker">Oportunidades</p>
-    <h2 class="titulo">Oportunidade <span class="hl">por oportunidade</span></h2>
-    <p class="intro">A tangibilidade acompanha a etapa do funil: cada etapa tem uma faixa de
-       percentual e três critérios para concluí-la. Conforme os critérios são cumpridos, o percentual
-       avança dentro da faixa. Quando o responsável comercial define o percentual diretamente, o card indica. Cada card traz a ação que leva ao próximo estágio. Nas oportunidades paradas, há
-       também a leitura do que travou e do que poderia ter sido diferente.</p>
-    <div class="filtros" id="filtros"></div>
-    <div class="cards" id="cards"></div>
-  </div>
-</section>
-
-<section id="espera" style="padding-top:0">
-  <div class="env">
-    <p class="kicker">Pausadas</p>
-    <h2 class="titulo">Caixa <span class="hl">de espera</span></h2>
-    <p class="intro">Oportunidades retiradas do pipeline ativo para seguir em outro momento.
-       Não contam nos números nem na matriz, mas continuam registradas com o histórico e o
-       aprendizado de cada uma.</p>
-    <div class="espera-lista" id="espera-lista"></div>
-  </div>
-</section>
-
-<section id="aprendizados" style="padding-top:0">
-  <div class="env">
-    <div class="bloco-navy">
-      <p class="kicker">Aprendizados</p>
-    <h2 class="titulo">O que as oportunidades <span class="hl">paradas ensinam</span></h2>
-      <p class="intro">Quatro padrões explicam as tratativas que pararam. São eles que orientam as
-         regras da seção seguinte.</p>
-      <div class="padroes" id="padroes"></div>
-    </div>
-  </div>
-</section>
-
-<section id="regras" style="padding-top:0">
-  <div class="env">
-    <p class="kicker">Método</p>
-    <h2 class="titulo">Regras para as <span class="hl">próximas tratativas</span></h2>
-    <p class="intro">Critérios práticos para aplicar desde o primeiro contato, com o objetivo de
-       reduzir oportunidades paradas e concentrar o esforço onde há resultado.</p>
-    <div class="passos" id="regras-lista"></div>
-  </div>
-</section>
-
 </div>
 </main>
 
-<main id="view-acoes" hidden>
-  <div class="abertura ab-acoes">
-    <div class="env">
-      <h1>Ações <span class="hl">comerciais</span></h1>
-      <p class="sub">A próxima ação de cada oportunidade, com responsável e prazo, e o histórico
-         do que já foi feito.</p>
-      <div class="ident">
-        <span>Responsável <b>Ernane Guedes</b></span>
-        <span>Atualizado em <b>16 out 2026</b></span>
-      </div>
-      <div class="numeros" id="numeros-acoes"></div>
-    </div>
-  </div>
-
-  <div class="sheet">
-  <section id="proximas">
-    <div class="env">
-      <p class="kicker">Agenda</p>
-    <h2 class="titulo">Próximas <span class="hl">ações</span></h2>
-      <p class="intro">Ordenadas por prazo. O status é calculado pela data de hoje, então a lista
-         mostra sozinha o que vence e o que atrasou.</p>
-      <div class="filtros" id="filtro-resp"></div>
-      <div class="acoes" id="lista-acoes"></div>
-    </div>
-  </section>
-
-  <section id="historico" style="padding-top:0">
-    <div class="env">
-      <p class="kicker">Registro</p>
-    <h2 class="titulo">Histórico <span class="hl">de ações</span></h2>
-      <p class="intro">O que já foi feito em cada oportunidade, da mais recente para a mais antiga.
-         Quando uma próxima ação é concluída, ela entra aqui.</p>
-      <div class="hist" id="lista-hist"></div>
-    </div>
-  </section>
-</div>
-</main>
+<dialog class="janela" id="janela" aria-label="Detalhes da oportunidade"></dialog>
 
 <footer>
   <div class="env">
@@ -557,12 +237,21 @@
 
 <script>
 /* =================================================================
+   REVISÕES — a cada atualização, acrescentar uma linha no fim.
+   "Atualizado em" e "Revisão" no topo usam sempre a última linha.
+   ================================================================= */
+const REVISOES = [
+  { rev:"1.0", data:"2026-09-11", nota:"Painel de status inicial" },
+  { rev:"1.1", data:"2026-10-16", nota:"Atualização das tratativas" },
+  { rev:"1.2", data:"2026-10-29", nota:"Atualização das tratativas" },
+  { rev:"2.0", data:"2026-11-12", nota:"Painel simplificado: números e matriz, com detalhes ao clicar" }
+];
+
+/* =================================================================
    DADOS — toda atualização do pipeline acontece aqui.
    estagio: 0 a 7 (ver ETAPAS).
-   crit: os 3 critérios da etapa atual para avançar à seguinte
-         (1 = cumprido, 0.5 = parcial, 0 = pendente).
-   A tangibilidade parte da faixa da etapa e avança dentro dela
-   conforme os critérios são cumpridos.
+   crit: os 3 critérios da etapa atual (1 = cumprido, 0.5 = parcial, 0 = pendente).
+   espera:true tira a oportunidade do pipeline ativo e a coloca na faixa "Em espera".
    ================================================================= */
 const ETAPAS = [
   { nome:"Prospecção",                        curto:"Prospecção", faixa:[0,10],
@@ -751,22 +440,13 @@ const OPORTUNIDADES = [
   }
 ];
 
-const PADROES = [
-  { t:"Reunião sem próximo passo marcado", d:"A conversa termina bem, mas sem data para o passo seguinte. A retomada passa a depender de resposta espontânea do cliente.", onde:"Comolatti · Glauco · NOVALE América do Sul" },
-  { t:"Um único contato na conta", d:"Quando a pessoa muda de função, some ou demora, a tratativa inteira para junto com ela.", onde:"Edify · Comolatti" },
-  { t:"Parceria sem objetivo comercial", d:"Parcerias entram no pipeline sem um cliente ou projeto concreto em comum. Sem isso, não há o que avançar.", onde:"Glauco · SN Vitor" },
-  { t:"Dependência de intermediário", d:"O acesso ao decisor passa por um terceiro, sem prazo combinado e sem contato direto.", onde:"NOVALE América do Sul" }
-];
-
-const REGRAS = [
-  { t:"Toda reunião termina com o próximo passo na agenda", d:"Data, responsável e objetivo definidos antes de encerrar a conversa." },
-  { t:"Pelo menos dois contatos por oportunidade", d:"Um interlocutor do dia a dia e o decisor, ou quem tem acesso direto a ele." },
-  { t:"Qualificar antes de entrar no pipeline", d:"Só registrar depois de uma reunião com necessidade identificada. Antes disso, é prospecção." },
-  { t:"Parceria entra com um caso concreto", d:"Um cliente ou projeto em comum e o que cada lado entrega e ganha." },
-  { t:"Prazo para oportunidades sem resposta", d:"Duas tentativas sem retorno ou 30 dias parada: a oportunidade sai do pipeline ativo e vai para depuração." }
-];
-
 /* ================================================================= */
+const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const fmtData = iso => { const [a,m,d] = iso.split("-").map(Number); return `${d} ${MESES[m-1]} ${a}`; };
+const ultima = REVISOES[REVISOES.length - 1];
+document.getElementById("data-atual").textContent = fmtData(ultima.data);
+document.getElementById("revisao").textContent = "v" + ultima.rev;
+
 const tang = o => {
   if (typeof o.tangManual === "number") return o.tangManual;
   const e = ETAPAS[o.estagio];
@@ -776,301 +456,115 @@ const tang = o => {
 };
 const nivel = p => p >= 70 ? ["Alta", "var(--feito)"] : p >= 40 ? ["Média", "var(--pendente)"] : ["Baixa", "var(--risco)"];
 const ordemH = ["curto","medio","longo"];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-/* números */
 const ATIVAS = OPORTUNIDADES.filter(o => !o.espera);
 const ESPERA = OPORTUNIDADES.filter(o => o.espera);
-const total = ATIVAS.length;
-const comPasso = ATIVAS.filter(o => o.passo && o.passo.ok).length;
-const media = Math.round(ATIVAS.reduce((a,o)=>a+tang(o),0)/total);
+
+/* números */
+const media = ATIVAS.length ? Math.round(ATIVAS.reduce((a,o)=>a+tang(o),0)/ATIVAS.length) : 0;
 document.getElementById("numeros").innerHTML = [
-  [total, "oportunidades no pipeline ativo"],
-  [comPasso, "com próximo passo agendado"],
+  [ATIVAS.length, "oportunidades no pipeline ativo"],
+  [ATIVAS.filter(o => o.passo && o.passo.ok).length, "com próximo passo agendado"],
   [ESPERA.length, "na caixa de espera"],
   [media + "%", "tangibilidade média das ativas"]
 ].map(([n,l]) => `<div class="num"><b>${n}</b><span>${l}</span></div>`).join("");
 
-/* matriz 3x3 */
-const chip = o => `<a class="chip" href="#op-${o.id}"><i class="dot h-${o.prazo}"></i>${o.nome}</a>`;
+/* matriz 3x3 + faixa de espera */
+const chip = o => o.espera
+  ? `<button type="button" class="chip em-espera" data-op="${o.id}"><i class="dot h-espera"></i>${o.nome}</button>`
+  : `<button type="button" class="chip" data-op="${o.id}" title="${HORIZONTES[o.prazo].nome} · tangibilidade ${tang(o)}%"><i class="dot h-${o.prazo}"></i>${o.nome}<span class="pc">${tang(o)}%</span></button>`;
 let mt = "";
 Object.keys(NIV_GAN).forEach(g => {
   mt += `<div class="m-lin">${NIV_GAN[g].replace("/","/<wbr>")}</div>`;
   Object.keys(NIV_ESF).forEach(e => {
-    const itens = ATIVAS.filter(o => o.esf === e && o.gan === g);
+    const itens = ATIVAS.filter(o => o.esf === e && o.gan === g)
+      .sort((a,b) => ordemH.indexOf(a.prazo) - ordemH.indexOf(b.prazo) || tang(b) - tang(a));
     const gi = {baixo:0, medio:1, medioalto:2, alto:3}[g], ei = {baixo:0, medio:1, alto:2}[e];
     const hue = Math.round(8 + (gi - ei + 2) / 5 * 142);   /* vermelho → verde */
     mt += `<div class="m-cel${itens.length ? " cheia" : ""}" style="--h:${hue}">${itens.map(chip).join("")}</div>`;
   });
 });
 mt += `<div class="m-canto"></div>` + Object.keys(NIV_ESF).map(e => `<div class="m-col">${NIV_ESF[e]}</div>`).join("");
+mt += `<div class="m-lin lin-espera">Em espera</div><div class="m-cel espera">${
+  ESPERA.length ? ESPERA.map(chip).join("") : `<span class="vazio">Nenhuma oportunidade em espera.</span>`}</div>`;
 document.getElementById("matriz-grid").innerHTML = mt;
-document.getElementById("legenda-h").innerHTML = ordemH.map(h => `<span><i class="dot h-${h}"></i>${HORIZONTES[h].nome}</span>`).join("") + `<span class="leg-cor"><i class="grad"></i>Fundo: do verde (mais ganho, menos esforço) ao vermelho (menos ganho, mais esforço)</span>`;
+document.getElementById("legenda-h").innerHTML =
+  ordemH.map(h => `<span><i class="dot h-${h}"></i>${HORIZONTES[h].nome}</span>`).join("") +
+  `<span><i class="dot h-espera"></i>Em espera</span>` +
+  `<span class="leg-cor"><i class="grad"></i>Fundo: do verde (mais ganho, menos esforço) ao vermelho (menos ganho, mais esforço)</span>`;
 
-/* horizontes */
-document.getElementById("horizontes").innerHTML = ordemH.map(h => {
-  const itens = ATIVAS.filter(o => o.prazo === h);
-  const H = HORIZONTES[h];
-  return `<div class="hz hz-${h}">
-    <div class="cab"><div><h3>${H.nome}</h3><div class="coord">${H.sub}</div></div><span class="qtd">${itens.length}</span></div>
-    <p class="acao">${H.acao}</p>
-    <ul class="hz-lista">${itens.map(o => `<li><a href="#op-${o.id}">${o.nome}</a><span>Esforço ${NIV_ESF[o.esf].toLowerCase()} · ganho ${NIV_GAN[o.gan].toLowerCase()}</span></li>`).join("")}</ul>
-  </div>`;
-}).join("") + `<div class="hz hz-espera">
-    <div class="cab"><div><h3>Em espera</h3><div class="coord">Retomar em outro momento</div></div><span class="qtd">${ESPERA.length}</span></div>
-    <p class="acao"><b>Pausadas.</b> Fora do pipeline ativo e sem esforço do time agora. O histórico fica registrado para a retomada.</p>
-    <ul class="hz-lista">${ESPERA.map(o => `<li><a href="#op-${o.id}">${o.nome}</a><span>Parou no estágio ${o.estagio} · em espera desde ${o.desde}</span></li>`).join("")}</ul>
-  </div>`;
-
-/* funil */
-const porEstagio = [...ATIVAS].sort((a,b) => b.estagio - a.estagio || tang(b) - tang(a));
-document.getElementById("funil-tab").innerHTML =
-  `<div class="f-cab"><span>Oportunidade</span>${ETAPAS.slice(1).map((e,i)=>`<span>${i+1}. ${e.curto}</span>`).join("")}<span>Estágio atual</span></div>` +
-  porEstagio.map(o => `<div class="f-lin">
-    <a class="nome" href="#op-${o.id}">${o.nome}</a>
-    ${[1,2,3,4,5,6,7].map(n => `<span class="seg ${n <= o.estagio ? "ok" : n === o.estagio + 1 ? "prox" : ""}" title="${ESTAGIOS[n]}"></span>`).join("")}
-    <span class="est">${o.estagio ? o.estagio + ". " : ""}${ESTAGIOS[o.estagio]}</span>
-  </div>`).join("");
-
-/* filtros e cards */
-const filtros = [["todas","Todas"], ...ordemH.map(k => [k, HORIZONTES[k].nome])];
-let ativo = "todas";
-function desenhaFiltros(){
-  document.getElementById("filtros").innerHTML = filtros.map(([k,l]) =>
-    `<button type="button" data-f="${k}" aria-pressed="${k===ativo}">${l}</button>`).join("");
-  document.querySelectorAll("#filtros button").forEach(b => b.onclick = () => { ativo = b.dataset.f; desenhaFiltros(); desenhaCards(); });
-}
+/* card da oportunidade */
 const ic = v => v === 1 ? ["s1","✓"] : v === 0.5 ? ["s05","½"] : ["s0",""];
-function desenhaCards(){
-  const lista = [...ATIVAS]
-    .filter(o => ativo === "todas" || o.prazo === ativo)
-    .sort((a,b) => ordemH.indexOf(a.prazo) - ordemH.indexOf(b.prazo) || tang(b) - tang(a));
-  document.getElementById("cards").innerHTML = lista.map(o => {
-    const p = tang(o); const [nv, cor] = nivel(p);
-    const proxEst = o.estagio < 7 ? ESTAGIOS[o.estagio + 1] : "Projeto em execução";
-    return `<article class="card" id="op-${o.id}">
-      <div class="card-top">
-        <div>
-          <h3>${o.nome}</h3>
-          <div class="tags">
-            <span class="tag th-${o.prazo}">${HORIZONTES[o.prazo].nome}</span>
-            <span class="tag">Esforço ${NIV_ESF[o.esf].toLowerCase()} · ganho ${NIV_GAN[o.gan].toLowerCase()}</span>
-            <span class="tag">${o.tipo}</span>
-            <span class="tag">Estágio ${o.estagio} · ${ESTAGIOS[o.estagio]}</span>
-          </div>
-        </div>
-        <div class="tangi">
-          <div class="pct" style="color:${cor}">${p}%</div>
-          <div class="niv">Tangibilidade ${nv.toLowerCase()} · ${typeof o.tangManual === "number" ? "definida pelo responsável comercial" : `faixa da etapa ${ETAPAS[o.estagio].faixa[0]}–${ETAPAS[o.estagio].faixa[1]}%`}</div>
-          <div class="barra"><i style="width:${p}%;background:${cor}"></i></div>
-        </div>
-      </div>
-      <div class="card-corpo">
-        <div>
-          <p class="rot">Situação</p>
-          <p class="situ">${o.situacao}</p>
-          <div class="prox-acao">
-            <p class="rot">Ação para avançar</p>
-            <p>${o.proxima}</p>
-            <p class="para">Leva a: ${proxEst}</p>
-          </div>
-          ${o.link ? `<a class="link-proj" href="${o.link}" target="_blank" rel="noopener">Ver o cronograma completo do projeto →</a>` : ""}
-        </div>
-        <div>
-          <p class="rot">Para concluir a etapa ${o.estagio} · ${ETAPAS[o.estagio].curto}</p>
-          <ul class="sinais">${ETAPAS[o.estagio].crit.map((s,i) => { const [c,t] = ic((o.crit||[])[i] || 0);
-            const n = (o.critNotas||[])[i];
-            return `<li><span class="ic ${c}">${t}</span><span>${s}${n ? `<small>${n}</small>` : ""}</span></li>`; }).join("")}</ul>
-          ${o.passo ? `<div class="passo-flag ${o.passo.ok ? "ok" : ""}"><b>${o.passo.ok ? "Próximo passo agendado" : "Próximo passo em aberto"}</b><span>${o.passo.txt}</span></div>` : ""}
-          ${o.obsEtapa ? `<p class="obs-etapa">${o.obsEtapa}</p>` : ""}
-        </div>
-      </div>
-      ${o.diag ? `<div class="diag">
-        <div class="diag-cab"><h4>Por que não avançou</h4><span class="hip">Hipótese inicial · a validar</span></div>
-        <div class="diag-grid">
-          <div><p class="rot">O que travou</p><p>${o.diag.porque}</p></div>
-          <div><p class="rot">Onde erramos na estratégia</p><p>${o.diag.erro}</p></div>
-          <div><p class="rot">O que poderíamos ter feito</p><p>${o.diag.poderia}</p></div>
-        </div>
-      </div>` : ""}
-    </article>`;
-  }).join("");
-}
-desenhaFiltros(); desenhaCards();
-
-/* =================================================================
-   AÇÕES — próximas ações e histórico.
-   prazo no formato AAAA-MM-DD, ou null quando não há prazo.
-   ================================================================= */
-const ACOES = [
-  { op:"detronics", acao:"Follow-up com a Detronics sobre o hardware do sensor de luminosidade e a precificação", resp:"Ernane", prazo:"2026-10-30" },
-  { op:"detronics", acao:"Passar a POC do medidor de pasto ao time de desenvolvimento da NOVALE", resp:"Ernane", prazo:null },
-  { op:"leandro",   acao:"Conversar com o Leandro Gaunszer para entender o documento que ele compartilhou", resp:"Ernane", prazo:"2026-10-30" },
-  { op:"subway",    acao:"Acompanhar a transição da POC para o CRM real", resp:"Ernane", prazo:"2026-10-30" },
-  { op:"telespazio",acao:"Follow-up por e-mail com a Telespazio para checar o retorno sobre a proposta enviada", resp:"Ernane", prazo:"2026-11-02" },
-  { op:"rh",        acao:"Conversa inicial com a Daniela (Gegers) para dividir as responsabilidades do projeto", resp:"Ernane", prazo:null },
-  { op:"javastreak",acao:"Retomar a negociação com o influenciador quando o aplicativo evoluir", resp:"Ernane", prazo:null },
-  { op:"iuh",       acao:"Responder ao Felipe por e-mail, concedendo mais um desconto na proposta", resp:"Ernane", prazo:"2026-10-30" },
-  { op:"century",   acao:"Receber o parecer do jurídico da NOVALE sobre as mudanças do novo contrato e fechar os pontos divergentes", resp:"Ernane", obs:"jurídico NOVALE", prazo:null },
-  { op:"marcopolo", acao:"Aguardar o retorno da Mari sobre a avaliação do material e o agendamento da reunião com o André e o Marco Polo", resp:"Ernane", prazo:null },
-  { op:"totvs",     acao:"Follow-up com a Bruna, da TOTVS, para agendar a segunda conversa sobre os caminhos de parceria", resp:"Ernane", prazo:"2026-11-10" },
-  { op:"edify",     acao:"Nova estratégia na Edify: abordar o CEO pelo LinkedIn, aproveitando o contato feito na Bolívia", resp:"Ernane", prazo:null },
-  { op:"elsys",     acao:"Aguardar o retorno do Alex Fernandes com a data em que ele vem apresentar as propostas da Elsys na NOVALE", resp:"Ernane", prazo:null },
-  { op:"proscore",  acao:"Devolver à Pro Score o NDA assinado, para seguir com os próximos passos da parceria", resp:"Ernane", prazo:"2026-10-29" },
-  { op:"comolatti", acao:"Entregar a POC inicial da plataforma Questar", resp:"Ernane", prazo:"2026-11-15" },
-  { op:"glauco",    acao:"Follow-up com o parceiro Glauco", resp:"Diego", prazo:null },
-  { op:"snvitor",   acao:"Follow-up com o parceiro SN Vitor", resp:"Diego", prazo:null }
-];
-
-const HISTORICO = [
-  { data:"2026-10-29", op:"iuh",       txt:"Proposta atualizada e enviada após a visita de Uberlândia. O Felipe respondeu de forma negativa; a NOVALE vai responder por e-mail concedendo mais um desconto." },
-  { data:"2026-10-29", op:"telespazio", txt:"RFP respondida e proposta enviada. Aguardando o retorno da Telespazio; follow-up marcado para 2 nov." },
-  { data:"2026-10-29", op:"subway",    txt:"POC testada pela Anna Rafaela. A frente passa a aguardar a transição da POC para o CRM real." },
-  { data:"2026-10-29", op:"lenna",     txt:"Frente suspensa e movida para a caixa de espera, para ser retomada em outro momento." },
-  { data:"2026-10-23", op:"iuh",       txt:"Visita realizada na IUH em 20 out e proposta enviada com as opções comerciais. Proposta em análise pelo cliente; follow-up marcado para 27 out." },
-  { data:"2026-10-23", op:"leandro",   txt:"Análise do documento não priorizada. Frente movida para a caixa de espera." },
-  { data:"2026-10-16", op:"totvs",     txt:"Follow-up com a Bruna e a assinatura do NDA da Pro Score remarcados para 30 out, junto com a POC da plataforma Questar." },
-  { data:"2026-10-16", op:"detronics", txt:"Nova demanda registrada: medidor de pasto com sensor de luminosidade, com a Detronics no hardware e a NOVALE no software, e um veterinário como ponte com os produtores rurais. POC do aplicativo já montada na versão de IA. Proposta aguarda a precificação da Detronics." },
-  { data:"2026-10-16", op:"telespazio", txt:"Reunião inicial feita em 15 out e RFP recebida. NDA assinado devolvido em 16 out, dentro do prazo. RFP em análise pelo grupo estratégico da NOVALE: Evandro, Ernane e Diego." },
-  { data:"2026-10-16", op:"century",   txt:"A Century reenviou o contrato com novas considerações. A NOVALE montou uma planilha comparando as mudanças e encaminhou ao jurídico, que está analisando os ajustes." },
-  { data:"2026-10-16", op:"subway",    txt:"POC do CRM entregue à Anna Rafaela, que já subiu alguns testes. A conversa de acompanhamento foi adiada para 28 out por causa da viagem." },
-  { data:"2026-10-16", op:"rh",        txt:"Nova demanda registrada: desenvolvimento de um CRM de RH em conjunto com a Dani, da Gegers, com a NOVALE no desenvolvimento e ela no conceito e nos testes." },
-  { data:"2026-10-16", op:"comolatti", txt:"A evolução da plataforma Questar segue parada. Definida a meta de entregar uma POC inicial até 30 out." },
-  { data:"2026-10-16", op:"javastreak",txt:"Aplicativo em desenvolvimento com o time interno e já no portfólio. Negociação encaminhada com um influenciador, que avança quando o app evoluir." },
-  { data:"2026-10-16", op:"leandro",   txt:"Leandro Gaunszer compartilhou por e-mail o link de um documento com o trabalho dele. Análise prevista para a semana de 19 a 23 out." },
-  { data:"2026-10-16", op:"lenna",     txt:"Frente paralisada: a proposta de trabalho de campo não evoluiu e a oportunidade não está quente, ficando em segundo plano." },
-  { data:"2026-10-16", op:"iuh",       txt:"Proposta será atualizada em Uberlândia na segunda (19 out), para a reunião com a IUH na terça (20 out) com as opções comerciais prontas." },
-  { data:"2026-09-25", op:"iuh",       txt:"E-mail enviado ao Felipe, que assumiu a frente no lugar do Evandro Prieto, com questionamentos sobre a solução de uma das frentes de monitoramento da IUH. Aguardando o retorno." },
-  { data:"2026-09-28", op:"comolatti", txt:"Prazo do desenvolvimento da plataforma ajustado para 15 out." },
-  { data:"2026-09-28", op:"edify",     txt:"Sem retorno do André. Definida uma nova estratégia: abordar o CEO da Edify pelo LinkedIn, aproveitando o contato feito na Bolívia." },
-  { data:"2026-09-28", op:"century",   txt:"Nova cobrança à Century sobre a assinatura do contrato. A reunião recorrente de marcos já está agendada e o acompanhamento segue pelo Redmine." },
-  { data:"2026-09-28", op:"proscore",  txt:"Assinatura do NDA e o follow-up com a TOTVS remarcados para 6 out: a equipe estará no Rio de Janeiro nos próximos três dias." },
-  { data:"2026-09-28", op:"elsys",     txt:"Novo follow-up com o Alex Fernandes, para saber quando a agenda dele permite vir apresentar as propostas da Elsys. Aguardando o retorno." },
-  { data:"2026-09-25", op:"marcopolo", txt:"Demanda devolvida à Mari, pedindo que ela interceda junto ao André e ao Marco Polo para marcarmos a reunião e que avalie o nosso material de apresentação." },
-  { data:"2026-09-24", op:"century",   txt:"Ata do kickoff recebida e reunião de entrega dos marcos agendada como recorrente, toda quinta-feira. Projeto criado no Redmine, com o andamento acompanhado pela plataforma." },
-  { data:"2026-09-24", op:"century",   txt:"Kickoff realizado. O desenvolvimento começa mesmo sem a assinatura, com garantia da Century de que o contrato será assinado. Reuniões de acompanhamento passam a ser semanais, às quintas. O Thiago envia a ata e o processo será tratado no Redmine." },
-  { data:"2026-09-23", op:"edify",     txt:"Follow-up por mensagem com o André. Aguardando o retorno." },
-  { data:"2026-09-23", op:"totvs",     txt:"Visita realizada na TOTVS. Conhecemos alguns responsáveis comerciais e ficou combinada uma segunda conversa, para eles apresentarem os caminhos de parceria. Ainda sem data." },
-  { data:"2026-09-23", op:"century",   txt:"Kickoff marcado para 24 set, às 9h, para tratar das demandas do contrato. O contrato segue em análise no jurídico da Century." },
-  { data:"2026-09-22", op:"century",   txt:"Cobrança feita pela manhã. Parte técnica aprovada pela equipe da Century. Aguardando as definições da Débora, diretora financeira, e a assinatura do contrato." },
-  { data:"2026-09-22", op:"lenna",     txt:"Reunião com o Alejandro. Apresentadas quatro soluções: aplicativo de controle financeiro, aplicativo de caça, plataforma de relacionamento com o técnico (Century) e e-commerce da Questar. Maior interesse na plataforma de relacionamento. Resumo de três soluções enviado; o Alejandro vai mandar as demandas dele por escrito." },
-  { data:"2026-09-21", op:"iuh",       txt:"Resposta enviada ao Evandro Prieto, com questionamentos e detalhes técnicos para a elaboração da proposta. Aguardando retorno da IUH." },
-  { data:"2026-09-21", op:"century",   txt:"Duas trocas de e-mail. O Thiago pediu 11 ajustes contratuais, todos absorvidos sem impacto para a Century e para a NOVALE. Contrato reenviado para assinatura, com expectativa de assinatura ainda à noite." },
-  { data:"2026-09-21", op:"proscore",  txt:"Contato com o parceiro intermediário. Ele sugeriu assinar o NDA com a Pro Score e manter o relacionamento: a NOVALE revende os produtos da Pro Score, e a Pro Score indica a NOVALE como desenvolvedora aos seus parceiros." },
-  { data:"2026-09-18", op:"lenna",     txt:"Reunião com o Alejandro agendada para terça, 22 set, pela manhã." },
-  { data:"2026-09-18", op:"century",   txt:"Follow-up com a Anne e o Thiago. O contrato está com a Débora, diretora financeira, com assinatura prevista para 21 set." },
-  { data:"2026-09-18", op:"lenna",     txt:"Follow-up no grupo pedindo reunião. O Alejandro respondeu que retornam assim que possível, após a implementação nacional em andamento." },
-  { data:"2026-09-18", op:"iuh",       txt:"E-mail de cobrança dos próximos passos. O Evandro Prieto respondeu pedindo uma base comercial para manutenção com chamados N1, N2 e N3 em campo." },
-  { data:"2026-09-18", op:"elsys",     txt:"Conversa com o Alex Fernandes. A apresentação da Elsys na NOVALE ficou prevista para a segunda semana de outubro." },
-  { data:"2026-09-18", op:"glauco",    txt:"Movida para a caixa de espera." },
-  { data:"2026-09-18", op:"snvitor",   txt:"Movida para a caixa de espera." },
-  { data:"2026-09-18", op:"edify",     txt:"Movida para a caixa de espera." },
-  { data:"2026-09-11", op:"century",   txt:"Reunião de alinhamento técnico agendada.", fonte:true },
-  { data:"2026-09-11", op:"iuh",       txt:"Reunião realizada. Negociação segue com contato direto com a IUH.", fonte:true },
-  { data:"2026-09-11", op:"proscore",  txt:"Reunião realizada. Contrato do modelo de negócio da Pro Score recebido para análise.", fonte:true },
-  { data:"2026-09-11", op:"totvs",     txt:"Reunião e visita agendadas para 23 set.", fonte:true },
-  { data:"2026-09-11", op:"comolatti", txt:"Relatório de visita enviado ao Alfredo.", fonte:true },
-  { data:"2026-09-11", op:"lenna",     txt:"Aguardando o representante na Bolívia falar com a empresa de energia local.", fonte:true },
-  { data:"2026-09-11", op:"marcopolo", txt:"Primeiro contato. Tentativa de agendar reunião sobre desenvolvimento de CRM.", fonte:true },
-  { data:"2026-09-11", op:"edify",     txt:"Contato promovido e em adaptação à nova função. Tratativa paralisada.", fonte:true }
-];
-
-const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-const DIAS = ["dom","seg","ter","qua","qui","sex","sáb"];
-const paraData = iso => { const [a,m,d] = iso.split("-").map(Number); return new Date(a, m-1, d); };
-const fmt = iso => { const d = paraData(iso); return `${d.getDate()} ${MESES[d.getMonth()]}`; };
-const fmtDia = iso => DIAS[paraData(iso).getDay()];
-const hoje = (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })();
-const opPor = id => OPORTUNIDADES.find(o => o.id === id);
-function status(a){
-  if (!a.prazo) return ["sem","Sem prazo"];
-  const dias = Math.round((paraData(a.prazo) - hoje) / 86400000);
-  if (dias < 0) return ["atrasada", `Atrasada ${-dias} dia${dias === -1 ? "" : "s"}`];
-  if (dias === 0) return ["hoje","Vence hoje"];
-  if (dias <= 7) return ["semana", `Em ${dias} dia${dias === 1 ? "" : "s"}`];
-  return ["prazo","No prazo"];
-}
-const opLink = o => `<a class="acao-op" href="#op-${o.id}" data-ir-op="${o.id}">${o.espera ? `<i class="dot" style="background:var(--texto-2)"></i>` : `<i class="dot h-${o.prazo}"></i>`}${o.nome}${o.espera ? " · em espera" : ""}</a>`;
-
-const ordenadas = [...ACOES].sort((a,b) => (a.prazo ? paraData(a.prazo) : 8.64e15) - (b.prazo ? paraData(b.prazo) : 8.64e15));
-const contaSt = k => ACOES.filter(a => status(a)[0] === k).length;
-document.getElementById("numeros-acoes").innerHTML = [
-  [ACOES.length, "próximas ações registradas"],
-  [contaSt("atrasada") + contaSt("hoje"), "atrasadas ou vencendo hoje"],
-  [contaSt("semana"), "vencem nos próximos 7 dias"],
-  [contaSt("sem"), "sem prazo definido"]
-].map(([n,l]) => `<div class="num"><b>${n}</b><span>${l}</span></div>`).join("");
-
-const responsaveis = ["Todos", ...new Set(ACOES.map(a => a.resp))];
-let respAtivo = "Todos";
-function desenhaAcoes(){
-  document.getElementById("filtro-resp").innerHTML = responsaveis.map(r =>
-    `<button type="button" data-r="${r}" aria-pressed="${r===respAtivo}">${r}</button>`).join("");
-  document.querySelectorAll("#filtro-resp button").forEach(b => b.onclick = () => { respAtivo = b.dataset.r; desenhaAcoes(); });
-  document.getElementById("lista-acoes").innerHTML = ordenadas
-    .filter(a => respAtivo === "Todos" || a.resp === respAtivo)
-    .map(a => { const o = opPor(a.op); const [c,t] = status(a);
-      return `<div class="acao-lin">
-        <div class="acao-prazo">${a.prazo ? `<b>${fmt(a.prazo)}</b><span>${fmtDia(a.prazo)}</span>` : `<b>—</b><span>sem data</span>`}</div>
-        <div>${opLink(o)}<p class="acao-txt">${a.acao}</p></div>
-        <div class="acao-resp"><b>${a.resp}</b>${a.part ? `<span>Com ${a.part}</span>` : ""}${a.obs ? `<span>${a.obs}</span>` : ""}</div>
-        <span class="st ${c}">${t}</span>
-      </div>`; }).join("");
-}
-desenhaAcoes();
-
-const dias = [...new Set(HISTORICO.map(h => h.data))].sort().reverse();
-document.getElementById("lista-hist").innerHTML = dias.map(d => {
-  const itens = HISTORICO.filter(h => h.data === d);
-  return `<div class="hist-dia"><h3>${fmt(d)} 2026${itens.some(h => h.fonte) ? `<small>registrado no painel de status</small>` : ""}</h3>
-    ${itens.map(h => `<div class="hist-item">${opLink(opPor(h.op))}<p>${h.txt}</p></div>`).join("")}</div>`;
-}).join("");
-
-/* abas */
-function mostraAba(aba, alvo){
-  const acoes = aba === "acoes";
-  document.getElementById("view-pipeline").hidden = acoes;
-  document.getElementById("view-acoes").hidden = !acoes;
-  document.getElementById("nav-pipeline").style.visibility = acoes ? "hidden" : "";
-  document.querySelectorAll(".abas button").forEach(b => b.setAttribute("aria-selected", b.dataset.aba === aba));
-  if (alvo) { const el = document.getElementById(alvo); if (el) el.scrollIntoView(); }
-  else window.scrollTo(0,0);
-}
-document.querySelectorAll(".abas button").forEach(b => b.onclick = () => {
-  mostraAba(b.dataset.aba);
-  try { history.replaceState(null, "", b.dataset.aba === "acoes" ? "#acoes" : "#"); } catch(e) {}
-});
-document.addEventListener("click", e => {
-  const l = e.target.closest("[data-ir-op]");
-  if (!l) return;
-  e.preventDefault();
-  mostraAba("pipeline", "op-" + l.dataset.irOp);
-});
-document.querySelectorAll("#nav-pipeline a").forEach(a => a.addEventListener("click", () => mostraAba("pipeline", a.getAttribute("href").slice(1))));
-if (location.hash === "#acoes") mostraAba("acoes");
-
-/* caixa de espera */
-document.getElementById("espera-lista").innerHTML = ESPERA.map(o => `
-  <div class="esp" id="op-${o.id}">
-    <div class="esp-top">
-      <div><h3>${o.nome}</h3><div class="tags"><span class="tag">${o.tipo}</span><span class="tag">Parou no estágio ${o.estagio} · ${ESTAGIOS[o.estagio]}</span></div></div>
-      <span class="esp-desde">Em espera desde ${o.desde}</span>
+function cardHTML(o){
+  const p = tang(o); const [nv, cor] = nivel(p);
+  const etapa = ETAPAS[o.estagio];
+  const proxEst = o.estagio < 7 ? ETAPAS[o.estagio + 1].nome : "Projeto em execução";
+  const tags = [
+    o.espera ? `<span class="tag th-espera">Em espera desde ${o.desde}</span>`
+             : `<span class="tag th-${o.prazo}">${HORIZONTES[o.prazo].nome} · ${HORIZONTES[o.prazo].sub}</span>`,
+    o.esf && o.gan ? `<span class="tag">Esforço ${NIV_ESF[o.esf].toLowerCase()} · ganho ${NIV_GAN[o.gan].toLowerCase()}</span>` : "",
+    o.tipo ? `<span class="tag">${o.tipo}</span>` : "",
+    `<span class="tag">Estágio ${o.estagio} · ${etapa.nome}</span>`
+  ].join("");
+  const temCrit = Array.isArray(o.crit);
+  return `<article class="card">
+    <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+    <div class="card-top">
+      <div><h3>${o.nome}</h3><div class="tags">${tags}</div></div>
+      ${o.espera ? "" : `<div class="tangi">
+        <div class="pct" style="color:${cor}">${p}%</div>
+        <div class="niv">Tangibilidade ${nv.toLowerCase()} · ${typeof o.tangManual === "number" ? "definida pelo responsável comercial" : `faixa da etapa ${etapa.faixa[0]}–${etapa.faixa[1]}%`}</div>
+        <div class="barra"><i style="width:${p}%;background:${cor}"></i></div>
+      </div>`}
     </div>
-    <p class="esp-sit">${o.situacao} <b>Retomada:</b> em outro momento, sem data definida.</p>
-    ${o.diag ? `<details><summary>Por que não avançou · hipótese a validar</summary>
+    <div class="card-corpo">
+      <div>
+        <p class="rot">Situação</p>
+        <p class="situ">${o.situacao}</p>
+        <div class="prox-acao">
+          <p class="rot">${o.espera ? "Para retomar" : "Ação para avançar"}</p>
+          <p>${o.proxima}</p>
+          <p class="para">Leva a: ${proxEst}</p>
+        </div>
+        ${o.link ? `<a class="link-proj" href="${esc(o.link)}" target="_blank" rel="noopener">Ver o cronograma completo do projeto →</a>` : ""}
+      </div>
+      <div>
+        ${temCrit ? `<p class="rot">Para concluir a etapa ${o.estagio} · ${etapa.curto}</p>
+        <ul class="sinais">${etapa.crit.map((s,i) => { const [c,t] = ic(o.crit[i] || 0); const n = (o.critNotas||[])[i];
+          return `<li><span class="ic ${c}">${t}</span><span>${s}${n ? `<small>${n}</small>` : ""}</span></li>`; }).join("")}</ul>` : ""}
+        ${o.passo ? `<div class="passo-flag ${o.passo.ok ? "ok" : ""}"><b>${o.passo.ok ? "Próximo passo agendado" : "Próximo passo em aberto"}</b><span>${o.passo.txt}</span></div>` : ""}
+        ${o.obsEtapa ? `<p class="obs-etapa">${o.obsEtapa}</p>` : ""}
+      </div>
+    </div>
+    ${o.diag ? `<div class="diag">
+      <div class="diag-cab"><h4>Por que não avançou</h4><span class="hip">Hipótese inicial · a validar</span></div>
       <div class="diag-grid">
         <div><p class="rot">O que travou</p><p>${o.diag.porque}</p></div>
         <div><p class="rot">Onde erramos na estratégia</p><p>${o.diag.erro}</p></div>
         <div><p class="rot">O que poderíamos ter feito</p><p>${o.diag.poderia}</p></div>
-      </div></details>` : ""}
-  </div>`).join("");
+      </div>
+    </div>` : ""}
+  </article>`;
+}
 
-/* aprendizados e regras */
-document.getElementById("padroes").innerHTML = PADROES.map(p =>
-  `<div class="padrao"><h4>${p.t}</h4><p>${p.d}</p><div class="onde">Aparece em: ${p.onde}</div></div>`).join("");
-document.getElementById("regras-lista").innerHTML = REGRAS.map((r,i) =>
-  `<div class="passo"><span class="n">${i+1}</span><div class="o"><b>${r.t}</b><span>${r.d}</span></div></div>`).join("");
+const janela = document.getElementById("janela");
+function abre(id){
+  const o = OPORTUNIDADES.find(x => x.id === id); if (!o) return;
+  janela.innerHTML = cardHTML(o);
+  if (!janela.open) janela.showModal();
+  janela.scrollTop = 0;
+  try { history.replaceState(null, "", "#op-" + id); } catch(e) {}
+}
+function fecha(){ if (janela.open) janela.close(); }
+janela.addEventListener("close", () => { try { history.replaceState(null, "", location.pathname + location.search); } catch(e) {} });
+janela.addEventListener("click", e => { if (e.target === janela || e.target.closest("[data-fechar]")) fecha(); });
+document.getElementById("matriz-grid").addEventListener("click", e => {
+  const b = e.target.closest("[data-op]"); if (b) abre(b.dataset.op);
+});
+if (location.hash.startsWith("#op-")) abre(location.hash.slice(4));
 
-/* fundo de rede, como no portfólio */
+/* fundo de rede */
 (function(){
   const cv = document.getElementById("rede"); if (!cv || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const cx = cv.getContext("2d"); let W, H, P = [];
