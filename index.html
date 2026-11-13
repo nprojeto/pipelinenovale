@@ -78,29 +78,31 @@
   /* MATRIZ */
   .matriz-wrap{display:grid; grid-template-columns:34px 1fr; grid-template-rows:1fr 34px; gap:10px}
   .eixo-y{grid-row:1; display:flex; align-items:center; justify-content:center}
-  .eixo-y span{writing-mode:vertical-rl; transform:rotate(180deg); font-size:13px; font-weight:600; color:var(--c-ganho);
+  .eixo-y span{writing-mode:vertical-rl; transform:rotate(180deg); font-size:12px; font-weight:800; color:var(--eletrico);
                letter-spacing:.06em; text-transform:uppercase; white-space:nowrap}
-  .eixo-x{grid-column:2; text-align:center; font-size:13px; font-weight:600; color:var(--c-esforco);
+  .eixo-x{grid-column:2; text-align:center; font-size:12px; font-weight:800; color:var(--eletrico);
           letter-spacing:.06em; text-transform:uppercase; align-self:center}
   .matriz3{grid-column:2; grid-row:1; display:grid; grid-template-columns:96px repeat(3,minmax(0,1fr)); gap:8px}
-  .m-col,.m-lin{font-size:12.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em}
-  .m-col{text-align:center; padding-top:4px; color:var(--c-esforco)}
-  .m-lin{display:flex; align-items:center; justify-content:flex-end; text-align:right; padding-right:6px; color:var(--c-ganho)}
-  .m-lin.lin-espera{color:var(--texto-2)}
-  .m-cel{min-height:118px; border-radius:14px; padding:14px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; min-width:0;
-         background:hsla(var(--h),68%,46%,.22); border:1px solid hsla(var(--h),62%,42%,.30)}
-  .m-cel.cheia{background:hsla(var(--h),70%,45%,.42); border:1.5px solid hsla(var(--h),65%,38%,.75);
-               box-shadow:0 6px 18px -10px hsla(var(--h),62%,30%,.5)}
-  .m-cel.espera{grid-column:span 3; min-height:0; margin-top:10px; background:rgba(255,255,255,.75);
-                border:1.5px dashed #b9c6e0; box-shadow:none; align-items:center}
+  .m-col,.m-lin{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#7a88a8}
+  .m-col{text-align:center; padding-top:6px}
+  .m-lin{display:flex; align-items:center; justify-content:flex-end; text-align:right; padding-right:8px}
+  .m-cel{position:relative; min-height:118px; border-radius:18px; padding:14px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; min-width:0;
+         background:rgba(24,67,212,var(--a)); border:1px solid rgba(24,67,212,calc(var(--a) + .07));
+         transition:box-shadow .2s, transform .2s}
+  .m-cel.cheia{box-shadow:0 10px 28px -16px rgba(24,67,212,.55)}
+  .m-cel.top{background:linear-gradient(145deg,rgba(24,67,212,.30),rgba(56,182,255,.22)); border-color:rgba(24,67,212,.38)}
+  .m-cel[data-rot]::before{content:attr(data-rot); flex-basis:100%; font-size:10.5px; font-weight:800; letter-spacing:.09em;
+         text-transform:uppercase; color:rgba(6,23,73,.42); margin-bottom:2px}
+  .m-cel.espera{grid-column:span 3; min-height:0; margin-top:12px; background:repeating-linear-gradient(135deg,rgba(138,150,176,.07) 0 10px,transparent 10px 20px);
+                border:1.5px dashed #c3cde2; box-shadow:none; align-items:center}
   .m-cel.espera .vazio{font-size:13.5px; color:var(--texto-2); font-style:italic}
   .chip{display:inline-flex; align-items:center; gap:8px; font:inherit; font-size:13.5px; font-weight:700; cursor:pointer;
-        color:var(--texto); padding:6px 12px; border-radius:12px; text-align:left;
-        background:var(--superficie); border:1px solid hsla(var(--h,220),50%,40%,.35); box-shadow:0 1px 2px rgba(6,20,47,.08);
-        transition:transform .15s, border-color .15s}
-  .chip:hover{border-color:var(--eletrico); transform:translateY(-1px)}
-  .chip .pc{font-size:11.5px; font-weight:700; color:var(--texto-2); font-variant-numeric:tabular-nums}
-  .chip.em-espera{color:var(--texto-2); border-style:dashed}
+        color:var(--texto); padding:7px 8px 7px 12px; border-radius:11px; text-align:left;
+        background:#fff; border:1px solid rgba(6,23,73,.08); box-shadow:0 1px 2px rgba(6,23,73,.06), 0 6px 16px -10px rgba(6,23,73,.35);
+        transition:transform .15s, box-shadow .15s, border-color .15s}
+  .chip:hover{transform:translateY(-2px); border-color:rgba(24,67,212,.45); box-shadow:0 10px 24px -10px rgba(24,67,212,.45)}
+  .chip .pc{font-size:11px; font-weight:800; color:var(--eletrico); background:rgba(24,67,212,.08); padding:2px 7px; border-radius:7px; font-variant-numeric:tabular-nums}
+  .chip.em-espera{color:var(--texto-2); background:rgba(255,255,255,.85); padding-right:12px; box-shadow:none; border:1px dashed #c3cde2}
   .dot{display:inline-block; width:9px; height:9px; border-radius:50%; flex:none}
   .dot.h-curto{background:var(--feito)} .dot.h-medio{background:var(--eletrico)} .dot.h-longo{background:var(--pendente)}
   .dot.h-espera{background:var(--cinza)}
@@ -108,7 +110,7 @@
   .legenda-h span{display:inline-flex; align-items:center; gap:8px}
   .leg-cor{margin-left:auto}
   .leg-cor .grad{display:inline-block; width:64px; height:10px; border-radius:6px;
-                 background:linear-gradient(90deg, hsl(150,62%,44%), hsl(80,62%,46%), hsl(38,70%,48%), hsl(8,62%,48%))}
+                 background:linear-gradient(90deg, rgba(24,67,212,.05), rgba(24,67,212,.28), #38B6FF)}
   .legenda-mat{margin-top:18px; font-size:14px; color:var(--texto-2)}
   @media(max-width:760px){
     .matriz-wrap{grid-template-columns:1fr; grid-template-rows:auto}
@@ -116,7 +118,9 @@
     .matriz3{grid-column:1; grid-template-columns:52px repeat(3,minmax(0,1fr)); gap:5px}
     .m-cel{min-height:84px; padding:8px; gap:6px}
     .m-col,.m-lin{font-size:10.5px; letter-spacing:.02em}
-    .chip{font-size:11.5px; padding:5px 8px; gap:5px; line-height:1.25; max-width:100%; border-radius:10px; overflow-wrap:anywhere; hyphens:auto}
+    .chip{font-size:11.5px; padding:5px 8px; gap:5px; line-height:1.25; max-width:100%; border-radius:9px; overflow-wrap:break-word; hyphens:none; word-break:normal}
+    .m-cel{padding:6px; border-radius:12px} .m-cel[data-rot]::before{display:none}
+    .matriz3{grid-template-columns:44px repeat(3,minmax(0,1fr))} .chip{font-size:11px; padding:5px 7px}
     .chip .pc{display:none}
     .legenda-h{margin-left:0} .leg-cor{margin-left:0}
   }
@@ -175,6 +179,43 @@
     .tangi{text-align:left}
   }
 
+  /* RADAR */
+  .radar{display:grid; grid-template-columns:minmax(260px,340px) 1fr; gap:34px; align-items:center;
+         padding:30px 32px; border-radius:20px; background:#fff;
+         box-shadow:0 14px 40px rgba(6,23,73,.10), 0 0 0 1px rgba(6,23,73,.05)}
+  .funil-mini{display:grid; gap:8px}
+  .fm{display:flex; justify-content:space-between; align-items:center; gap:10px; margin:0 auto; padding:11px 18px;
+      color:#fff; font-size:13.5px; font-weight:700; border-radius:10px; width:var(--w); clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
+  .fm b{font-size:20px; font-weight:900; font-variant-numeric:tabular-nums}
+  .fm.f1{--w:100%; background:linear-gradient(90deg,#38B6FF,#5ac4ff)}
+  .fm.f2{--w:84%; background:linear-gradient(90deg,#1843D4,#2f6bff)}
+  .fm.f3{--w:68%; background:linear-gradient(90deg,#15803d,#22c55e)}
+  .radar-lista h3{font-size:18px; font-weight:800; text-transform:uppercase; letter-spacing:.01em; margin-bottom:6px}
+  .radar-lista > p{margin:0 0 16px; font-size:14.5px; color:var(--texto-2)}
+  .radar-itens{display:flex; flex-wrap:wrap; gap:10px}
+  .ri{display:flex; flex-direction:column; padding:12px 16px; border-radius:14px; border:1px solid rgba(56,182,255,.45);
+      background:linear-gradient(160deg,rgba(56,182,255,.12),rgba(255,255,255,.9))}
+  .ri b{font-size:15px; font-weight:800; display:flex; align-items:center; gap:8px}
+  .ri b::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--ciano); box-shadow:0 0 0 4px rgba(56,182,255,.2)}
+  .ri span{font-size:12.5px; color:var(--texto-2); margin-left:16px}
+  @media(max-width:820px){ .radar{grid-template-columns:1fr; padding:24px 20px} }
+
+  /* CASES */
+  .bloco-cases{border-radius:20px; padding:40px 40px 42px; color:#fff;
+               background:radial-gradient(700px 400px at 85% 10%,rgba(22,163,74,.35),transparent 60%),linear-gradient(160deg,#061749,#00093a)}
+  .bloco-cases .titulo{color:#fff} .bloco-cases .titulo .hl{color:#4ade80}
+  .bloco-cases .kicker{color:#86efac} .bloco-cases .intro{color:#c5d6ff; margin-bottom:26px}
+  .cases-lista{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px}
+  .case{font:inherit; text-align:left; cursor:pointer; display:flex; flex-direction:column; gap:6px; color:#fff;
+        padding:20px 22px; border-radius:16px; background:rgba(255,255,255,.06); border:1px solid rgba(134,239,172,.35);
+        transition:transform .15s, border-color .15s, background .15s}
+  .case:hover{transform:translateY(-2px); border-color:#4ade80; background:rgba(255,255,255,.1)}
+  .case b{font-size:22px; font-weight:800; text-transform:uppercase; letter-spacing:.005em}
+  .case-selo{align-self:flex-start; font-size:12px; font-weight:700; color:#052e16; background:#4ade80; padding:3px 10px; border-radius:100px}
+  .case-tipo{font-size:14px; color:#c5d6ff}
+  .case-data{font-size:13px; color:#9fbaf0}
+  .bloco-cases .vazio{color:#9fbaf0; font-style:italic; margin:0}
+  @media(max-width:760px){ .bloco-cases{padding:30px 20px; border-radius:16px} }
   footer{padding:34px 0 52px; color:#9fbaf0; font-size:14px}
   footer b{color:#fff}
   footer .nota{margin-top:8px; max-width:74ch}
@@ -205,7 +246,22 @@
 </div>
 
 <div class="sheet">
-<section id="matriz">
+<section id="radar">
+  <div class="env">
+    <p class="kicker">Radar</p>
+    <h2 class="titulo">Possíveis <span class="hl">novos negócios</span></h2>
+    <div class="radar">
+      <div class="funil-mini" id="funil-mini"></div>
+      <div class="radar-lista">
+        <h3>No radar</h3>
+        <p>Contatos que podem virar oportunidade. Entram na matriz depois de uma reunião com necessidade identificada.</p>
+        <div class="radar-itens" id="radar-itens"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="matriz" style="padding-top:0">
   <div class="env">
     <p class="kicker">Matriz</p>
     <h2 class="titulo">Matriz de esforço <span class="hl">e ganho</span></h2>
@@ -219,6 +275,18 @@
     </div>
     <div class="legenda-h" id="legenda-h"></div>
     <p class="legenda-mat">Classificação definida pelo responsável comercial.</p>
+  </div>
+</section>
+
+<section id="cases" style="padding-top:0">
+  <div class="env">
+    <div class="bloco-cases">
+      <p class="kicker">Concluídos</p>
+      <h2 class="titulo">Cases <span class="hl">de sucesso</span></h2>
+      <p class="intro">Contratos fechados que saíram do pipeline e seguem como projeto em andamento.
+         Não contam nos números nem na matriz.</p>
+      <div class="cases-lista" id="cases-lista"></div>
+    </div>
   </div>
 </section>
 </div>
@@ -244,7 +312,12 @@ const REVISOES = [
   { rev:"1.0", data:"2026-09-11", nota:"Painel de status inicial" },
   { rev:"1.1", data:"2026-10-16", nota:"Atualização das tratativas" },
   { rev:"1.2", data:"2026-10-29", nota:"Atualização das tratativas" },
-  { rev:"2.0", data:"2026-11-12", nota:"Painel simplificado: números e matriz, com detalhes ao clicar" }
+  { rev:"2.0", data:"2026-11-12", nota:"Painel simplificado: números e matriz, com detalhes ao clicar" },
+  { rev:"2.1", data:"2026-11-12", nota:"Telespazio: RFP em andamento, aguardando retorno da proposta" },
+  { rev:"2.2", data:"2026-11-12", nota:"Grupo Comolatti / Questar e Detronics movidas para a caixa de espera" },
+  { rev:"2.3", data:"2026-11-12", nota:"Century: contrato concluído, movida para cases de sucesso" },
+  { rev:"2.4", data:"2026-11-12", nota:"Leandro Gaunszer removido: a demanda não existe mais" },
+  { rev:"2.5", data:"2026-11-12", nota:"Nova matriz e radar de novos negócios; Apeltrys entra; Fauna Tech (antes JavaStreak), Plataforma de RH, CRM da Subway, Pro Score e Elsys atualizados; TOTVS e Marco Polo em espera" }
 ];
 
 /* =================================================================
@@ -282,71 +355,69 @@ const NIV_GAN = { alto:"Alto", medioalto:"Médio/alto", medio:"Médio", baixo:"B
 
 const OPORTUNIDADES = [
   {
-    id:"detronics", nome:"Detronics", tipo:"Parceria · medidor de pasto com sensor de luminosidade", esf:"alto", gan:"medioalto", prazo:"medio", estagio:2,
-    situacao:"Nova demanda: um medidor de pasto com sensor de luminosidade, desenvolvido em parceria. A Detronics fica com o hardware e a NOVALE com o software. Um veterinário participa como ponte com os produtores rurais, para a disseminação do produto. A POC do aplicativo já está montada na versão de IA e ainda não passou para o time de desenvolvimento da NOVALE. A proposta está em construção e depende da precificação da Detronics.",
+    id:"apeltrys", nome:"Apeltrys", tipo:"Parceria · desenvolvimento de CRM", esf:"alto", gan:"alto", prazo:"medio", estagio:2,
+    situacao:"Parceria de desenvolvimento já em andamento: um CRM para montar o funil comercial e apoiar a compra de ISPs, entre outras frentes.",
+    crit:[1,0,0],
+    critNotas:["Parceria de desenvolvimento em andamento","Formalização ainda não registrada",""],
+    passo:{ok:false, txt:"Definir o próximo marco da parceria"},
+    proxima:"Definir com a Apeltrys o escopo da primeira entrega do CRM (funil e compra de ISPs) e formalizar a parceria por escrito: o que cada lado entrega e como a receita se divide."
+  },
+  {
+    id:"detronics", espera:true, desde:"12 nov 2026", nome:"Detronics", tipo:"Parceria · medidor de pasto com sensor de luminosidade", esf:"alto", gan:"medioalto", prazo:"medio", estagio:2,
+    situacao:"Nova demanda: um medidor de pasto com sensor de luminosidade, desenvolvido em parceria. A Detronics fica com o hardware e a NOVALE com o software. Um veterinário participa como ponte com os produtores rurais, para a disseminação do produto. A POC do aplicativo já está montada na versão de IA e ainda não passou para o time de desenvolvimento da NOVALE. A proposta está em construção e depende da precificação da Detronics. Em 12 nov, sem avanço desde então, a frente foi movida para a caixa de espera.",
     crit:[1,0,0],
     critNotas:["Divisão clara: hardware com a Detronics, software com a NOVALE","Proposta de parceria ainda em construção","Depende da precificação da Detronics"],
-    passo:{ok:true, txt:"Follow-up com a Detronics sobre o hardware e a precificação, até 30 out"},
+    passo:{ok:false, txt:"Suspensa; retomar em outro momento"},
     proxima:"Fazer follow-up com a Detronics até sexta (30 out) sobre o hardware do sensor de luminosidade e a precificação. Com o número em mãos, montar a proposta de parceria, definindo a divisão de receita e o papel do veterinário na distribuição."
   },
   {
-    id:"telespazio", nome:"Telespazio", tipo:"Cliente · RFP em análise", esf:"alto", gan:"alto", prazo:"curto", estagio:5,
-    situacao:"Reunião inicial realizada em 15 out e NDA assinado devolvido em 16 out. A RFP foi analisada pelo grupo estratégico (Evandro, Ernane e Diego), respondida e a proposta já foi enviada. Aguardando o retorno da Telespazio.",
+    id:"telespazio", nome:"Telespazio", tipo:"Cliente · RFP em andamento", esf:"alto", gan:"alto", prazo:"curto", estagio:5,
+    situacao:"A NOVALE já está participando da RFP: a proposta e a documentação da empresa foram enviadas, e a Telespazio já voltou com alguns questionamentos, o que mostra que a análise está avançada. Aguardando o retorno sobre a proposta. O esforço é alto porque, se avançar, o projeto vai exigir a mobilização de toda a equipe.",
     crit:[0.5,0,0],
-    critNotas:["Proposta enviada em resposta à RFP; aguardando análise","Depende do retorno da Telespazio","Minuta ainda não enviada"],
-    passo:{ok:true, txt:"Follow-up por e-mail com a Telespazio na segunda, 2 nov"},
-    proxima:"Fazer follow-up por e-mail na segunda (2 nov) para checar se já há retorno sobre a proposta. Com a resposta, marcar a reunião técnica para detalhar o escopo e seguir para a formalização."
+    critNotas:["Proposta e documentação enviadas; a Telespazio já fez questionamentos","Depende do retorno da Telespazio sobre a proposta","Minuta ainda não enviada"],
+    passo:{ok:false, txt:"Aguardando o retorno da Telespazio sobre a proposta da RFP"},
+    proxima:"Aguardar o retorno da Telespazio sobre a proposta e responder rapidamente a novos questionamentos. Em paralelo, planejar a mobilização da equipe para o caso de a proposta avançar, para chegar à negociação final já com o time e o cronograma definidos."
   },
   {
-    id:"subway", nome:"CRM da Subway", tipo:"Desenvolvimento · contato Anna Rafaela", esf:"medio", gan:"medioalto", prazo:"curto", estagio:4,
-    obsEtapa:"Projeto de desenvolvimento: o estágio reflete a frente comercial, enquanto a POC já está em teste com o cliente.",
-    situacao:"POC entregue à Anna Rafaela e testada por ela. A frente agora aguarda a transição da POC para o CRM real, que é o próximo passo do projeto.",
+    id:"subway", nome:"CRM da Subway", tipo:"Desenvolvimento · contato Anna Rafaela", esf:"medio", gan:"medio", prazo:"curto", estagio:4,
+    obsEtapa:"Projeto de desenvolvimento: o estágio reflete a frente comercial, enquanto o CRM já está em teste com o cliente.",
+    situacao:"O desenvolvimento do CRM está em cerca de 80% e segue em fase de teste com a Anna Rafaela. O próximo movimento é migrar o projeto para o time de desenvolvimento da NOVALE, que começa agora.",
     crit:[1,0,0],
-    critNotas:["POC entregue e em teste pela Anna Rafaela","Modelo comercial ainda não discutido",""],
-    passo:{ok:true, txt:"Acompanhar a transição da POC para o CRM real até sexta, 30 out"},
-    proxima:"Acompanhar a transição da POC para o CRM real e, com ela encaminhada, propor o escopo e o modelo comercial da ferramenta completa."
+    critNotas:["CRM em 80% e em teste pela Anna Rafaela","Modelo comercial ainda não discutido",""],
+    passo:{ok:true, txt:"Migração do projeto para o time de desenvolvimento da NOVALE, começando agora"},
+    proxima:"Migrar o projeto para o time de desenvolvimento da NOVALE e concluir os 20% restantes. Com a ferramenta estável, propor o escopo final e o modelo comercial."
   },
   {
     id:"rh", nome:"Plataforma de RH", tipo:"Daniela (Gegers) · CRM de RH", esf:"medio", gan:"medio", prazo:"medio", estagio:2,
     obsEtapa:"Projeto de desenvolvimento conjunto; o estágio reflete a formalização da parceria, que ainda não aconteceu.",
-    situacao:"Nova demanda: desenvolvimento de um CRM de RH em conjunto com a Dani (Daniela), da Gegers, servindo também à estruturação da NOVALE. Na primeira fase, a NOVALE desenvolve a ferramenta e a Daniela passa a ideia e o conceito, além de usar a plataforma alimentando-a com dados, o que funciona como teste.",
+    situacao:"CRM de RH desenvolvido em parceria com a Dani (Daniela), da Gegers, com cerca de 80% concluído. A NOVALE desenvolve a ferramenta e a Daniela traz o conceito e usa a plataforma alimentando-a com dados, o que funciona como teste. A previsão é começar a rodar na segunda quinzena de novembro, mais para a última semana do mês.",
     crit:[1,0,0],
-    critNotas:["Desenvolvimento conjunto em andamento","Responsabilidades ainda não formalizadas",""],
-    passo:{ok:false, txt:"Conversa inicial com a Daniela sobre responsabilidades, sem data"},
-    proxima:"Ter a conversa inicial com a Daniela para dividir as responsabilidades: o que cabe à NOVALE no desenvolvimento, o que cabe a ela no conceito e no uso da plataforma como teste. Registrar o combinado por escrito antes de avançar na segunda fase."
+    critNotas:["Desenvolvimento conjunto em 80%","Responsabilidades ainda não formalizadas por escrito",""],
+    passo:{ok:true, txt:"Início da operação da plataforma na última semana de novembro"},
+    proxima:"Concluir os 20% restantes e colocar a plataforma para rodar na última semana de novembro. Antes da segunda fase, registrar por escrito o que cabe à NOVALE e o que cabe à Daniela."
   },
   {
-    id:"javastreak", nome:"Aplicativo JavaStreak", tipo:"Produto próprio · negociação com influenciadores", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
-    obsEtapa:"Produto próprio: o estágio reflete a negociação comercial, enquanto o desenvolvimento segue com o time interno.",
-    situacao:"Desenvolvimento em andamento com o time da NOVALE, e o aplicativo já faz parte do portfólio. Há negociação em curso com influenciadores e pessoas do ramo, com uma boa conversa encaminhada com um deles. O avanço depende de o aplicativo chegar a um estágio mais evoluído.",
-    crit:[1,0.5,0],
-    critNotas:["Boa negociação em curso com um influenciador","Acordo ainda não formalizado","Depende da evolução do aplicativo"],
-    passo:{ok:false, txt:"Retomar a negociação quando o aplicativo evoluir"},
-    proxima:"Levar o aplicativo ao estágio acordado com o time de desenvolvimento e, assim que isso acontecer, retomar a negociação com o influenciador e fechar o modelo de parceria."
+    id:"faunatech", nome:"Fauna Tech", tipo:"Produto próprio · antes Aplicativo JavaStreak", esf:"medio", gan:"alto", prazo:"longo", estagio:2,
+    obsEtapa:"Produto próprio: o estágio reflete a frente comercial de lançamento, enquanto o desenvolvimento segue com o time interno.",
+    situacao:"O aplicativo, antes chamado JavaStreak, agora se chama Fauna Tech. O perfil de caçador está com cerca de 90% do desenvolvimento. Já há um influenciador contratado para o lançamento, e o app está em fase de teste, com conteúdo sendo gravado e publicado.",
+    crit:[1,1,1],
+    critNotas:["Influenciador engajado no lançamento","Contratação do influenciador acertada","Influenciador contratado; conteúdo em gravação e publicação"],
+    passo:{ok:true, txt:"Testes e produção de conteúdo com o influenciador, rumo ao lançamento"},
+    proxima:"Concluir os 10% restantes do perfil de caçador, fechar os testes e definir a data de lançamento com o influenciador, mantendo a produção de conteúdo até lá."
   },
   {
-    id:"leandro", nome:"Leandro Gaunszer", tipo:"Frente a classificar · documento compartilhado", esf:"baixo", gan:"medio", prazo:"longo", estagio:0,
-    situacao:"O Leandro Gaunszer compartilhou por e-mail o link de um documento com o trabalho que está desenvolvendo. Ficou marcada uma conversa com ele para entender o conteúdo e avaliar se há oportunidade para a NOVALE.",
-    crit:[1,0.5,0],
-    critNotas:["Leandro Gaunszer","Interesse ainda não avaliado","Depende da análise do documento"],
-    passo:{ok:true, txt:"Conversa com o Leandro sobre o documento, até sexta, 30 out"},
-    proxima:"Conversar com o Leandro até sexta (30 out) para entender o documento compartilhado e decidir se há uma oportunidade concreta. Se houver, classificar a frente na matriz e definir o próximo passo."
-  },
-  {
-    id:"century", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:6,
-    situacao:"Desenvolvimento em andamento desde o kickoff de 24 set, com acompanhamento pelo Redmine e reuniões semanais às quintas. Em 16 out a Century reenviou o contrato com novas considerações e alterações. A NOVALE montou uma planilha comparando as mudanças e encaminhou ao jurídico, que está analisando os ajustes propostos.",
-    crit:[0.5,1,0],
-    critNotas:["Nova versão do contrato em análise no jurídico da NOVALE","Planilha comparativa das mudanças enviada ao jurídico","Aguardando o parecer do jurídico"],
-    passo:{ok:false, txt:"Nova versão do contrato em análise no jurídico da NOVALE"},
-    proxima:"Receber o parecer do jurídico da NOVALE sobre as mudanças propostas pela Century, fechar os pontos divergentes e seguir para a assinatura. Em paralelo, manter o desenvolvimento e os marcos no Redmine.",
+    id:"century", concluido:true, fechado:"12 nov 2026", nome:"Century", tipo:"Cliente · Grupo Century · contatos Anne e Thiago", esf:"baixo", gan:"medioalto", prazo:"curto", estagio:7,
+    situacao:"Contrato concluído. O desenvolvimento começou no kickoff de 24 set, com acompanhamento pelo Redmine e reuniões semanais às quintas, e a negociação do contrato foi fechada após a revisão do jurídico. A relação segue agora com manutenção e mensalidades.",
+    passo:{ok:true, txt:"Projeto em andamento: manutenção e mensalidades"},
+    proxima:"Manter a entrega da manutenção e o acompanhamento mensal, registrando os resultados para usar a Century como case de sucesso em novas tratativas.",
     link:"https://claude.ai/artifact/7EzPgSfkaFpiSiphN1ndAL"
   },
   {
-    id:"totvs", tangManual:15, nome:"TOTVS", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
-    situacao:"Visita realizada na TOTVS, onde conhecemos alguns responsáveis comerciais. Ficou combinada uma segunda conversa, para eles apresentarem os caminhos possíveis de parceria com a TOTVS. Ainda sem data.",
+    id:"totvs", espera:true, desde:"12 nov 2026", tangManual:15, nome:"TOTVS", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
+    situacao:"Visita realizada na TOTVS, onde conhecemos alguns responsáveis comerciais. Ficou combinada uma segunda conversa, para eles apresentarem os caminhos possíveis de parceria com a TOTVS. Ainda sem data. Ficou de ser marcada uma visita ao escritório da TOTVS para conversar, mas no momento não há tratativa ativa. Em 12 nov a frente foi movida para a caixa de espera.",
     crit:[1,0,0],
     critNotas:["Visita realizada; responsáveis comerciais conhecidos","NDA ainda não enviado",""],
-    passo:{ok:true, txt:"Follow-up com a Bruna em 30 out, para agendar a segunda conversa"},
+    passo:{ok:false, txt:"Suspensa; retomar em outro momento"},
     proxima:"Fazer follow-up com a Bruna, da TOTVS, até 30 out, para marcar a segunda conversa. Chegar nela com uma proposta de modelo de parceria (quem vende, quem entrega, como a receita se divide) e com a minuta de NDA."
   },
   {
@@ -358,19 +429,19 @@ const OPORTUNIDADES = [
     proxima:"Responder ao Felipe até sexta (30 out) com a proposta revisada e o desconto adicional. Se a recusa persistir, entender qual é o ponto que trava (preço, escopo ou prazo) antes de uma terceira rodada."
   },
   {
-    id:"proscore", nome:"Pro Score", tipo:"Parceria", esf:"alto", gan:"medio", prazo:"longo", estagio:2,
-    situacao:"Um parceiro intermediário sugeriu assinarmos o NDA com a Pro Score e mantermos o relacionamento, com ganho nas duas vias. A NOVALE inclui os produtos da Pro Score nos seus negócios e ganha com a venda deles até o comercial próprio estar 100% desenvolvido, ou até entrar um parceiro com esse interesse. Já a Pro Score coloca a NOVALE como desenvolvedora quando um parceiro deles precisar de desenvolvimento.",
-    crit:[1,1,0],
-    critNotas:["Parceria em duas vias: revenda dos produtos deles e desenvolvimento para os parceiros deles","NDA com a Pro Score em mãos","Assinar e devolver até 30 out"],
-    passo:{ok:true, txt:"Assinar e devolver o NDA à Pro Score até 30 out"},
-    proxima:"Assinar e devolver o NDA à Pro Score até 30 out. Em seguida, definir as regras da parceria nas duas vias: a margem ou comissão da NOVALE na venda dos produtos da Pro Score e como a NOVALE entra como desenvolvedora nos projetos dos parceiros deles."
+    id:"proscore", nome:"Pro Score", tipo:"Parceria · CRM para venda conjunta", esf:"alto", gan:"medio", prazo:"longo", estagio:3,
+    situacao:"NDA assinado. A parceria funciona em duas vias: a NOVALE pode vender os produtos da Pro Score, e a Pro Score indica a NOVALE como desenvolvedora aos seus parceiros. Agora a NOVALE vai analisar como seguir e quer propor a montagem de um CRM para vender em parceria com a Pro Score. Há uma reunião prevista para a semana que vem, aguardando o convite.",
+    crit:[0.5,0,0],
+    critNotas:["Reunião prevista para a semana que vem; aguardando o convite","",""],
+    passo:{ok:true, txt:"Reunião com a Pro Score na semana que vem (aguardando o convite)"},
+    proxima:"Confirmar a reunião da semana que vem e chegar a ela com a proposta de um CRM para venda em parceria: o que cada lado entrega, quem vende e como a receita se divide."
   },
   {
-    id:"marcopolo", tangManual:8, nome:"Marco Polo Nova Telecom", tipo:"Mari · Andreia · desenvolvimento de CRM", esf:"alto", gan:"medio", prazo:"longo", estagio:0,
-    situacao:"Primeiro contato feito, ainda sem reunião. Em 25 set devolvemos a demanda para a Mari, pedindo que ela interceda por nós junto ao André e ao Marco Polo para conseguirmos agendar a reunião, e que avalie também o nosso material de apresentação. Aguardando o retorno dela.",
+    id:"marcopolo", espera:true, desde:"12 nov 2026", tangManual:8, nome:"Marco Polo Nova Telecom", tipo:"Mari · Andreia · desenvolvimento de CRM", esf:"alto", gan:"medio", prazo:"longo", estagio:0,
+    situacao:"Primeiro contato feito, ainda sem reunião. Em 25 set devolvemos a demanda para a Mari, pedindo que ela interceda por nós junto ao André e ao Marco Polo para conseguirmos agendar a reunião, e que avalie também o nosso material de apresentação. Aguardando o retorno dela. Em 12 nov a frente foi movida para a caixa de espera: a NOVALE não vai trabalhar com eles agora.",
     crit:[1,0.5,0],
     critNotas:["Mari e Andreia; André e Marco Polo pelo lado da empresa","Possível desenvolvimento de CRM, ainda não detalhado","Mari vai interceder para marcar a reunião"],
-    passo:{ok:false, txt:"Aguardando o retorno da Mari sobre o agendamento e a avaliação do material"},
+    passo:{ok:false, txt:"Suspensa; retomar em outro momento"},
     proxima:"Aguardar o retorno da Mari sobre a avaliação do material e o agendamento da reunião com o André e o Marco Polo. Chegar na reunião com três perguntas de qualificação: qual processo o CRM resolve, quem decide e qual o orçamento previsto."
   },
   {
@@ -382,11 +453,11 @@ const OPORTUNIDADES = [
     proxima:"Retomar quando houver espaço na agenda: preparar a proposta de trabalho de campo para o Alejandro e cobrar o documento com as demandas dele. Enquanto isso, a frente fica em segundo plano, sem consumir esforço do time."
   },
   {
-    id:"comolatti", tangManual:40, nome:"Grupo Comolatti / Questar", tipo:"Cliente", esf:"alto", gan:"alto", prazo:"medio", estagio:1,
-    situacao:"Relatório de visita enviado ao Alfredo, sem retorno. A evolução da plataforma Questar continua parada, sem avanço até agora. Ficou definida uma nova meta: entregar uma POC inicial até 30 out.",
+    id:"comolatti", espera:true, desde:"12 nov 2026", tangManual:40, nome:"Grupo Comolatti / Questar", tipo:"Cliente", esf:"alto", gan:"alto", prazo:"medio", estagio:1,
+    situacao:"Relatório de visita enviado ao Alfredo, sem retorno. A evolução da plataforma Questar continua parada, sem avanço até agora. A meta era entregar uma POC inicial até 30 out. Em 12 nov, sem avanço, a frente foi movida para a caixa de espera.",
     crit:[0.5,0.5,0],
     critNotas:["Visita realizada e relatório enviado, sem retorno","Alfredo é o contato; decisor não confirmado",""],
-    passo:{ok:true, txt:"POC inicial da plataforma Questar até 30 out"},
+    passo:{ok:false, txt:"Suspensa; retomar em outro momento"},
     proxima:"Entregar a POC inicial da plataforma até 30 out, destravando o projeto. Em paralelo, enviar ao Alfredo um follow-up curto, com uma pergunta objetiva e uma proposta de data; se ele não responder, buscar um segundo contato no grupo.",
     diag:{
       porque:"O relatório foi enviado sem um próximo passo combinado, e a conversa ficou dependendo de uma resposta espontânea.",
@@ -431,13 +502,21 @@ const OPORTUNIDADES = [
     }
   },
   {
-    id:"elsys", tangManual:15, nome:"Elsys", tipo:"Cliente · contato Alex Fernandes", esf:"alto", gan:"medio", prazo:"longo", estagio:1,
-    situacao:"O Alex Fernandes já nos visitou e virá à NOVALE apresentar as propostas e oportunidades da Elsys. Em 28 set fizemos um novo follow-up para descobrir quando a agenda dele permite essa vinda. Aguardando o retorno.",
+    id:"elsys", tangManual:15, nome:"Elsys", tipo:"Cliente · contatos Cláudio e Alex Fernandes", esf:"alto", gan:"medio", prazo:"longo", estagio:1,
+    situacao:"Reunião agendada para 17 nov, às 9h30, com o Cláudio, para entender onde há oportunidade de a NOVALE trabalhar com a Elsys. O Alex Fernandes, que já nos visitou, segue como contato.",
     crit:[0,0.5,0],
-    critNotas:["Oportunidades serão apresentadas pela Elsys","Alex Fernandes é o contato; decisor a confirmar","Follow-up feito em 28 set; aguardando a data da vinda dele"],
-    passo:{ok:false, txt:"Aguardando o retorno do Alex com a data da apresentação na NOVALE"},
-    proxima:"Aguardar o retorno do Alex Fernandes com a data em que ele consegue vir apresentar as propostas da Elsys na NOVALE. Na reunião, entender quais oportunidades ele traz, quem decide e em que prazo. Depois dela, revisamos o esforço, o ganho e o horizonte da Elsys."
-  }
+    critNotas:["Oportunidades a mapear na reunião com o Cláudio","Cláudio e Alex Fernandes; decisor a confirmar",""],
+    passo:{ok:true, txt:"Reunião com o Cláudio em 17 nov, às 9h30"},
+    proxima:"Na reunião de 17 nov com o Cláudio, entender onde há oportunidade, quem decide e em que prazo. Depois dela, revisar o esforço, o ganho e o horizonte da Elsys."
+  },
+];
+
+/* =================================================================
+   RADAR — possíveis novos negócios, ainda não qualificados.
+   Passam para OPORTUNIDADES depois de uma reunião com necessidade identificada.
+   ================================================================= */
+const RADAR = [
+  { nome:"Renata Imobiliária Caraguá", nota:"Possível novo negócio" }
 ];
 
 /* ================================================================= */
@@ -458,8 +537,9 @@ const nivel = p => p >= 70 ? ["Alta", "var(--feito)"] : p >= 40 ? ["Média", "va
 const ordemH = ["curto","medio","longo"];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-const ATIVAS = OPORTUNIDADES.filter(o => !o.espera);
-const ESPERA = OPORTUNIDADES.filter(o => o.espera);
+const ATIVAS = OPORTUNIDADES.filter(o => !o.espera && !o.concluido);
+const CONCLUIDAS = OPORTUNIDADES.filter(o => o.concluido);
+const ESPERA = OPORTUNIDADES.filter(o => o.espera && !o.concluido);
 
 /* números */
 const media = ATIVAS.length ? Math.round(ATIVAS.reduce((a,o)=>a+tang(o),0)/ATIVAS.length) : 0;
@@ -470,10 +550,19 @@ document.getElementById("numeros").innerHTML = [
   [media + "%", "tangibilidade média das ativas"]
 ].map(([n,l]) => `<div class="num"><b>${n}</b><span>${l}</span></div>`).join("");
 
+/* radar e funil resumido */
+document.getElementById("funil-mini").innerHTML = [
+  ["f1","No radar",RADAR.length],["f2","Pipeline ativo",ATIVAS.length],["f3","Cases de sucesso",CONCLUIDAS.length]
+].map(([c,l,n]) => `<div class="fm ${c}"><span>${l}</span><b>${n}</b></div>`).join("");
+document.getElementById("radar-itens").innerHTML = RADAR.length
+  ? RADAR.map(r => `<div class="ri"><b>${r.nome}</b>${r.nota ? `<span>${r.nota}</span>` : ""}</div>`).join("")
+  : `<p class="vazio">Nada no radar no momento.</p>`;
+
 /* matriz 3x3 + faixa de espera */
 const chip = o => o.espera
   ? `<button type="button" class="chip em-espera" data-op="${o.id}"><i class="dot h-espera"></i>${o.nome}</button>`
   : `<button type="button" class="chip" data-op="${o.id}" title="${HORIZONTES[o.prazo].nome} · tangibilidade ${tang(o)}%"><i class="dot h-${o.prazo}"></i>${o.nome}<span class="pc">${tang(o)}%</span></button>`;
+const ROTULOS = { "alto|baixo":"Prioridade máxima", "alto|alto":"Grandes apostas", "baixo|baixo":"Ganhos rápidos", "baixo|alto":"Evitar" };
 let mt = "";
 Object.keys(NIV_GAN).forEach(g => {
   mt += `<div class="m-lin">${NIV_GAN[g].replace("/","/<wbr>")}</div>`;
@@ -481,8 +570,10 @@ Object.keys(NIV_GAN).forEach(g => {
     const itens = ATIVAS.filter(o => o.esf === e && o.gan === g)
       .sort((a,b) => ordemH.indexOf(a.prazo) - ordemH.indexOf(b.prazo) || tang(b) - tang(a));
     const gi = {baixo:0, medio:1, medioalto:2, alto:3}[g], ei = {baixo:0, medio:1, alto:2}[e];
-    const hue = Math.round(8 + (gi - ei + 2) / 5 * 142);   /* vermelho → verde */
-    mt += `<div class="m-cel${itens.length ? " cheia" : ""}" style="--h:${hue}">${itens.map(chip).join("")}</div>`;
+    const nota = gi - ei;                                   /* -2 (pior) a 3 (melhor) */
+    const a = (.03 + (nota + 2) / 5 * .16).toFixed(3);
+    const rot = ROTULOS[g + "|" + e] ? ` data-rot="${ROTULOS[g + "|" + e]}"` : "";
+    mt += `<div class="m-cel${itens.length ? " cheia" : ""}${nota >= 3 ? " top" : ""}" style="--a:${a}"${rot}>${itens.map(chip).join("")}</div>`;
   });
 });
 mt += `<div class="m-canto"></div>` + Object.keys(NIV_ESF).map(e => `<div class="m-col">${NIV_ESF[e]}</div>`).join("");
@@ -492,7 +583,7 @@ document.getElementById("matriz-grid").innerHTML = mt;
 document.getElementById("legenda-h").innerHTML =
   ordemH.map(h => `<span><i class="dot h-${h}"></i>${HORIZONTES[h].nome}</span>`).join("") +
   `<span><i class="dot h-espera"></i>Em espera</span>` +
-  `<span class="leg-cor"><i class="grad"></i>Fundo: do verde (mais ganho, menos esforço) ao vermelho (menos ganho, mais esforço)</span>`;
+  `<span class="leg-cor"><i class="grad"></i>Quanto mais intenso o azul, melhor a relação entre ganho e esforço</span>`;
 
 /* card da oportunidade */
 const ic = v => v === 1 ? ["s1","✓"] : v === 0.5 ? ["s05","½"] : ["s0",""];
@@ -501,20 +592,21 @@ function cardHTML(o){
   const etapa = ETAPAS[o.estagio];
   const proxEst = o.estagio < 7 ? ETAPAS[o.estagio + 1].nome : "Projeto em execução";
   const tags = [
+    o.concluido ? `<span class="tag th-curto">Contrato concluído em ${o.fechado} · case de sucesso</span>` :
     o.espera ? `<span class="tag th-espera">Em espera desde ${o.desde}</span>`
              : `<span class="tag th-${o.prazo}">${HORIZONTES[o.prazo].nome} · ${HORIZONTES[o.prazo].sub}</span>`,
     o.esf && o.gan ? `<span class="tag">Esforço ${NIV_ESF[o.esf].toLowerCase()} · ganho ${NIV_GAN[o.gan].toLowerCase()}</span>` : "",
     o.tipo ? `<span class="tag">${o.tipo}</span>` : "",
     `<span class="tag">Estágio ${o.estagio} · ${etapa.nome}</span>`
   ].join("");
-  const temCrit = Array.isArray(o.crit);
+  const temCrit = Array.isArray(o.crit) && etapa.crit.length > 0;
   return `<article class="card">
     <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
     <div class="card-top">
       <div><h3>${o.nome}</h3><div class="tags">${tags}</div></div>
       ${o.espera ? "" : `<div class="tangi">
         <div class="pct" style="color:${cor}">${p}%</div>
-        <div class="niv">Tangibilidade ${nv.toLowerCase()} · ${typeof o.tangManual === "number" ? "definida pelo responsável comercial" : `faixa da etapa ${etapa.faixa[0]}–${etapa.faixa[1]}%`}</div>
+        <div class="niv">${o.concluido ? "Contrato assinado" : `Tangibilidade ${nv.toLowerCase()} · ${typeof o.tangManual === "number" ? "definida pelo responsável comercial" : `faixa da etapa ${etapa.faixa[0]}–${etapa.faixa[1]}%`}`}</div>
         <div class="barra"><i style="width:${p}%;background:${cor}"></i></div>
       </div>`}
     </div>
@@ -523,9 +615,9 @@ function cardHTML(o){
         <p class="rot">Situação</p>
         <p class="situ">${o.situacao}</p>
         <div class="prox-acao">
-          <p class="rot">${o.espera ? "Para retomar" : "Ação para avançar"}</p>
+          <p class="rot">${o.concluido ? "Daqui em diante" : o.espera ? "Para retomar" : "Ação para avançar"}</p>
           <p>${o.proxima}</p>
-          <p class="para">Leva a: ${proxEst}</p>
+          ${o.concluido ? "" : `<p class="para">Leva a: ${proxEst}</p>`}
         </div>
         ${o.link ? `<a class="link-proj" href="${esc(o.link)}" target="_blank" rel="noopener">Ver o cronograma completo do projeto →</a>` : ""}
       </div>
@@ -533,7 +625,7 @@ function cardHTML(o){
         ${temCrit ? `<p class="rot">Para concluir a etapa ${o.estagio} · ${etapa.curto}</p>
         <ul class="sinais">${etapa.crit.map((s,i) => { const [c,t] = ic(o.crit[i] || 0); const n = (o.critNotas||[])[i];
           return `<li><span class="ic ${c}">${t}</span><span>${s}${n ? `<small>${n}</small>` : ""}</span></li>`; }).join("")}</ul>` : ""}
-        ${o.passo ? `<div class="passo-flag ${o.passo.ok ? "ok" : ""}"><b>${o.passo.ok ? "Próximo passo agendado" : "Próximo passo em aberto"}</b><span>${o.passo.txt}</span></div>` : ""}
+        ${o.passo ? `<div class="passo-flag ${o.passo.ok ? "ok" : ""}"><b>${o.concluido ? "Status" : o.passo.ok ? "Próximo passo agendado" : "Próximo passo em aberto"}</b><span>${o.passo.txt}</span></div>` : ""}
         ${o.obsEtapa ? `<p class="obs-etapa">${o.obsEtapa}</p>` : ""}
       </div>
     </div>
@@ -559,6 +651,17 @@ function abre(id){
 function fecha(){ if (janela.open) janela.close(); }
 janela.addEventListener("close", () => { try { history.replaceState(null, "", location.pathname + location.search); } catch(e) {} });
 janela.addEventListener("click", e => { if (e.target === janela || e.target.closest("[data-fechar]")) fecha(); });
+document.getElementById("cases-lista").innerHTML = CONCLUIDAS.length
+  ? CONCLUIDAS.map(o => `<button type="button" class="case" data-op="${o.id}">
+      <span class="case-selo">✓ Contrato concluído</span>
+      <b>${o.nome}</b>
+      <span class="case-tipo">${o.tipo}</span>
+      <span class="case-data">Fechado em ${o.fechado} · ${o.passo ? o.passo.txt : ""}</span>
+    </button>`).join("")
+  : `<p class="vazio">Nenhum contrato concluído ainda.</p>`;
+document.getElementById("cases-lista").addEventListener("click", e => {
+  const b = e.target.closest("[data-op]"); if (b) abre(b.dataset.op);
+});
 document.getElementById("matriz-grid").addEventListener("click", e => {
   const b = e.target.closest("[data-op]"); if (b) abre(b.dataset.op);
 });
